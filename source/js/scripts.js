@@ -91,6 +91,13 @@ if(pageType === 'ST') {
     initPostRowDescription();
     initPostContentAlter();
     initDiscordTagging('#ST main > table > tbody > tr > td:last-child');
+    if(document.querySelector('.post.social')) {
+        initSocials();
+    } else if (document.querySelector('.post.comm')) {
+        initComms();
+    } else {
+        initPosts();
+    }
 }
 
 /********** Login **********/
@@ -246,6 +253,17 @@ if(pageType === 'Post') {
     setUpCustomBBcodeButtons();
 }
 
+const doSelectionReplace = (button) => {
+    if (button.dataset.tagName && button.dataset.tagType) {
+        let tagName = button.dataset.tagName;
+        const inputBox = document.forms["REPLIER"].elements["Post"];
+        const selRange = inputBox.value.substring(inputBox.selectionStart, inputBox.selectionEnd);
+    
+        const replacement = `[${tagName}${button.dataset.tagType == 'complex' ? `=${button.dataset.complexIndicator}` : ''}]${selRange.length > 0 ? selRange : (button.dataset.simpleIndicator ?? '')}[/${tagName}]`;
+        inputBox.setRangeText(replacement, inputBox.selectionStart, inputBox.selectionEnd);
+    }
+};
+
 /********** User CP & Messages **********/
 if(pageType === 'UserCP' || pageType === 'Msg') {
     //ucp menu
@@ -253,6 +271,7 @@ if(pageType === 'UserCP' || pageType === 'Msg') {
 
 	//Edit Profile Edits
 	if($('body.code-01').length > 0 && pageType === 'UserCP') {
+        document.querySelector('#ucpcontent form > table > tbody > tr:last-child > td').insertAdjacentHTML('afterbegin', completedButton);
         cpShift();
         splitProfile();
         ucpAesthetics();
@@ -268,6 +287,10 @@ if(pageType === 'UserCP' || pageType === 'Msg') {
         if(setHeightFields.length > 0) {
             fields = createFieldArray(setHeightFields);
             document.querySelectorAll(fields).forEach(field => field.classList.add('staticHeight'));
+        }
+        if(requiredFields.length > 0) {
+            fields = createFieldArray(requiredFields);
+            document.querySelectorAll(fields).forEach(field => field.querySelector('label').innerHTML = `<span>${field.querySelector('label').innerHTML} <span class="required">*</span></span>`);
         }
         
         toggleFields.forEach(toggle => {

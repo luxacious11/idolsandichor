@@ -12,7 +12,8 @@
 #submenu,
 #userlinks,
 .wrapmini,
-a[href=""] {
+a[href=""],
+a[href="<i>No Information</i>"] {
   display: none !important;
 }
 
@@ -158,7 +159,7 @@ a[href=""] {
         }
 
         .input-wrap {
-            font-size: 1rem;
+            font-size: var(--text-size-md);
         }
 
         .qr_buttons {
@@ -172,7 +173,7 @@ a[href=""] {
             input {
                 margin-left: 0;
                 margin-right: 0;
-                font-size: 1rem;
+                font-size: var(--text-size-md);
             }
         }
 
@@ -191,7 +192,7 @@ a[href=""] {
             font-size: 0;
 
             a {
-                font-size: 1rem;
+                font-size: var(--text-size-md);
             }
         }
 
@@ -314,7 +315,7 @@ a[href=""] {
                             input,
                             select {
                                 margin: 0;
-                                font-size: 1rem;
+                                font-size: var(--text-size-md);
                                 line-height: 160%;
                             }
 

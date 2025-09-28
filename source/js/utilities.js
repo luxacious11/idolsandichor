@@ -425,6 +425,7 @@ function filterValue(e) {
     let names = document.querySelectorAll(`[data-key="${e.dataset.filter}"] .claim ${e.dataset.objects}`);
     let headers = document.querySelectorAll(`[data-key="${e.dataset.filter}"] ${e.dataset.headers}`);
     let wraps = document.querySelectorAll(`[data-key="${e.dataset.filter}"] .claims--filter-wrap`);
+    let grids = document.querySelectorAll(`[data-key="${e.dataset.filter}"] .claims--grid`);
     if(searchValue !== '') {
         e.parentNode.classList.add('pb');
         e.closest('.webpage--content-inner').querySelectorAll('.accordion--trigger, .accordion--content').forEach(item => item.classList.add('is-active'));
@@ -435,17 +436,16 @@ function filterValue(e) {
             } else {
                 name.closest('.claim').classList.add('hidden');
             }
-            let childrenArray = Array.from(name.closest('.claims--grid').querySelectorAll('.claim')).filter(item => !item.classList.contains('hidden'));
-            if(childrenArray.length === 0) {
-                name.closest('.claims--grid').previousElementSibling.classList.add('hidden');
-                if (e.dataset.hideWrap === 'true') {
-                    name.closest('.claims--grid').classList.add('hidden');
-                }
+        });
+        grids.forEach(grid => {
+            let claims = Array.from(grid.querySelectorAll('.claim'));
+            let hidden = Array.from(grid.querySelectorAll('.claim.hidden'));
+            if(claims.length === hidden.length) {
+                grid.previousElementSibling.classList.add('hidden');
+                grid.classList.add('hidden');
             } else {
-                name.closest('.claims--grid').previousElementSibling.classList.remove('hidden');
-                if (e.dataset.hideWrap === 'true') {
-                    name.closest('.claims--grid').classList.remove('hidden');
-                }
+                grid.previousElementSibling.classList.remove('hidden');
+                grid.classList.remove('hidden');
             }
         });
     } else {
@@ -453,7 +453,10 @@ function filterValue(e) {
         headers.forEach(header => header.classList.remove('hidden'));
         names.forEach(name => name.closest('.claim').classList.remove('hidden'));
         wraps.forEach(wrap => wrap.classList.remove('hidden'));
-        e.closest('.scroll').querySelectorAll('.accordion--trigger, .accordion--content').forEach(item => item.classList.remove('is-active'));
+        grids.forEach(grid => {
+            grid.classList.remove('hidden');
+            grid.previousElementSibling.classList.remove('hidden');
+        });
     }
 }
 function initWebpages() {
@@ -977,9 +980,12 @@ function initModCPMenu() {
 }
 
 /***** Topic List *****/
-function initHighlightTags(selector) {
+function initHighlightTags(selector, curly = false) {
     document.querySelectorAll(selector).forEach(desc => {
         desc.innerHTML = desc.innerHTML.replaceAll('[', '<tag-highlight>').replaceAll(']', '</tag-highlight>');
+        if(curly) {
+            desc.innerHTML = desc.innerHTML.replaceAll('{', '<tag-highlight>').replaceAll('}', '</tag-highlight>');
+        }
     });
 }
 function initTopicsWrap() {
@@ -1008,7 +1014,7 @@ function initPostRowDescription() {
     }
     let desc = document.querySelector('.maintitle .topic-desc');
     if(desc.innerText) {
-        initTopicDescription('.topic-desc');
+        initHighlightTags('.topic-desc');
     } else {
         desc.remove();
     }
@@ -1047,6 +1053,122 @@ function initPostContentAlter() {
             post.querySelectorAll('.oocOnly').forEach(item => item.remove());
         }
     })
+}
+function initMiniSplide() {
+    const miniCarousels = document.querySelectorAll('.post--mini');
+    miniCarousels.forEach(carousel => {
+        var splide = new Splide(carousel, {
+            type: carousel.querySelectorAll('.splide__slide').length > 1 ? 'loop' : 'slide',
+            speed: '500',
+            perPage: 1,
+            perMove: 1,
+            gap: 0,
+            easing: 'ease',
+            arrows: false,
+            reducedMotion: {
+                speed: 0
+            }
+        });
+        splide.on( 'pagination:updated', function (data, prev, curr) {
+            if(curr.page === 0) {
+                splide.root.classList.add('is-first');
+            } else {
+                splide.root.classList.remove('is-first');
+            }
+        });
+        splide.mount();
+    });
+}
+function initSocials() {
+    $('.post.social:not(:has(tag-summary))').nextUntil('.post + .activeuserstrip').andSelf().wrapAll('<div class="posts--socials-wrap"><div class="posts--socials-wrap-inner"><div class="scroll"></div></div></div>');
+    if(document.querySelector('.post.social:has(tag-summary)')) {
+        document.querySelector('.post.social:has(tag-summary) .post--name').innerText = document.querySelector('.maintitle .topic-title').innerText;
+        document.querySelector('.post.social:has(tag-summary) .post--top').insertAdjacentHTML('beforeend', `<div class="post--tagline">${document.querySelector('.maintitle .topic-desc').innerHTML}</div>`);
+
+        if(!document.querySelector('.posts--socials-wrap')) {
+            document.querySelector('.post.social:has(tag-summary)').insertAdjacentHTML('afterend', `<div class="posts--socials-wrap"><div class="posts--no-posts">Oops, this is a new profile. There's nothing here!</div></div>`);
+        }
+    }
+    document.querySelectorAll('.posts--socials-wrap .post.social').forEach(post => {
+        post.querySelector('.post--name').innerText = post.querySelector('tag-contact').innerText;
+    });
+    $('.posts--socials-wrap .scroll').masonry({gutter: 15});
+}
+function initComms() {
+    $('.post.comm').nextUntil('.post + .activeuserstrip').andSelf().wrapAll('<div class="posts--comms-wrap"><div class="posts--comms-wrap-inner"><div class="scroll"></div></div></div>'); 
+    $('.tableborder:has(.post.comm) .maintitle').nextUntil('.posts--comms-wrap').andSelf().wrapAll('<div class="posts--header"></div>'); 
+    $('.activeuserstrip').nextUntil('.activeuserstrip').andSelf().wrapAll('<div class="posts--info"></div>'); 
+    let posts = document.querySelectorAll('.post.comm');
+    let descriptionRaw = document.querySelector('.topic-desc').innerHTML;
+    let contact = document.querySelector('.topic-desc').innerText.split('{')[1].split('}')[0];
+    let preContact = descriptionRaw.split('{')[0];
+    let postContact = descriptionRaw.split('}')[1];
+    document.querySelector('.topic-desc').innerHTML = `${preContact}${postContact}`;
+    posts.forEach((post, i) => {
+        if(i % 2 !== 0) {
+            post.querySelector('.post--top a').innerHTML = contact.toLowerCase();
+        }
+    });
+}
+function initPlayerInfo(parent = null) {
+    if(parent) {
+        return `<div class="items--item">
+                <strong>Alias</strong>
+                <span>${capitalize(parent.Member)}</span>
+            </div>
+            <div class="items--item">
+                <strong>Pronouns</strong>
+                <span>${capitalize(parent.Pronouns)}</span>
+            </div>
+            <div class="items--item">
+                <strong>Please Avoid</strong>
+                <span class="scroll">${parent.Triggers}</span>
+            </div>`;
+    } else {
+        return `<div class="items--item">
+                <strong>Alias</strong>
+                <span>claims pending</span>
+            </div>
+            <div class="items--item">
+                <strong>Pronouns</strong>
+                <span>claims pending</span>
+            </div>
+            <div class="items--item">
+                <strong>Please Avoid</strong>
+                <span class="scroll">claims pending</span>
+            </div>`;
+    }
+}
+function initPosts() {
+    initMiniSplide();
+	let posts = document.querySelectorAll('.post');
+	posts.forEach(post => {
+		let account = post.dataset.account,
+            birthday = {
+                year: post.dataset.year,
+                month: post.dataset.month,
+                day: post.dataset.day
+            };
+        post.querySelector('age-clip').innerHTML = calculateAge(dates);
+    
+        fetch(claims)
+        .then((response) => response.json())
+        .then((characterData) => {
+            fetch(members)
+            .then((response) => response.json())
+            .then((memberData) => {
+                let existing = characterData.filter(item => item.AccountID === account)[0];
+                console.log(existing);
+                if(existing) {
+                    let parent = memberData.filter(item => item.AccountID === existing.ParentID)[0];
+                    post.querySelectorAll('.clip-player').forEach(clone => clone.innerHTML = initPlayerInfo(parent));
+                } else {
+                    let parent = memberData.filter(item => item.AccountID === account)[0];
+                    post.querySelectorAll('.clip-player').forEach(clone => clone.innerHTML = initPlayerInfo(parent));
+                }
+            });
+        });
+    });
 }
 
 /****** Members List ******/
@@ -1239,15 +1361,15 @@ function read_alerts() {
 }
 
 /****** Special Function Initialization ******/
-function initTabs(isHash = false, wrapClass, menuClass, tabWrapClass, activeClass = 'is-active', categoryClass = null, firstClasses = []) {
+function initTabs(isHash = false, wrapClass, menuClass, tabWrapClass, activeClass = 'is-active', categoryClass = null, firstClasses = [], goToStart = false) {
     if(isHash) {
         window.addEventListener('hashchange', function(e){
-            initHashTabs(wrapClass, menuClass, tabWrapClass, activeClass, categoryClass);
+            initHashTabs(wrapClass, menuClass, tabWrapClass, activeClass, categoryClass, goToStart);
         });
 
         //hash linking
         if (window.location.hash){
-            initHashTabs(wrapClass, menuClass, tabWrapClass, activeClass, categoryClass);
+            initHashTabs(wrapClass, menuClass, tabWrapClass, activeClass, categoryClass, goToStart);
         } else {
             initFirstHashTab(firstClasses, activeClass);
         }
@@ -1273,7 +1395,7 @@ function initRegularTabs(menuClass) {
         });
     });
 }
-function initHashTabs(wrapClass, menuClass, tabWrapClass, activeClass, categoryClass = null) {
+function initHashTabs(wrapClass, menuClass, tabWrapClass, activeClass, categoryClass = null, goToStart) {
     //set variables for categories
     let selectedCategory, hashMain, hashCategory, hashCategoryArray, categorySiblings = [], categoryIndex, hashTab;
 
@@ -1318,7 +1440,7 @@ function initHashTabs(wrapClass, menuClass, tabWrapClass, activeClass, categoryC
 
     //Add active
     selected.classList.add(activeClass);
-    hashCategoryArray.forEach(item => item.classList.add(activeClass));
+    if(hashCategoryArray) hashCategoryArray.forEach(item => item.classList.add(activeClass));
     hashContent.classList.add(activeClass);
     tabSiblings.forEach(tab => tab.style.left = `${tabIndex * -100}%`);
 
@@ -1331,7 +1453,9 @@ function initHashTabs(wrapClass, menuClass, tabWrapClass, activeClass, categoryC
 
     document.querySelector(menuClass).classList.remove('is-open');
 
-    window.scrollTo(0, 0);
+    if(goToStart) {
+        window.scrollTo(0, 0);
+    }
 }
 function initFirstHashTab(firstClasses, activeClass) {
     //Auto-select tab without hashtag present
@@ -1740,14 +1864,17 @@ function sendDiscordMessage(webhook, embedTitle, message, notification = null, c
 
     request.send(JSON.stringify(params));
 }
-function sendAjax(form, data, staffDiscord, publicDiscord) {
-    $(form).trigger('reset');
+function sendAjax(form, data, staffDiscord, publicDiscord, async = true) {
+    if(form) {
+        $(form).trigger('reset');
+    }
     
     $.ajax({
         url: `https://script.google.com/macros/s/${deployID}/exec`,   
         data: data,
         method: "POST",
         type: "POST",
+        async: async,
         dataType: "json", 
         success: function () {
             console.log('success');
@@ -1757,13 +1884,17 @@ function sendAjax(form, data, staffDiscord, publicDiscord) {
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log('error');
-            form.innerHTML = `Whoops! The sheet connection didn't quite work. Please refresh the page and try again! If this persists, please open the console (ctrl + shift + J) and send Lux a screenshot of what's there.`;
+            if(form) {
+                form.innerHTML = sheetConnectionError;
+            }
         },
         complete: function () {
-            setFormStatus(form, false);
+            if(form) {
+                setFormStatus(form, false);
             
-            if(successMessage) {
-                form.innerHTML = successMessage;
+                if(staffDiscord.success || publicDiscord.success || successMessage) {
+                    form.innerHTML = staffDiscord.success ? staffDiscord.success : publicDiscord.success ? publicDiscord.success : successMessage;
+                }
             }
 
             window.scrollTo(0, 0);
@@ -1771,6 +1902,12 @@ function sendAjax(form, data, staffDiscord, publicDiscord) {
             console.log('complete');
             if(publicDiscord) {
                 sendDiscordMessage(`https://discord.com/api/webhooks/${publicDiscord.hook}`, publicDiscord.title, publicDiscord.text, publicDiscord.notification, publicDiscord.color);
+            }
+        }
+    }).then(() => {
+	    if(!form) {
+            if(document.querySelector('#UserCP.code-01 #ucpcontent form')) {
+                document.querySelector('#UserCP.code-01 #ucpcontent form').submit();
             }
         }
     });

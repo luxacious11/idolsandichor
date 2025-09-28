@@ -26,11 +26,11 @@ function formatAesthetics(aesthetics, images) {
 function setRoster() {   
     let alphaChars = Alpha(document.querySelectorAll('select[name=showuser] option'));
     alphaChars.forEach(character => {
-        let imageDiv = createAvatars('profile--account-image', character.account, attributes = ``);
+        let imageDiv = createAvatars('switch--image', character.account, attributes = ``);
 
-        let html = `<a class="profile--account" href="?showuser=${character.account}">
+        let html = `<a class="switch--block" href="?showuser=${character.account}">
             ${imageDiv}
-            <b>${capitalize(character.character)}</b>
+            <span class="switch--name">${formatName(capitalize(character.character))}</span>
         </a>`;
 
         document.querySelector('.profile--roster').insertAdjacentHTML('beforeend', html);
@@ -74,6 +74,209 @@ function initMember() {
 
     //subaccounts list
     setRoster();
+}
+function formatProfilePlayer(member) {
+    return `<div class="profile--column">
+                <div class="items--title charOnly">played by</div>
+                <div class="items--title memAccOnly">about</div>
+                <div class="items scroll grid">
+                    <div class="items--item">
+                        <strong>alias</strong>
+                        <span>${capitalize(member.Member, [' ', '-'])}</span>
+                    </div>
+                    <div class="items--item optional">
+                        <strong>pronouns</strong>
+                        <span>${capitalize(member.Pronouns, ['/'])}</span>
+                    </div>
+                    <div class="items--item">
+                        <strong>Age</strong>
+                        <span>${member.Age} years old</span>
+                    </div>
+                    <div class="items--item">
+                        <strong>Timezone</strong>
+                        <span>${member.Timezone.toUpperCase()}</span>
+                    </div>
+                    <div class="items--item">
+                        <strong>Mature Content?</strong>
+                        <span>${capitalize(member.Mature, [' '])}</span>
+                    </div>
+                    <div class="items--item">
+                        <strong>Writing Style</strong>
+                        <span>${capitalize(member.POV, [' '])}, ${capitalize(member.Tense, [' '])}</span>
+                    </div>
+                    <div class="items--item fullWidth">
+                        <strong>Triggers</strong>
+                        <span>${member.Triggers}</span>
+                    </div>
+                </div>
+            </div>
+            <img src="${member.Image}" loading="lazy" class="charOnly" />
+            <div class="profile--column memAccOnly">
+                <div class="scroll profile--roster"></div>
+            </div>`;
+}
+function submitMemberData(e) {
+    e.innerHTML = 'Submitting...';
+
+    let form = document.querySelector('#ucpcontent form'),
+        accountId = document.querySelector('body').dataset.accountId,
+        alias = form.querySelector('#field_3_input'),
+        pronouns = form.querySelector('#field_4_input'),
+        age = form.querySelector('#field_5_input'),
+        timezone = form.querySelector('#field_6_input'),
+        mature = form.querySelector('#field_7_input'),
+        pov = form.querySelector('#field_8_input'),
+        tense = form.querySelector('#field_9_input'),
+        triggers = form.querySelector('#field_10_input'),
+        image = form.querySelector('#field_60_input');
+
+    let sheetData = {
+        SubmissionType: `edit-member`,
+        Member: getStandardValue(alias),
+        Pronouns: getStandardValue(pronouns),
+        Age: getValue(age),
+        Timezone: getStandardValue(timezone),
+        Mature: getSelectText(mature),
+        POV: getSelectText(pov),
+        Tense: getSelectText(tense),
+        Image: getValue(image),
+        Triggers: getValue(triggers),
+    }
+
+    fetch(members)
+    .then((response) => response.json())
+    .then((data) => {
+        let existing = data.filter(item => item.AccountID === accountId);
+        if(existing.length) {
+            sheetData.SubmissionType = 'edit-member';
+            editMember(existing[0], sheetData);
+        } else {
+            sheetData.SubmissionType = 'add-member';
+            sheetData.AccountID = accountId;
+            sheetData.Group = 'writer';
+            sheetData.GroupID = '6';
+
+            let staffDiscord = {
+                title: `New Member Data Added: ${capitalize(sheetData.Member, [' ', '-'])}`,
+                text: `No action required at this time.`,
+                hook: claimLogs,
+            }
+
+            sendAjax(null, sheetData, staffDiscord);
+        }
+    });
+}
+function editMember(existing, data) {
+    let original = {...existing};
+    let initialMessage = ``, changeMessage = ``;
+
+    if(data.Alias !== original.Alias) {
+        existing.Member = data.Alias;
+        if(initialMessage !== '') {
+            initialMessage += `\n`;
+            changeMessage += `\n`;
+        }
+        initialMessage += `**Alias:** ${capitalize(original.Member, [' ', '-'])}`;
+        changeMessage += `**Alias:** ${capitalize(existing.Member, [' ', '-'])}`;
+    }
+
+    if(data.Pronouns !== original.Pronouns) {
+        existing.Pronouns = data.Pronouns;
+        if(initialMessage !== '') {
+            initialMessage += `\n`;
+            changeMessage += `\n`;
+        }
+        initialMessage += `**Pronouns:** ${original.Pronoun}`;
+        changeMessage += `**Pronouns:** ${existing.Pronouns}`;
+    }
+
+    if(data.Age !== original.Age) {
+        existing.Age = data.Age;
+        if(initialMessage !== '') {
+            initialMessage += `\n`;
+            changeMessage += `\n`;
+        }
+        initialMessage += `**Age:** ${original.Age}`;
+        changeMessage += `**Age:** ${existing.Age}`;
+    }
+
+    if(data.Timezone !== original.Timezone) {
+        existing.Timezone = data.Timezone;
+        if(initialMessage !== '') {
+            initialMessage += `\n`;
+            changeMessage += `\n`;
+        }
+        initialMessage += `**Timezone:** ${original.Timezone}`;
+        changeMessage += `**Timezone:** ${existing.Timezone}`;
+    }
+
+    if(data.Mature !== original.Mature) {
+        existing.Mature = data.Mature;
+        if(initialMessage !== '') {
+            initialMessage += `\n`;
+            changeMessage += `\n`;
+        }
+        initialMessage += `**Mature:** ${original.Mature}\n`;
+        changeMessage += `**Mature:** ${existing.Mature}\n`;
+    }
+
+    if(data.POV !== original.POV) {
+        existing.POV = data.POV;
+        if(initialMessage !== '') {
+            initialMessage += `\n`;
+            changeMessage += `\n`;
+        }
+        initialMessage += `**POV:** ${original.POV}`;
+        changeMessage += `**POV:** ${existing.POV}`;
+    }
+
+    if(data.Tense !== original.Tense) {
+        existing.Tense = data.Tense;
+        if(initialMessage !== '') {
+            initialMessage += `\n`;
+            changeMessage += `\n`;
+        }
+        initialMessage += `**Tense:** ${original.Tense}`;
+        changeMessage += `**Tense:** ${existing.Tense}`;
+    }
+
+    if(data.Image !== original.Image) {
+        existing.Image = data.Image;
+        if(initialMessage !== '') {
+            initialMessage += `\n`;
+            changeMessage += `\n`;
+        }
+        initialMessage += `**Image:** <${original.Image}>`;
+        changeMessage += `**Image:** <${existing.Image}>`;
+    }
+
+    if(data.Triggers !== original.Triggers) {
+        existing.Triggers = data.Triggers;
+        if(initialMessage !== '') {
+            initialMessage += `\n`;
+            changeMessage += `\n`;
+        }
+        initialMessage += `**Triggers:**
+        > ${original.Triggers}\n`;
+        changeMessage += `**Triggers:**
+        > ${existing.Triggers}\n`;
+    }
+
+    let staffDiscord = {
+        title: `Member Claims Editted: ${capitalize(original.Member, [' ', '-'])}`,
+        text: `Initial Values
+        ----------
+        ${initialMessage}
+        
+        New Values
+        ----------
+        ${changeMessage}`,
+        hook: claimLogs,
+    }
+
+    existing.SubmissionType = data.SubmissionType;
+
+    sendAjax(null, existing, staffDiscord);
 }
 
 /****** UserCP/Messages ******/

@@ -50,6 +50,32 @@ const templateWraps = `tag-wrap`;
 //want markdown applied? add the class or tag name here in the comma separated list
 const markdownSafe = `.markdown, .postcolor.no-template, .postcolor blockquote, .postcolor [data-markdown]`;
 
+//organized bbcode that allows for default bbcode button functionality on custom bbcodes, as well as description text
+/*blank version with all options:
+    const bbcode = [
+        {
+            groupName: "Name of Section",
+            extraClasses: 'fullWidth', //add extra classes to a section for styling purposes
+            tags: [
+                {
+                    tag: "bbcodetagname",
+                    desc: "Tooltip text (optional)",
+                    type: "simple", //simple means one param
+                    displayName: "Name to show on the button (optional; will default to tag if not assigned)",
+                    simpleIndicator: "text to place inside the bbcode when it populates, if not highlighted (optional)"
+                },
+                {
+                    tag: "bbcodetagname",
+                    desc: "Tooltip text (optional)",
+                    type: "complex", //complex means two param
+                    displayName: "Name to show on the button (optional; will default to tag if not assigned)",
+                    simpleIndicator: "text to place inside the bbcode when it populates, if not highlighted (optional)",
+                    complexIndicator: "text to place for the first param, after the equal sign (optional)"
+                },
+            ]
+        },
+    ]
+*/
 const bbcode = [
     {
         groupName: "Text",
@@ -126,6 +152,28 @@ const bbcode = [
         ]
     },
     {
+        groupName: "Blocks",
+        tags: [
+            {
+                tag: "tw",
+                desc: "Wrap selected text in a trigger warning style that will pass into the discord tagger.",
+                type: "simple",
+                displayName: "Triggers"
+            },
+            {
+                tag: "note",
+                desc: "Wrap selected text in a note style that will pass into the discord tagger.",
+                type: "simple",
+                displayName: "Note"
+            },
+            {
+                tag: "blockquote",
+                type: "simple",
+                displayName: "Blockquote"
+            }
+        ]
+    },
+    {
         groupName: "Posting",
         tags: [
             {
@@ -153,25 +201,84 @@ const bbcode = [
         ]
     },
     {
-        groupName: "Blocks",
+        groupName: "Socials",
         tags: [
             {
-                tag: "tw",
-                desc: "Wrap selected text in a trigger warning style that will pass into the discord tagger.",
+                tag: "profile",
                 type: "simple",
-                displayName: "Triggers"
+                displayName: "Profile"
             },
             {
-                tag: "note",
-                desc: "Wrap selected text in a note style that will pass into the discord tagger.",
+                tag: "displayname",
                 type: "simple",
-                displayName: "Note"
+                displayName: "Display Name"
             },
             {
-                tag: "blockquote",
+                tag: "gallery",
                 type: "simple",
-                displayName: "Blockquote"
-            }
+                displayName: "Gallery"
+            },
+            {
+                tag: "image",
+                type: "simple",
+                displayName: "Image"
+            },
+            {
+                tag: "caption",
+                type: "simple",
+                displayName: "Caption"
+            },
+            {
+                tag: "alert",
+                type: "simple",
+                displayName: "Alert"
+            },
+        ]
+    },
+    {
+        groupName: "Dev",
+        extraClasses: 'fullWidth',
+        tags: [
+            {
+                tag: "image",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "simplequote",
+                desc: "",
+                type: "simple",
+                displayName: "Simple Quote",
+                simpleIndicator: "quote"
+            },
+            {
+                tag: "sourcequote",
+                desc: "",
+                type: "complex",
+                displayName: "Sourced Quote",
+                simpleIndicator: "quote",
+                complexIndicator: "source"
+            },
+            {
+                tag: "year",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "month",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "day",
+                desc: "",
+                type: "simple"
+            },
+            {
+                tag: "spotify",
+                desc: "",
+                type: "simple"
+            },
         ]
     },
     {
@@ -213,6 +320,7 @@ trackerParams = {
 const fullWidthFields = [10]; //for ucp that has been gridded, sets the field to span the full grid width
 const thirdWidthFields = [3, 4, 5, 11, 12, 13]; //for when using manual birthday fields and there are six columns with default being 1/2 width in ucp
 const setHeightFields = []; //for when you want a text area field to allow some coding, apostrophes, etc but want it to look like a standard text input
+const requiredFields = []; //will add an asterisk to required field labels, with the class of 'required'
 
 //toggle fields: account type, image type
 const toggleFields = createFieldArray([1, 19], true);
@@ -239,60 +347,6 @@ const aestheticFields = {
         hideFields: [],
     }
 };
-
-//for member info autofil from google sheet
-const autofillFieldMapping = [
-	{
-		'jcink': 2,
-		'sheet': 'Member',
-	},
-	{
-		'jcink': 3,
-		'sheet': 'Pronouns',
-	},
-	{
-		'jcink': 5,
-		'sheet': 'Age',
-	},
-	{
-		'jcink': 6,
-		'sheet': 'Language',
-		checkRating: true,
-	},
-	{
-		'jcink': 7,
-		'sheet': 'Sex',
-		checkRating: true,
-	},
-	{
-		'jcink': 8,
-		'sheet': 'Violence',
-		checkRating: true,
-	},
-	{
-		'jcink': 4,
-		'sheet': 'Timezone',
-	},
-	{
-		'jcink': 9,
-		'sheet': 'Tense',
-		checkText: true,
-	},
-	{
-		'jcink': 10,
-		'sheet': 'POV',
-		checkText: true,
-	},
-	{
-		'jcink': 11,
-		'sheet': 'Frequency',
-		checkText: true,
-	},
-	{
-		'jcink': 12,
-		'sheet': 'Triggers',
-	}
-];
 
 //sets up a title and a description for each section of the ucp
 //insertBefore is the field number as a number, not a string
@@ -366,6 +420,7 @@ const activeResExists = `<blockquote class="fullWidth warning">Uh-oh! That's alr
 const prevResExists = `<blockquote class="fullWidth warning">Uh-oh! You've reserved that before! Reserves are non-renewable. If you don't remember doing this, please reach out to staff via Discord and we can review our records and discuss options with you!</blockquote>`;
 const claimExists = `<blockquote class="fullWidth warning">Uh-oh! This is already in play! Maybe we can help you find another option - reach out in the Discord for help!</blockquote>`;
 const limitReached = `<blockquote class="fullWidth warning">Uh-oh! This role has limited spots and it looks like they're all taken and/or reserved at this moment!</blockquote>`;
+const completedButton = `<button onClick="submitMemberData(this)" type="button" class="hidden sheet-button">Submit Member Data</button>`;
 
 //default menus for ucp, store, modcp. these are the jcink versions
 //find the local versions in source/js/defaultsMenus.js
@@ -428,5 +483,5 @@ const jcinkModCPLinks = `<div class="accordion--trigger" data-category="forumspo
             <a href="?act=modcp&CODE=warnpanel">Warn</a>
             <a href="?act=modcp&CODE=warnlogs">Logs</a>
             <a href="?act=modcp&CODE=ip">IP Tools</a>
-            <a href="?act=modcp&CODE=validating">Validaion</a>
+            <a href="?act=modcp&CODE=validating">Validation</a>
         </div>`;
