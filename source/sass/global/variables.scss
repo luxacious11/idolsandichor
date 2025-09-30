@@ -11,24 +11,140 @@
     --text-size-lg: 14px;
     --text-size-xl: 16px;
 
+    --font-serif: "Playfair Display", serif;
+    --font-sans: "Archivo", sans-serif;
+    --font-sans-black: "Archivo Black", sans-serif;
+    --font-sans-narrow: "PT Sans Narrow", sans-serif;
+
     --space-xs: 5px;
     --space-sm: 10px;
     --space-md: 15px;
     --space-lg: 30px;
     --space-xl: 60px;
 
-    --transition-standard-duration: 0.3s;
-    --transition-tab-duration: 0.5s;
+    --transition-standard: all 0.3s ease-in-out;
+    --transition-long: all 0.5s ease-in-out;
 
-    --bg-overlay: rgba(0, 0, 0, 0.8);
+    --bg-texture: url(../../source/images/6108.jpg);
 
+    --size-max-popout-width: 350px;
     --size-alert-max-height: 80px;
-    --size-menu-height: 30px;
-    --size-menu-width: 30px;
+    --size-menu-main: 50px;
+    --size-menu-breadcrumbs: 30px;
     --size-store-image: 24px;
     --size-switcher-image: 40px;
 
     @include mq-up(xs) {
         --size-alert-max-height: 150px;
+    }
+
+    --accent: rgba(220, 105, 102, 0.65);
+
+
+    //remove eventually - color storage
+    --xBlack: rgba(26, 25, 24, 1);
+    --black: rgba(40, 39, 38, 1);
+    --dkBeige: rgba(115, 111, 108, 1);
+    --beige: rgba(189, 179, 176, 1);
+}
+
+body {
+    &.light {
+        --bg-primary: rgb(214, 209, 201);
+        --bg-secondary: rgba(189, 179, 176, 0.9);
+        --bg-secondary-mid: rgba(189, 179, 176, 0.5);
+
+        --blend-texture-primary: soft-light;
+        --opacity-texture-primary: 0.5;
+
+        --text-primary: rgb(185, 185, 185);
+        --text-secondary: rgb(40, 39, 38);
+
+        --border-primary: 1px solid rgba(40, 39, 38, 0.5);
+    }
+    &.dark {
+        --bg-primary: rgba(26, 25, 24, 1);
+        --bg-secondary: rgba(40, 39, 38, 0.9);
+        --bg-secondary-mid: rgba(40, 39, 38, 0.5);
+        
+        --blend-texture-primary: color-dodge;
+        --opacity-texture-primary: 0.5;
+
+        --text-primary: rgb(185, 185, 185);
+        --text-secondary: rgb(235, 235, 235);
+
+        --border-primary: 1px solid rgba(232, 231, 229, 0.15);
+    }
+
+    //Set up
+    &[class*="g-"],
+    [class*="g-"],
+    &[class*="mgroup-"],
+    [class*="mgroup-"],
+    &:has(.profile[class*="g-"]) {
+        --accent: rgb(var(--rgb));
+        --accent-90: rgba(var(--rgb), 0.9);
+        --accent-80: rgba(var(--rgb), 0.8);
+        --accent-70: rgba(var(--rgb), 0.7);
+        --accent-60: rgba(var(--rgb), 0.6);
+        --accent-50: rgba(var(--rgb), 0.5);
+        --accent-40: rgba(var(--rgb), 0.4);
+        --accent-30: rgba(var(--rgb), 0.3);
+        --accent-20: rgba(var(--rgb), 0.2);
+        --accent-10: rgba(var(--rgb), 0.1);
+
+        --bg-accent: var(--accent);
+        --bg-accent-high: var(--accent-80);
+        --bg-accent-mid: var(--accent-50);
+        --bg-accent-low: var(--accent-30);
+        
+        --text-accent: var(--accent-70);
+        --text-accent-strong: var(--accent);
+        --text-on-accent: rgb(225, 225, 225);
+        
+        --border-accent: 1px solid var(--accent);
+        --border-accent-high: 1px solid var(--accent-80);
+        --border-accent-mid: 1px solid var(--accent-50);
+        --border-accent-low: 1px solid var(--accent-30);
+    }
+
+    //Banned/Validating
+    &.g-1,
+    .g-1,
+    &.mgroup-1,
+    .mgroup-1,
+    &.g-5,
+    .g-5,
+    &.mgroup-5,
+    .mgroup-5 {
+        --rgb: 220, 105, 102;
+    }
+
+    //Other
+    &.g-2,
+    .g-2,
+    &.mgroup-2,
+    .mgroup-2,
+    &.g-3,
+    .g-3,
+    &.mgroup-3,
+    .mgroup-3 {
+        --rgb: 220, 105, 102;
+    }
+
+    //Admin
+    &.g-4,
+    .g-4,
+    &.mgroup-4,
+    .mgroup-4 {
+        --rgb: 220, 105, 102;
+    }
+
+    //Writer
+    &.g-6,
+    .g-6,
+    &.mgroup-6,
+    .mgroup-6 {
+        --rgb: 220, 105, 102;
     }
 }

@@ -5,7 +5,20 @@
     Global
 ********************************/
 body {
-    padding: calc(var(--size-menu-height) + var(--space-lg)) var(--space-lg) var(--space-lg)  calc(var(--size-menu-width) + var(--space-lg));
+    padding: calc(var(--size-menu-main) + var(--size-menu-breadcrumbs)) 0 0 0;
+}
+
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    @include texture;
+    background-color: var(--bg-primary);
+    --opacity-texture: var(--opacity-texture-primary);
+    --blend-texture: var(--blend-texture-primary);
 }
 
 .scroll {

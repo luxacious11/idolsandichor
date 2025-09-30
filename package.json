@@ -44,6 +44,7 @@
   ],
   "devDependencies": {
     "gulp-file-include": "^2.3.0",
+    "gulp-sass-import-once": "^2.0.2",
     "webpack": "^4.39.3"
   }
 }

@@ -864,7 +864,7 @@ a[href="<i>No Information</i>"] {
     main {
         & > div:not(.wrapmini):not(.tableborder):not(#search-topics) {
             position: sticky;
-            top: var(--size-menu-height);
+            top: var(--size-menu-main);
             padding: var(--space-md);
             z-index: 1;
         }

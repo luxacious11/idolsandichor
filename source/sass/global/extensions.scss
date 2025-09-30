@@ -3,3 +3,109 @@
 /*******************************
     Extensions
 ********************************/
+@mixin texture() {
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-image: var(--bg-texture);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        mix-blend-mode: var(--blend-texture);
+        opacity: var(--opacity-texture);
+    }
+}
+@mixin diamond($width, $strength) {
+    &::before {
+        content: '';
+        width: $width;
+        aspect-ratio: 1 / 1;
+        display: block;
+        position: absolute;
+        transform: rotate(45deg);
+        transition: var(--transition-standard);
+    }
+    @if $strength == low {
+        &::before {
+            border: var(--border-accent-low);
+        }
+    }
+    @if $strength == mid {
+        &::before {
+            border: var(--border-accent-mid);
+        }
+    }
+    @if $strength == high {
+        &::before {
+            border: var(--border-accent-high);
+        }
+    }
+    @if $strength == full {
+        &::before {
+            border: var(--border-accent);
+        }
+    }
+}
+@mixin diamonds($width, $offset, $direction) {
+    @if $direction == horizontal {
+        &::before {
+            left: ($offset / -2);
+        }
+        &::after {
+            left: ($offset / 2);
+        }
+    
+        &:hover {
+            &::before {
+                left: ($offset / 2);
+            }
+            &::after {
+                left: ($offset / -2);
+            }
+        }
+    }
+    @else if $direction == vertical {
+        &::before {
+            top: ($offset / -2);
+        }
+        &::after {
+            top: ($offset / 2);
+        }
+    
+        &:hover {
+            &::before {
+                top: ($offset / 2);
+            }
+            &::after {
+                top: ($offset / -2);
+            }
+        }
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        width: $width;
+        aspect-ratio: 1 / 1;
+        display: block;
+        position: absolute;
+        transform: rotate(45deg);
+        transition: var(--transition-standard);
+    }
+    &::before {
+        border: var(--border-accent-mid);
+    }
+    &::after {
+        border: var(--border-accent-high);
+    }
+}
+@mixin info($color) {
+    color: $color;
+    font-family: var(--font-sans);
+    font-size: var(--text-size-xs);
+    letter-spacing: 0.2em;
+}
