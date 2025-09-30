@@ -91,7 +91,6 @@
         }
 
         &:not(:last-child)::after {
-            content: '\e7f9';
             width: 50%;
             flex: 0 0 50%;
             font-family: 'Font Awesome 7 Pro';
@@ -143,6 +142,12 @@
             transform: scaleY(0) translateX(-50%);
             transform-origin: top;
             transition: var(--transition-standard);
+
+            &:has(#quick-login-clip) {
+                padding: var(--space-md);
+                transform: translateX(0);
+                left: 0;
+            }
         }
 
         &.fullHeight {
@@ -233,16 +238,33 @@
 
         &[data-menu="main" i] {
             display: grid;
-            grid-template-columns: 1fr var(--size-max-popout-width);
             gap: var(--space-md);
             padding: 0;
+
+            @include mq-down(sm) {
+                @include scroll(accent);
+            }
+
+            @include mq-up(sm) {
+                grid-template-columns: 1fr var(--size-max-popout-width);
+            }
         }
 
         .menu--sections {
             order: 1;
             display: grid;
             gap: var(--space-lg) var(--space-sm);
-            padding: var(--space-lg);
+            padding: var(--space-md);
+
+            @include mq-down(sm) {
+                order: 2;
+                max-height: none;
+                overflow: visible;
+            }
+            
+            @include mq-up(xxs) {
+                padding: var(--space-lg);
+            }
             
             @include mq-up(md) {
                 grid-template-columns: repeat(2, 1fr);
@@ -258,8 +280,12 @@
                 flex-direction: column;
                 gap: var(--space-sm);
                 background: var(--bg-secondary-mid);
-                padding: var(--space-lg);
+                padding: var(--space-md);
                 border: var(--border-primary);
+            
+                @include mq-up(xxs) {
+                    padding: var(--space-lg);
+                }
     
                 & > a {
                     @include btn(link);
@@ -317,16 +343,39 @@
         flex-direction: column;
         gap: var(--space-md);
         background: var(--bg-secondary);
-        padding: var(--space-lg);
+        padding: var(--space-md);
         border-left: var(--border-primary);
+
+        @include mq-down(sm) {
+            order: 1;
+            border: none;
+            margin-right: calc(-1 * var(--space-md));
+        }
+
+        @include mq-up(xxs) {
+            padding: var(--space-lg);
+        }
+        @include mq-up(sm) {
+            height: calc(100vh - var(--size-menu-main) - var(--size-menu-breadcrumbs));
+        }
 
         &-image {
             padding: 30px;
             @include diamonds(70%, 10px, horizontal, 0, calc(25% + 10px), 0);
 
+            @include mq-down(sm) {
+                display: none;
+            }
+
             img {
                 z-index: 1;
-                //clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                height: auto;
+
+                &.guestOnly:only-child {
+                    display: initial !important;
+                }
             }
         }
         &-links {
@@ -339,6 +388,12 @@
             & > span {
                 @include btn(link);
             }
+        }
+        &-intro {
+            background: var(--bg-tertiary);
+            padding: var(--space-md) calc(var(--space-md) + 5px);
+            text-align: justify;
+            max-height: 100%;
         }
     }
 }
@@ -364,7 +419,7 @@
         grid-template-columns: var(--size-switcher-image) auto;
         gap: 0 var(--space-lg);
         cursor: pointer;
-        padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
+        padding: 12px 0 12px 12px;
         align-items: center;
 
         &.parent-account {
@@ -566,5 +621,9 @@
 
     &:hover {
         color: var(--text-secondary);
+    }
+
+    i {
+        text-shadow: 0 0 7px var(--text-primary);
     }
 }

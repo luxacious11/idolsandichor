@@ -25,7 +25,7 @@
     --transition-standard: all 0.3s ease-in-out;
     --transition-long: all 0.5s ease-in-out;
 
-    --bg-texture: url(../../source/images/6108.jpg);
+    --bg-texture: url(https://files.jcink.net/uploads2/idolsandichor/Skin1/idolsAndIchor_bg_min.jpg);
 
     --size-max-popout-width: 350px;
     --size-alert-max-height: 80px;
@@ -67,6 +67,7 @@ body {
         --bg-primary: rgb(214, 209, 201);
         --bg-secondary: rgb(206, 200, 193, 0.9);
         --bg-secondary-mid: rgba(206, 200, 193, 0.5);
+        --bg-tertiary: rgba(53, 51, 51, 0.9);
         --bg-overlay: rgba(214, 209, 201, 0.7);
 
         --blend-texture-primary: soft-light;
@@ -82,6 +83,7 @@ body {
         --bg-primary: rgba(26, 25, 24, 1);
         --bg-secondary: rgba(40, 39, 38, 0.9);
         --bg-secondary-mid: rgba(40, 39, 38, 0.5);
+        --bg-tertiary: rgba(53, 51, 51, 0.9);
         --bg-overlay: rgba(26, 25, 24, 0.7);
         
         --blend-texture-primary: color-dodge;

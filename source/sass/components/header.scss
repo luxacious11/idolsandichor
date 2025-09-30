@@ -20,7 +20,7 @@ body {
             color: var(--text-secondary);
             font-family: var(--font-serif);
             font-weight: 900;
-            @include fluid-type(60, 105, 480, 1024);
+            @include fluid-type(40, 105, 480, 1024);
             line-height: 100%;
             display: flex;
             flex-direction: column;

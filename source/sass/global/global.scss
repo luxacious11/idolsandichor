@@ -13,6 +13,12 @@ body {
     &:has(.nav--popout.fullHeight.is-open) {
         overflow: hidden;
     }
+    &.parent-0 .notParent {
+        display: none;
+    }
+    &:not(.parent-0) .parentOnly {
+        display: none;
+    }
 }
 
 .bg {
