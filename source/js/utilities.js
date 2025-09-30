@@ -172,14 +172,23 @@ function initSwitcher() {
 			return 0;
 		}
 	});
-	switchValues.forEach(character => {
-		let characterName = formatName(character.character);
+	switchValues.forEach((character, i) => {
+		let characterName = formatName(character.character).replace('(p)', 'primary account');
 		let characterId = character.id;
+        if(i === 0 && character.character.split(`(p)`).length < 2) {
+            newSwitch += `<div class="switch--container"><div class="scroll">`;
+        }
 		newSwitch += `<label class="switch--block${character.character.split(`(p)`).length > 1 ? ' parent-account' : ''}">
 			<input type="checkbox" value="${characterId}" onchange="this.form.submit()" name="sub_id" />
 			${createAvatars(`switch--image`, characterId)}
 			<div class="switch--name">${characterName}</div>
 		</label>`;
+        if(i === 0 && character.character.split(`(p)`).length > 1) {
+            newSwitch += `<div class="switch--container"><div class="scroll">`;
+        }
+        else if(i === switchValues.length - 1) {
+            newSwitch += `</div></div>`;
+        }
 	});
 	newSwitch += `</div>`;
 	switcher.insertAdjacentHTML('afterend', newSwitch);

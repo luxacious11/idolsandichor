@@ -32,7 +32,7 @@
     --size-menu-main: 50px;
     --size-menu-breadcrumbs: 30px;
     --size-store-image: 24px;
-    --size-switcher-image: 40px;
+    --size-switcher-image: 50px;
 
     @include mq-up(xs) {
         --size-alert-max-height: 150px;
@@ -49,23 +49,40 @@
 }
 
 body {
+    &.lgFont {
+        --text-size-xs: 10px;
+        --text-size-sm: 12px;
+        --text-size-md: 14px;
+        --text-size-lg: 16px;
+        --text-size-xl: 18px;
+    }
+    &.xlFont {
+        --text-size-xs: 12px;
+        --text-size-sm: 14px;
+        --text-size-md: 16px;
+        --text-size-lg: 18px;
+        --text-size-xl: 20px;
+    }
     &.light {
         --bg-primary: rgb(214, 209, 201);
-        --bg-secondary: rgba(189, 179, 176, 0.9);
-        --bg-secondary-mid: rgba(189, 179, 176, 0.5);
+        --bg-secondary: rgb(206, 200, 193, 0.9);
+        --bg-secondary-mid: rgba(206, 200, 193, 0.5);
+        --bg-overlay: rgba(214, 209, 201, 0.7);
 
         --blend-texture-primary: soft-light;
         --opacity-texture-primary: 0.5;
 
-        --text-primary: rgb(185, 185, 185);
+        --text-primary: rgb(88, 86, 84);
         --text-secondary: rgb(40, 39, 38);
 
-        --border-primary: 1px solid rgba(40, 39, 38, 0.5);
+        --border-primary: 1px solid rgba(101, 98, 94, 0.5);
+        --border-primary-color: rgba(101, 98, 94, 0.5);
     }
     &.dark {
         --bg-primary: rgba(26, 25, 24, 1);
         --bg-secondary: rgba(40, 39, 38, 0.9);
         --bg-secondary-mid: rgba(40, 39, 38, 0.5);
+        --bg-overlay: rgba(26, 25, 24, 0.7);
         
         --blend-texture-primary: color-dodge;
         --opacity-texture-primary: 0.5;
@@ -74,6 +91,7 @@ body {
         --text-secondary: rgb(235, 235, 235);
 
         --border-primary: 1px solid rgba(232, 231, 229, 0.15);
+        --border-primary-color: rgba(232, 231, 229, 0.15);
     }
 
     //Set up

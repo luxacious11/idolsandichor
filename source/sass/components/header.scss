@@ -15,7 +15,7 @@ body {
         height: calc(100vh - var(--size-menu-main) - var(--size-menu-breadcrumbs));
 
         h1 {
-            @include diamonds(100%, 10px, 'horizontal');
+            @include diamonds(100%, 10px, horizontal, -10%, 0, 0);
             margin: 0;
             color: var(--text-secondary);
             font-family: var(--font-serif);
@@ -24,11 +24,6 @@ body {
             line-height: 100%;
             display: flex;
             flex-direction: column;
-
-            &::before,
-            &::after {
-                top: -10%
-            }
 
             .small {
                 font-size: 1em;

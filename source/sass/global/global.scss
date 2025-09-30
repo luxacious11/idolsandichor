@@ -6,6 +6,13 @@
 ********************************/
 body {
     padding: calc(var(--size-menu-main) + var(--size-menu-breadcrumbs)) 0 0 0;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: var(--text-size-md);
+
+    &:has(.nav--popout.fullHeight.is-open) {
+        overflow: hidden;
+    }
 }
 
 .bg {
@@ -22,30 +29,12 @@ body {
 }
 
 .scroll {
-    overflow-x: hidden;
-    overflow-y: auto;
-    max-height: 100%;
-    padding-right: var(--space-md);
-    margin-right: calc(-1 * var(--space-md));
-    scrollbar-width: thin;
-    scrollbar-color: black transparent;
-
-    &::-webkit-scrollbar {
-        width: 6px;
-    }
-    &::-webkit-scrollbar-track {
-        background: transparent;
-    }
-    &::-webkit-scrollbar-thumb {
-        background: black;
+    &:not(.accent) {
+        @include scroll(normal);
     }
 
     &.accent {
-        scrollbar-color: red transparent;
-
-        &::-webkit-scrollbar-thumb {
-            background: red;
-        }
+        @include scroll(accent);
     }
 }
 
@@ -135,7 +124,7 @@ tag-labels {
 
     &.menu-open {
         height: 100vh;
-        z-index: 2;
+        z-index: 3;
     }
 }
 .alert-select {
