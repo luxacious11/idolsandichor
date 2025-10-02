@@ -1,81 +1,37 @@
-//channel name does not have to match, but it makes the most sense if it does
-//for the hook, do not include the full url, just the numeric and alphanumeric strings at the end (e.g., `numeric/alphanumeric`)
 const discordChannels = [
 	{title: `#channel`, hook: `hook`},
 ];
 
-//member alias and acquire the id by right clicking their name in discord and "copy user id"
-//if you don't see that option in the menu, you need to turn on developer mode
 const discordTags = [
     {alias: `Name`, id: `ID`},
 ];
 
-//role name doesn't have to match, can be contextualized
-//to acquire the id, go to server settings > roles > the three dot menu > copy role id
-//it will not copy with the ampersand but the ampersand is required. ensure all ids start with an ampersand for a role tag
 const discordRoles = [
     {title: `Open`, id: `&ID`},
 ];
 
-//the ampersand does not need to be present for the staffDiscordRole; this is for character sorting, not the tagging system
 const staffDiscordRole = `ID`;
 
-//this is for displaying the avatars for the visual account switcher and the member roster.
-//just make sure the sitename matches and, if it does and the images still don't show, try changes 'uploads2' to 'uploads', sometimes jcink is weird
 const uploads = `uploads2`;
-const siteName = `sitename`;
+const siteName = `idolsandichor`;
 const fileTypes = ['gif', 'jpg', 'jpeg', 'png'];
-const defaultSquare = 'https://picsum.photos/100';
+const defaultSquare = 'https://picsum.photos/250';
 const checkboxChecked = `<i class="fa-solid fa-check"></i>`;
 
-//this is for character sorting, highlighting the edge of the sorting related messages
-//the group name should by lowercase and should match what would appear in the Group column of the google sheet
-//the number array is the RGB values, so rgb(0,0,0) would be equivalent to [0,0,0] in this instance
 const colors = {
     'group name': [0, 0, 0],
 }
 
-//if you have items in the shop that you want to hide the "use" button when the item is in inventory, then add the _exact_ item name here in lowercase
 const unusable = ['premium group', 'custom complex event', 'custom discord role & icon', 'custom event', 'custom subplot'];
 
-//set your groups to manage removals of ooc account only elements (.oocOnly), character only elements (.charOnly), and staff only elements (.staffOnly)
 const staffGroups = ['4'];
 const oocGroups = [...staffGroups, '6'];
 const optGroups = ['1', '3', '5'];
 
-//templateWraps should be the class or tag name (if unique and not div) in a comma separated list
-//this will apply the .no-template class if these are NOT present to allow additional styling, padding, etc as a built-in template
 const templateWraps = `tag-wrap`;
 
-//want markdown applied? add the class or tag name here in the comma separated list
 const markdownSafe = `.markdown, .postcolor.no-template, .postcolor blockquote, .postcolor [data-markdown]`;
 
-//organized bbcode that allows for default bbcode button functionality on custom bbcodes, as well as description text
-/*blank version with all options:
-    const bbcode = [
-        {
-            groupName: "Name of Section",
-            extraClasses: 'fullWidth', //add extra classes to a section for styling purposes
-            tags: [
-                {
-                    tag: "bbcodetagname",
-                    desc: "Tooltip text (optional)",
-                    type: "simple", //simple means one param
-                    displayName: "Name to show on the button (optional; will default to tag if not assigned)",
-                    simpleIndicator: "text to place inside the bbcode when it populates, if not highlighted (optional)"
-                },
-                {
-                    tag: "bbcodetagname",
-                    desc: "Tooltip text (optional)",
-                    type: "complex", //complex means two param
-                    displayName: "Name to show on the button (optional; will default to tag if not assigned)",
-                    simpleIndicator: "text to place inside the bbcode when it populates, if not highlighted (optional)",
-                    complexIndicator: "text to place for the first param, after the equal sign (optional)"
-                },
-            ]
-        },
-    ]
-*/
 const bbcode = [
     {
         groupName: "Text",
@@ -316,91 +272,71 @@ trackerParams = {
     eventHistoryForumIds: [], //event history
 }
 
-//should be plain numbers in a comma separated list, do not wrap in quotes
-const fullWidthFields = [10]; //for ucp that has been gridded, sets the field to span the full grid width
-const thirdWidthFields = [3, 4, 5, 11, 12, 13]; //for when using manual birthday fields and there are six columns with default being 1/2 width in ucp
-const setHeightFields = []; //for when you want a text area field to allow some coding, apostrophes, etc but want it to look like a standard text input
-const requiredFields = []; //will add an asterisk to required field labels, with the class of 'required'
+const fullWidthFields = [];
+const thirdWidthFields = [];
+const setHeightFields = [15, 16, 36];
+const requiredFields = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32, 33, 36, 37, 38, 39, 40, 41, 42, 44, 45, 46, 47, 48,49, 50, 51, 52, 53, 54, 55];
 
 //toggle fields: account type, image type
-const toggleFields = createFieldArray([1, 19], true);
-const characterFields = createFieldArray([11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]); //character only fields
+const toggleFields = createFieldArray([1, 26, 31], true);
+const memberFields = createFieldArray([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
+const memberInputs = createFieldArray([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], true);
+const characterFields = createFieldArray([14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]);
+const deityFields = createFieldArray([27, 28]);
+const heroFields = createFieldArray([29, 30]);
+const creatureFields = createFieldArray([31]);
+const beastFields = createFieldArray([32]);
+const spiritFields = createFieldArray([33, 62]);
+const mortalFields = createFieldArray([34, 35]);
+const aestheticImageFields = createFieldArray([48, 49, 50, 51, 52, 53, 54, 55]);
+const avatarImageFields = createFieldArray([47]);
 
-const defaultImages = createFieldArray([20]); //default aesthetics set up
-const gridImages = createFieldArray([21,23, 24]); //grid style aesthetics set up
-const mosaicImages = createFieldArray([22, 25]); //mosaic style aesthetic set up
-
-const avatarImageFields = createFieldArray([17, 18]); //which images are avatars, not aesthetics?
-
-//shouldn't need to change this
-const aestheticFields = {
-    'single': {
-        showFields: defaultImages,
-        hideFields: [...gridImages, ...mosaicImages],
-    },
-    'grid': {
-        showFields: [...defaultImages, ...gridImages],
-        hideFields: [...mosaicImages],
-    },
-    'mosaic': {
-        showFields: [...defaultImages, ...gridImages, ...mosaicImages],
-        hideFields: [],
-    }
-};
-
-//sets up a title and a description for each section of the ucp
-//insertBefore is the field number as a number, not a string
-//it will put the header and description before that input
-//you can use html in the description, it'll load right, allowing full customization
-//allHeaders are the headers ALWAYS visible
-//charHeaders are the headers only available for characters
 const allHeaders = [
     {
-        sectionTitle: `Player`,
+        sectionTitle: `Account`,
         insertBefore: 1,
         sectionDescription: ``,
     },
     {
         sectionTitle: `Images`,
-        insertBefore: 17,
+        insertBefore: 47,
         sectionDescription: ``,
     },
 ];
 const charHeaders = [
     {
         sectionTitle: `Basics`,
-        insertBefore: 11,
+        insertBefore: 14,
         sectionDescription: ``,
     },
     {
         sectionTitle: `Details`,
-        insertBefore: 26,
+        insertBefore: 41,
         sectionDescription: ``,
     },
     {
         sectionTitle: `Plotting`,
-        insertBefore: 28,
+        insertBefore: 44,
+        sectionDescription: ``,
+    },
+    {
+        sectionTitle: `Links`,
+        insertBefore: 56,
         sectionDescription: ``,
     },
 ];
 
-//this is for google claims implementation using my standard set up.
-//that means face claim, business claim with integrated jobs, face reserves, subplots with integrated claims and reserves, and discord webhooks for all of this
-//forms are in the source/js/templates/forms directory
-//the blank sheet can be duplicated from: https://docs.google.com/spreadsheets/d/1Tun8ddMReuDNAKPE0tASvB-f__13lkPK_dczmYbaGaM/edit?usp=sharing
-//sheet must be set to viewable with link, then put the id below
-//apps script must run through setup function, then deploy as a webapp, then put the deploy id below
-const sheetID = '1Tun8ddMReuDNAKPE0tASvB-f__13lkPK_dczmYbaGaM';
-const deployID = 'AKfycbxw_tC4jLP8gn66FtZdbU9SAli1RbMMhzstiN_QBvYAxSj5iTg7kvMzZL9p72d594uWjg';
 
-//these are the discord webhooks. do not include the full url, just the numeric and alphanumeric strings at the end (e.g., `numeric/alphanumeric`)
-const reserveLogs = `1315405331261816935/a3ogFqyMusfOw1zc3fPqvlbqq5ipemVH4xNCFmbFTmEctXMpAs5TH7weuubM5-BU88UX`;
-const businessLogs = `1315405331261816935/a3ogFqyMusfOw1zc3fPqvlbqq5ipemVH4xNCFmbFTmEctXMpAs5TH7weuubM5-BU88UX`;
-const claimLogs = `1315405331261816935/a3ogFqyMusfOw1zc3fPqvlbqq5ipemVH4xNCFmbFTmEctXMpAs5TH7weuubM5-BU88UX`;
-const modLogs = `1315405331261816935/a3ogFqyMusfOw1zc3fPqvlbqq5ipemVH4xNCFmbFTmEctXMpAs5TH7weuubM5-BU88UX`;
-const staffLogs = `1315405331261816935/a3ogFqyMusfOw1zc3fPqvlbqq5ipemVH4xNCFmbFTmEctXMpAs5TH7weuubM5-BU88UX`;
-const sortLogs = `1315405331261816935/a3ogFqyMusfOw1zc3fPqvlbqq5ipemVH4xNCFmbFTmEctXMpAs5TH7weuubM5-BU88UX`;
-const announceLogs = `1315405331261816935/a3ogFqyMusfOw1zc3fPqvlbqq5ipemVH4xNCFmbFTmEctXMpAs5TH7weuubM5-BU88UX`;
+const sheetID = '1L8s1OSFgQYAOfKDib_JRKN-e-7bOgAF-_zu-XOX03mM';
+const deployID = 'AKfycbzMs3nRGv80YK4xuSEDI31Xu_H-J-kB7jGAZCALZaBP-Q19SsA5dZLfa2iT9VKByH1oDA';
+
+const reserveLogs = `1378388518476451921/x-9GaKmB51pkkqvIhsKRA-yMpDzVvi0Yc73vkr9lKx28OnOcyYB6FGix9H2SY0EfqZ-m`;
+const businessLogs = `1378388518476451921/x-9GaKmB51pkkqvIhsKRA-yMpDzVvi0Yc73vkr9lKx28OnOcyYB6FGix9H2SY0EfqZ-m`;
+const claimLogs = `1378388518476451921/x-9GaKmB51pkkqvIhsKRA-yMpDzVvi0Yc73vkr9lKx28OnOcyYB6FGix9H2SY0EfqZ-m`;
+const modLogs = `1378388518476451921/x-9GaKmB51pkkqvIhsKRA-yMpDzVvi0Yc73vkr9lKx28OnOcyYB6FGix9H2SY0EfqZ-m`;
+const staffLogs = `1378388518476451921/x-9GaKmB51pkkqvIhsKRA-yMpDzVvi0Yc73vkr9lKx28OnOcyYB6FGix9H2SY0EfqZ-m`;
+const sortLogs = `1378388518476451921/x-9GaKmB51pkkqvIhsKRA-yMpDzVvi0Yc73vkr9lKx28OnOcyYB6FGix9H2SY0EfqZ-m`;
+const announceLogs = `1378388518476451921/x-9GaKmB51pkkqvIhsKRA-yMpDzVvi0Yc73vkr9lKx28OnOcyYB6FGix9H2SY0EfqZ-m`;
 
 //if using the base set up, these won't need to change
 const claims = `https://opensheet.elk.sh/${sheetID}/Claims`;
@@ -410,10 +346,7 @@ const members = `https://opensheet.elk.sh/${sheetID}/Members`;
 const plots = `https://opensheet.elk.sh/${sheetID}/Plots`;
 const businesses = `https://opensheet.elk.sh/${sheetID}/Businesses`;
 
-//default reserve days count
 const defaultReserve = 14;
-
-//default form error and success messages
 const successMessage = `<blockquote class="fullWidth">Submission successful!</blockquote>
 <button onclick="reloadForm(this)" type="button" class="fullWidth submit">Back to form</button>`;
 const activeResExists = `<blockquote class="fullWidth warning">Uh-oh! That's already reserved. Maybe we can help you find another option - reach out in the Discord for help!</blockquote>`;
@@ -422,9 +355,6 @@ const claimExists = `<blockquote class="fullWidth warning">Uh-oh! This is alread
 const limitReached = `<blockquote class="fullWidth warning">Uh-oh! This role has limited spots and it looks like they're all taken and/or reserved at this moment!</blockquote>`;
 const completedButton = `<button onClick="submitMemberData(this)" type="button" class="hidden sheet-button">Submit Member Data</button>`;
 
-//default menus for ucp, store, modcp. these are the jcink versions
-//find the local versions in source/js/defaultsMenus.js
-//do not copy defaultsMenus.js to the jcink forum! it's lack of existence is what lets these three show through
 const jcinkUCPLinks = `<div class="accordion--trigger" data-category="account"><b>Account</b></div>
         <div class="accordion--content" data-category="account">
             <a href="?act=UserCP&CODE=01">Edit Profile</a>

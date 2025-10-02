@@ -13,8 +13,25 @@ body.g-4 .accordion--trigger.staffOnly {
 }
 
 .nav > a:not(:last-child)::after, .nav--inline:not(:last-child)::after,
-.nav--popout .menu--section > strong::before {
+.nav--popout .menu--section > strong::before,
+.items--item > b::before,
+h4::before,
+.h4::before,
+.profile--tab-section > b::before {
     content: '\e7f9';
 }
-.nav--popout .menu--section > strong::after {
+.nav--popout .menu--section > strong::after,
+h4::after,
+.h4::after,
+.profile--tab-section > b::after {
   content: '\e7f8'; }
+
+ul li::marker {
+  content: '\f86c';
+}
+.accordion--trigger::before {
+  content: '\f322';
+}
+.accordion--trigger.is-active::before {
+  content: '\f325';
+}

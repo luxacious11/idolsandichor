@@ -46,7 +46,7 @@
             max-width: calc(100% - var(--size-menu));
 
             a {
-                @include info(var(--text-primary), normal);
+                @include info(var(--text-primary), normal, 400);
                 transition: var(--transition-standard);
 
                 &:hover {
@@ -361,7 +361,7 @@
 
         &-image {
             padding: 30px;
-            @include diamonds(70%, 10px, horizontal, 0, calc(25% + 10px), 0);
+            @include diamonds(70%, 10px, horizontal);
 
             @include mq-down(sm) {
                 display: none;
@@ -521,7 +521,13 @@
 
             & > div:only-of-type {
                 grid-column: 1 / -1;
-                font-size: var(--size-lg);
+                font-size: var(--text-size-md);
+                color: var(--text-primary);
+                font-family: var(--font-sans-narrow);
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                font-weight: 500;
+                line-height: 120%;
             }
 
             br {

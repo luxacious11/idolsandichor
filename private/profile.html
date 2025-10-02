@@ -20,71 +20,506 @@
 
             <!--Profile-->
             <section class="profile g-7 type-Character">
-                <div class="profile--header"><h1></h1></div>
-                    <div>
-                    <b>Ratings</b>
-                        <lang-clip></lang-clip>
-                        <sex-clip></sex-clip>
-                        <vio-clip></vio-clip>
+                <div class="profile--header">
+                    <h1></h1>
+                    <div class="profile--aesthetics top-left"></div>
+                    <div class="profile--aesthetics bottom-right"></div>
                 </div>
-                <div class="charOnly">
-                    <b>Age</b>
-                    <age-clip></age-clip>
-                </div>
-                <div class="charOnly">
-                    <b>Birthday</b>
-                    <birthday-clip></birthday-clip>
-                </div>
-                <div class="charOnly">
-                    <b>Freeform w/ Overflow</b>
-                    <div class="profile--freeform"><div class="scroll clip-freeform-overflow"><!-- |field_28| --></div></div>
-                </div>
-                <div class="charOnly">
-                    <b>Aesthetic Images</b>
-                    <div class="profile--aesthetic"></div>
-                </div>
-                <div class="oocOnly">
-                    <b>Roster</b>
-                    <div class="profile--roster"></div>
+                <div class="profile--body carousel">
+                    <div class="profile--navigation charOnly">
+                        <div class="profile--arrows">
+                            <button class="profile--arrow arrow--left" onclick="carouselLeft(this, true, '.profile--progress-bar')"><i class="fa-light fa-sharp fa-triple-chevrons-left"></i></button>
+                            <hr>
+                            <button class="profile--arrow arrow--right" onclick="carouselRight(this, true, '.profile--progress-bar')"><i class="fa-light fa-sharp fa-triple-chevrons-right"></i></button>
+                        </div>
+                        <div class="profile--progress">
+                            <div class="profile--progress-bar"></div>
+                            <button class="profile--page bullet" onclick="carouselPageHash(this, 'intro', '.profile--progress-bar')" title="Intro" data-tab="intro">
+                                <span>Intro</span>
+                                <div class="profile--page-inner"></div>
+                            </button>
+                            <button class="profile--page bullet" onclick="carouselPageHash(this, 'details', '.profile--progress-bar')" title="Cheatsheet" data-tab="cheatsheet">
+                                <span>Cheatsheet</span>
+                                <div class="profile--page-inner"></div>
+                            </button>
+                            <button class="profile--page bullet" onclick="carouselPageHash(this, 'freeform', '.profile--progress-bar')" title="Freeform" data-tab="freeform">
+                                <span>Freeform</span>
+                                <div class="profile--page-inner"></div>
+                            </button>
+                            <button class="profile--page bullet" onclick="carouselPageHash(this, 'tracking', '.profile--progress-bar')" title="Tracking" data-tab="tracking">
+                                <span>Tracking</span>
+                                <div class="profile--page-inner"></div>
+                            </button>
+                            <button class="profile--page bullet" onclick="carouselPageHash(this, 'player', '.profile--progress-bar')" title="Player" data-tab="player">
+                                <span>Lux</span>
+                                <div class="profile--page-inner"></div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="profile--slides">
+                        <div class="profile--slide slide charOnly" data-tab="intro">
+                            <div class="profile--tab">
+                                <div class="profile--tab-title">
+                                    <div class="h2">Intro</div>
+                                    <div class="profile--tab-title-sub links">
+                                        <a href="./profile-ooc.html">Directory</a>
+                                        <a href="/">Custom</a>
+                                        <a href="/">Custom</a>
+                                        <a href="">Custom</a>
+                                    </div>
+                                    <div class="profile--avatar"><img src="https://picsum.photos/250" loading="lazy" /></div>
+                                </div>
+                                <div class="profile--tab-inner">
+                                    <div class="profile--tab-column">
+                                        <div class="container">
+                                            <div class="scroll">
+                                                <div class="items">
+                                                    <div class="items--item">
+                                                        <b>Full Name</b>
+                                                        <span>Christopher Reeves<br>Flynn Walsh</span>
+                                                    </div>
+                                                    <div class="items--item optional">
+                                                        <b>Nickname(s)</b>
+                                                        <span>Chris</span>
+                                                    </div>
+                                                    <div class="items--item">
+                                                        <b>Age</b>
+                                                        <span><age-clip></age-clip></span>
+                                                    </div>
+                                                    <div class="items--item">
+                                                        <b>Birthday</b>
+                                                        <span><birthday-clip></birthday-clip></span>
+                                                    </div>
+                                                    <div class="items--item">
+                                                        <b>Gender</b>
+                                                        <span>Male</span>
+                                                    </div>
+                                                    <div class="items--item">
+                                                        <b>Pronouns</b>
+                                                        <span>He/Him</span>
+                                                    </div>
+                                                    <div class="items--item">
+                                                        <b>Orientation</b>
+                                                        <span>Demisexual Demiromantic</span>
+                                                    </div>
+                                                    <div class="items--item">
+                                                        <b>Relationship Status</b>
+                                                        <span>Single</span>
+                                                    </div>
+                                                    <div class="items--item">
+                                                        <b>Occupation</b>
+                                                        <span>Arms Dealer</span>
+                                                    </div>
+                                                    <div class="items--item clip-specialty-fields">
+                                                        <b>Social Status</b>
+                                                        <span>Creature</span>
+                                                    </div>
+                                                    <div class="items--item">
+                                                        <b>Looks Like</b>
+                                                        <span>Jonathan Young</span>
+                                                    </div>
+                                                    <div class="items--item">
+                                                        <b>Group</b>
+                                                        <span>Unsorted</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="profile--tab-column">
+                                        <div class="profile--tab-section">
+                                            <b>Looking For</b>
+                                            <div class="container">
+                                                <div class="scroll">
+                                                    <ul>
+                                                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                                                        <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                                        <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+                                                        <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                                                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                                                        <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                                        <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+                                                        <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="profile--tab-section">
+                                            <b>Not Interested</b>
+                                            <div class="container">
+                                                <div class="scroll">
+                                                    <ul>
+                                                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                                                        <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                                        <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+                                                        <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                                                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                                                        <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                                        <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+                                                        <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile--slide slide charOnly" data-tab="details">
+                            <div class="profile--tab">
+                                <div class="profile--tab-title side-title-only">
+                                    <div class="h2">Details</div>
+                                    <div class="profile--warning optional">
+                                        <b>Warnings</b>
+                                        <div class="scroll">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile--tab-inner">
+                                    <div class="profile--tab-column">
+                                        <div class="profile--tab-section">
+                                            <b>Cheatsheet</b>
+                                            <div class="container">
+                                                <div class="scroll">
+                                                    <ul>
+                                                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                                                        <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                                        <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+                                                        <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                                                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                                                        <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                                                        <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</li>
+                                                        <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="profile--tab-column">
+                                        <div class="profile--tab-section">
+                                            <b>Relationships</b>
+                                            <div class="container">
+                                                <div class="scroll">
+                                                    <div class="relationships">
+                                                        <tag-relheader>Family</tag-relheader>
+                                                        <tag-rel>
+                                                            <b>Father</b>
+                                                            <span>Content</span>
+                                                        </tag-rel>
+                                                        <tag-rel>
+                                                            <a href="/">Mother</a>
+                                                            <span>Content</span>
+                                                        </tag-rel>
+                                                        <tag-relheader>Colleagues</tag-relheader>
+                                                        <tag-rel>
+                                                            <b>Lincoln Foster</b>
+                                                            <span>Content</span>
+                                                        </tag-rel>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile--slide slide charOnly" data-tab="freeform">
+                            <div class="profile--tab">
+                                <div class="profile--tab-title side-title-only">
+                                    <div class="h2">Freeform</div>
+                                    <div class="profile--scales">
+                                        <div class="profile--scale-item resources Average">
+                                            <strong>Access to Resources</strong>
+                                            <div class="profile--scale"><span></span></div>
+                                        </div>
+                                        <div class="profile--scale-item change Very High">
+                                            <strong>Desire for Socio-economic Change</strong>
+                                            <div class="profile--scale"><span></span></div>
+                                        </div>
+                                        <div class="profile--scale-item influence Average">
+                                            <strong>Community Influence</strong>
+                                            <div class="profile--scale"><span></span></div>
+                                        </div>
+                                        <div class="profile--scale-item engagement High">
+                                            <strong>Community Engagement</strong>
+                                            <div class="profile--scale"><span></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile--tab-inner">
+                                    <div class="profile--tab-column">
+                                        <div class="container freeform">
+                                            <div class="scroll">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis urna ut dui hendrerit pellentesque. Integer id diam nec ex ultricies aliquam. Fusce fringilla nunc ligula, eu molestie ex euismod vitae. Aenean suscipit ex et dui fermentum tempor. Quisque at leo ac mi viverra convallis vitae id arcu. Etiam congue est sit amet mollis iaculis. Proin porta sem bibendum odio rhoncus, ac feugiat sem eleifend. Integer vel lacinia massa. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam fermentum metus et arcu faucibus venenatis. Mauris feugiat quam ac accumsan lacinia. Aenean suscipit felis quis arcu vehicula sollicitudin.<br><br>
+
+                                                Nulla auctor arcu eu tincidunt elementum. Nulla sed feugiat turpis. Mauris interdum velit sit amet tempus faucibus. Sed tempus justo in erat porta aliquam. Aliquam molestie, lacus elementum rutrum volutpat, sem justo euismod ipsum, a pretium mi arcu et tortor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean dapibus elit in porta dignissim. Aliquam mattis tempus dolor sit amet luctus.<br><br>
+
+                                                Donec et enim vitae eros luctus consequat ac at ante. Sed a dolor neque. Nullam ultrices turpis condimentum quam efficitur mattis id sit amet turpis. Maecenas rhoncus turpis sem, vel ornare magna pharetra eu. Aenean eu volutpat urna, ac consequat tellus. Fusce sit amet lectus finibus orci gravida aliquam. Nunc vel semper massa, quis hendrerit augue. Praesent fringilla tellus a augue finibus ullamcorper. Donec et tellus porttitor, iaculis velit in, vulputate massa. Proin vulputate augue vel ornare gravida. Sed nec ex quis massa lobortis dapibus. Morbi viverra turpis elit, in blandit tortor volutpat vitae. Donec sed pellentesque massa, in ultrices nunc. Sed convallis, purus vitae volutpat placerat, sapien risus dapibus ligula, id feugiat lectus lacus a eros.<br><br>
+
+                                                Duis ac dui in eros imperdiet sollicitudin. Donec pretium mauris odio, ut luctus velit rutrum non. Mauris ultricies lorem aliquam ligula placerat, in convallis enim aliquam. Nam volutpat quis augue id feugiat. Fusce imperdiet euismod congue. Fusce a faucibus enim, vitae blandit mauris. Integer id nunc eu turpis cursus posuere. Curabitur vel justo efficitur, luctus nibh sed, dignissim odio. Phasellus nec eleifend quam. Donec sed sollicitudin mauris. Mauris ultrices mi felis, quis pharetra ante dictum at. Sed nec urna porttitor, consequat diam vel, aliquam risus. Curabitur in auctor metus, ut laoreet lectus. Nam sollicitudin eget nibh ut semper. Donec vestibulum suscipit arcu vitae ullamcorper. Nunc lorem tortor, ultricies quis mi id, efficitur iaculis elit.<br><br>
+
+                                                Praesent at consequat purus. Praesent libero ligula, convallis non purus bibendum, vestibulum blandit enim. In vitae elementum leo. Aliquam erat volutpat. Quisque consectetur, augue sit amet fermentum condimentum, augue arcu aliquet eros, vel mattis sapien justo sed mauris. Mauris sodales dolor vel tempus sollicitudin. Etiam nec viverra tellus. Aliquam in faucibus nisi. Nullam vel libero erat. Curabitur dapibus sapien quis velit egestas tincidunt. Curabitur a quam elementum, porta turpis rhoncus, condimentum lectus. Etiam consequat accumsan sollicitudin. Maecenas vel viverra ipsum. Maecenas maximus turpis vitae eros mollis mollis. Donec convallis egestas nunc, eget consequat mi vehicula sed. Duis porta scelerisque vestibulum. 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile--slide slide charOnly" data-tab="tracking">
+                            <div class="profile--tab">
+                                <div class="profile--tab-title">
+                                    <div class="h2">Tracking</div>
+                                    <div class="profile--tab-title-sub links">
+                                        <a href="./defaults/usertopics.html">Topics</a>
+                                        <a href="./defaults/userposts.html">Posts</a>
+                                    </div>
+                                </div>
+                                <div class="profile--tab-inner">
+                                    <div class="profile--tab-column">
+                                        <div class="container">
+                                            <div class="scroll">
+                                                <div class="accordion">
+                                                    <div class="accordion--trigger h5">
+                                                        Threads
+                                                    </div>
+                                                    <div class="accordion--content">
+                                                        <div class="accordion--inner">
+                                                            <div class="profile--tracker-item" data-owing="owing">
+                                                                <a href="/">what can I say to get your attention</a>
+                                                                <span><tag-highlight>dec 31</tag-highlight> <tag-highlight>#aiden/lux</tag-highlight></span>
+                                                                <span>Posted in <a href="?showforum=36">Bay Road</a></span>
+                                                                <span>Last post by <a href="https://wherethehellis.jcink.net/index.php?showuser=6">Isaac Mendoza</a></span>
+                                                                <span>May 23 2025, 2:41 PM</span>
+                                                            </div>
+                                                            <div class="profile--tracker-item" data-owing="caughtup">
+                                                                <a href="/">what can I say to get your attention</a>
+                                                                <span><tag-highlight>dec 31</tag-highlight> <tag-highlight>#aiden/lux</tag-highlight></span>
+                                                                <span>Posted in <a href="?showforum=36">Bay Road</a></span>
+                                                                <span>Last post by <a href="https://wherethehellis.jcink.net/index.php?showuser=6">Isaac Mendoza</a></span>
+                                                                <span>May 23 2025, 2:41 PM</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion--trigger h5">
+                                                        Communications
+                                                    </div>
+                                                    <div class="accordion--content">
+                                                        <div class="accordion--inner">
+                                                            <div class="profile--tracker-item" data-owing="owing">
+                                                                <a href="/">what can I say to get your attention</a>
+                                                                <span><tag-highlight>dec 31</tag-highlight> <tag-highlight>#aiden/lux</tag-highlight></span>
+                                                                <span>Posted in <a href="?showforum=36">Bay Road</a></span>
+                                                                <span>Last post by <a href="https://wherethehellis.jcink.net/index.php?showuser=6">Isaac Mendoza</a></span>
+                                                                <span>May 23 2025, 2:41 PM</span>
+                                                            </div>
+                                                            <div class="profile--tracker-item" data-owing="caughtup">
+                                                                <a href="/">what can I say to get your attention</a>
+                                                                <span><tag-highlight>dec 31</tag-highlight> <tag-highlight>#aiden/lux</tag-highlight></span>
+                                                                <span>Posted in <a href="?showforum=36">Bay Road</a></span>
+                                                                <span>Last post by <a href="https://wherethehellis.jcink.net/index.php?showuser=6">Isaac Mendoza</a></span>
+                                                                <span>May 23 2025, 2:41 PM</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion--trigger h5">
+                                                        Social Media
+                                                    </div>
+                                                    <div class="accordion--content">
+                                                        <div class="accordion--inner">
+                                                            <div class="profile--tracker-item" data-owing="owing">
+                                                                <a href="/">what can I say to get your attention</a>
+                                                                <span><tag-highlight>dec 31</tag-highlight> <tag-highlight>#aiden/lux</tag-highlight></span>
+                                                                <span>Posted in <a href="?showforum=36">Bay Road</a></span>
+                                                                <span>Last post by <a href="https://wherethehellis.jcink.net/index.php?showuser=6">Isaac Mendoza</a></span>
+                                                                <span>May 23 2025, 2:41 PM</span>
+                                                            </div>
+                                                            <div class="profile--tracker-item" data-owing="caughtup">
+                                                                <a href="/">what can I say to get your attention</a>
+                                                                <span><tag-highlight>dec 31</tag-highlight> <tag-highlight>#aiden/lux</tag-highlight></span>
+                                                                <span>Posted in <a href="?showforum=36">Bay Road</a></span>
+                                                                <span>Last post by <a href="https://wherethehellis.jcink.net/index.php?showuser=6">Isaac Mendoza</a></span>
+                                                                <span>May 23 2025, 2:41 PM</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="profile--tab-column">
+                                        <div class="container">
+                                            <div class="scroll">
+                                                <div class="accordion">
+                                                    <div class="accordion--trigger h5">
+                                                        Requests
+                                                    </div>
+                                                    <div class="accordion--content">
+                                                        <div class="accordion--inner">
+                                                            <div class="profile--tracker-item" data-owing="req">
+                                                                <a href="/">what can I say to get your attention</a>
+                                                                <span><tag-highlight>dec 31</tag-highlight> <tag-highlight>#aiden/lux</tag-highlight></span>
+                                                                <span>Posted in <a href="?showforum=36">Bay Road</a></span>
+                                                                <span>Last post by <a href="https://wherethehellis.jcink.net/index.php?showuser=6">Isaac Mendoza</a></span>
+                                                                <span>May 23 2025, 2:41 PM</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion--trigger h5">
+                                                        Development
+                                                    </div>
+                                                    <div class="accordion--content">
+                                                        <div class="accordion--inner">
+                                                            <div class="profile--tracker-item" data-owing="archived">
+                                                                <a href="/">what can I say to get your attention</a>
+                                                                <span><tag-highlight>dec 31</tag-highlight> <tag-highlight>#aiden/lux</tag-highlight></span>
+                                                                <span>Posted in <a href="?showforum=36">Bay Road</a></span>
+                                                                <span>Last post by <a href="https://wherethehellis.jcink.net/index.php?showuser=6">Isaac Mendoza</a></span>
+                                                                <span>May 23 2025, 2:41 PM</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion--trigger h5">
+                                                        Archived Threads
+                                                    </div>
+                                                    <div class="accordion--content">
+                                                        <div class="accordion--inner">
+                                                            <div class="profile--tracker-item" data-owing="archived">
+                                                                <a href="/">what can I say to get your attention</a>
+                                                                <span><tag-highlight>dec 31</tag-highlight> <tag-highlight>#aiden/lux</tag-highlight></span>
+                                                                <span>Posted in <a href="?showforum=36">Bay Road</a></span>
+                                                                <span>Last post by <a href="https://wherethehellis.jcink.net/index.php?showuser=6">Isaac Mendoza</a></span>
+                                                                <span>May 23 2025, 2:41 PM</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion--trigger h5">
+                                                        Archived Communications
+                                                    </div>
+                                                    <div class="accordion--content">
+                                                        <div class="accordion--inner">
+                                                            <div class="profile--tracker-item" data-owing="archived">
+                                                                <a href="/">what can I say to get your attention</a>
+                                                                <span><tag-highlight>dec 31</tag-highlight> <tag-highlight>#aiden/lux</tag-highlight></span>
+                                                                <span>Posted in <a href="?showforum=36">Bay Road</a></span>
+                                                                <span>Last post by <a href="https://wherethehellis.jcink.net/index.php?showuser=6">Isaac Mendoza</a></span>
+                                                                <span>May 23 2025, 2:41 PM</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion--trigger h5">
+                                                        Archived Social Media
+                                                    </div>
+                                                    <div class="accordion--content">
+                                                        <div class="accordion--inner">
+                                                            <div class="profile--tracker-item" data-owing="archived">
+                                                                <a href="/">what can I say to get your attention</a>
+                                                                <span><tag-highlight>dec 31</tag-highlight> <tag-highlight>#aiden/lux</tag-highlight></span>
+                                                                <span>Posted in <a href="?showforum=36">Bay Road</a></span>
+                                                                <span>Last post by <a href="https://wherethehellis.jcink.net/index.php?showuser=6">Isaac Mendoza</a></span>
+                                                                <span>May 23 2025, 2:41 PM</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile--slide slide" data-tab="player"></div>
+                    </div>
                 </div>
                 <span class="hidden oocOnly"><form action="index.php" name="subprofilemenu" method="GET">
                     <select class="forminput" name="showuser" style="width: 180px;" onchange="this.form.submit()">
                     <option value="-------------------" selected="selected">------------------------------</option>
                     <option value="3">&nbsp;&nbsp;» nikolas kovac </option><option value="7">&nbsp;&nbsp;» aiden mitchell </option><option value="8">&nbsp;&nbsp;» fiore amoretti </option><option value="9">&nbsp;&nbsp;» malcolm murdock </option><option value="10">&nbsp;&nbsp;» emmalina fawley </option><option value="11">&nbsp;&nbsp;» naomi bell </option><option value="16">&nbsp;&nbsp;» riordan hemlock </option><option value="17">&nbsp;&nbsp;» casper miyamoto </option><option value="30">&nbsp;&nbsp;» simon flynn </option><option value="33">&nbsp;&nbsp;» hayden donovan </option><option value="45">&nbsp;&nbsp;» christopher reeves </option><option value="49">&nbsp;&nbsp;» harriet clarke </option><option value="52">&nbsp;&nbsp;» spencer al-nazari </option><option value="81">&nbsp;&nbsp;» liam buchanan </option><option value="82">&nbsp;&nbsp;» lily sable </option><option value="104">&nbsp;&nbsp;» gideon cahill </option><option value="103">&nbsp;&nbsp;» oliver hobbes </option>
                     </select>
-                    </form></span>
+                    </form>
+                </span>
             </section>
 
             <!--Uncomment for live: <script src="https://files.jcink.net/uploads2/godlybehaviour/GB25/fizzyelf_profile_tracker.js"></script>-->
             <script>
                 let ratings = [
-                    {'type': 'lang','value': 'All'},
-                    {'type': 'sex','value': 'With Limits'},
-                    {'type': 'vio','value': 'All'}
+                    {'type': 'lang','value': characterProfile.ratings.lang},
+                    {'type': 'sex','value': characterProfile.ratings.sex},
+                    {'type': 'vio','value': characterProfile.ratings.vio}
                 ];
-                let images = {
-                    'tall-1': `https://picsum.photos/250/500`,
-                    'tall-2': `https://picsum.photos/250/500`,
-                    'wide-1': `https://picsum.photos/500/250`,
-                    'square-1': `https://picsum.photos/500`,
-                    'square-2': `https://picsum.photos/500`,
-                    'square-3': `https://picsum.photos/500`,
+                let images = [
+                    characterProfile.images.square,
+                    characterProfile.images.square,
+                    characterProfile.images.square,
+                    characterProfile.images.square,
+                    characterProfile.images.square,
+                    characterProfile.images.square,
+                    characterProfile.images.square,
+                    characterProfile.images.square
+                ];
+                let birthday = characterProfile.birthday;
+                let specialtyFields = {
+                    deity: {
+                        field1: {
+                            title: 'Pantheon',
+                            value: `<i>No Information</i>`,
+                        },
+                        field2: {
+                            title: 'Domain',
+                            value: `<i>No Information</i>`,
+                        },
+                    },
+                    hero: {
+                        field1: {
+                            title: 'Parent',
+                            value: `<i>No Information</i>`,
+                        },
+                        field2: {
+                            title: 'Gift(s)',
+                            value: `<i>No Information</i>`,
+                        },
+                    },
+                    creature: {
+                        field1: {
+                            title: 'Class',
+                            value: `Beast`,
+                        },
+                        field2: {
+                            title: `Beast`.toLowerCase() === 'beast' ? `Species` : `Element`,
+                            value: `Beast`.toLowerCase() === 'beast' ? `Kitsune` : `<i>No Information</i>`,
+                        },
+                    },
+                    mortal: {
+                        field1: {
+                            title: 'Denomination',
+                            value: `Greek Pantheon`,
+                            optional: true,
+                        },
+                        field2: {
+                            title: 'Patron Deity',
+                            value: `Zeus`,
+                            optional: true,
+                        },
+                    },
+                    unset: null,
                 };
-                let birthday = {
-                    'year': `1254`,
-                    'month': `November`,
-                    'day': `19`,
-                }
-                
-                if(oocGroups.includes(`7`) ||
-                  (optGroups.includes(`7`) && `character`.toLowerCase() === `member`)
-                ) {
-                    initMember();
-                } else {
-                    initCharacter(`Mosaic`, images, `<i>No Information</i>`, `Christopher Reeves`, birthday, true);
-                }
-                
-                initProfile(`Christopher Reeves`, ratings);
+
+                fetch(members)
+                .then(response => response.json())
+                .then(data => {
+                    if(oocGroups.includes(characterProfile.groupID) ||
+                    (optGroups.includes(characterProfile.groupID) && `character`.toLowerCase() === characterProfile.type)
+                    ) {
+                        initProfile(`character`, sheetData, `1`, characterProfile.images.tall, characterProfile.posts, characterProfile.money, characterProfile.awards);
+                        initMember();
+                    } else {
+                        initProfile(`character`, sheetData, `1`, characterProfile.images.tall, characterProfile.posts, characterProfile.money, characterProfile.awards);
+                        initCharacter(images, characterProfile.overflow, characterProfile.character, birthday, specialtyFields['creature'], true);
+                    }
+                })
+                .then(() => {
+                    removeBlankFields();
+                });
             </script>
 
             <!-- Copyright Information -->

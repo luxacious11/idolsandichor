@@ -274,8 +274,6 @@ if(pageType === 'UserCP' || pageType === 'Msg') {
         document.querySelector('#ucpcontent form > table > tbody > tr:last-child > td').insertAdjacentHTML('afterbegin', completedButton);
         cpShift();
         splitProfile();
-        ucpAesthetics();
-        ucpAvatars();
         if(fullWidthFields.length > 0) {
             fields = createFieldArray(fullWidthFields);
             document.querySelectorAll(fields).forEach(field => field.classList.add('fullWidth'));
@@ -292,13 +290,31 @@ if(pageType === 'UserCP' || pageType === 'Msg') {
             fields = createFieldArray(requiredFields);
             document.querySelectorAll(fields).forEach(field => field.querySelector('label').innerHTML = `<span>${field.querySelector('label').innerHTML} <span class="required">*</span></span>`);
         }
+
+        let defaultElement = document.querySelector('#field_33_input').options[document.querySelector('#field_33_input').selectedIndex].value;
+        let types = document.querySelectorAll('#field_62_input option');
+        types.forEach(el => {
+            if(el.value.includes(`${defaultElement}-`) || el.value === 'unset') {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        })
+        document.querySelector('#field_33_input').addEventListener('change', e => {
+            let element = e.target.options[e.target.selectedIndex].value;
+            types.forEach(el => {
+                if(el.value.includes(`${element}-`) || el.value === 'unset') {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+        });
         
         toggleFields.forEach(toggle => {
             document.querySelector(toggle).addEventListener('change', () => {
                 cpShift();
                 splitProfile();
-                ucpAesthetics();
-                ucpAvatars();
             });
         });
 

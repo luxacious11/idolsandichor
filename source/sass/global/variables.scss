@@ -5,15 +5,14 @@
     Variables
 ********************************/
 :root {
-    --text-size-xs: 8px;
-    --text-size-sm: 10px;
-    --text-size-md: 12px;
-    --text-size-lg: 14px;
-    --text-size-xl: 16px;
+    --text-size-xs: 9px;
+    --text-size-sm: 11px;
+    --text-size-md: 13px;
+    --text-size-lg: 15px;
+    --text-size-xl: 17px;
 
     --font-serif: "Playfair Display", serif;
-    --font-sans: "Archivo", sans-serif;
-    --font-sans-black: "Archivo Black", sans-serif;
+    --font-sans: "PT Sans", sans-serif;
     --font-sans-narrow: "PT Sans Narrow", sans-serif;
 
     --space-xs: 5px;
@@ -39,6 +38,7 @@
     }
 
     --accent: rgba(220, 105, 102, 0.65);
+    --accent-filter: invert(57%) sepia(7%) saturate(4856%) hue-rotate(315deg) brightness(96%) contrast(78%);
 
 
     //remove eventually - color storage
@@ -78,6 +78,7 @@ body {
 
         --border-primary: 1px solid rgba(101, 98, 94, 0.5);
         --border-primary-color: rgba(101, 98, 94, 0.5);
+        --border-primary-color-strong: rgba(101, 98, 94, 0.5);
     }
     &.dark {
         --bg-primary: rgba(26, 25, 24, 1);
@@ -94,6 +95,7 @@ body {
 
         --border-primary: 1px solid rgba(232, 231, 229, 0.15);
         --border-primary-color: rgba(232, 231, 229, 0.15);
+        --border-primary-color-strong: rgba(232, 231, 229, 0.3);
     }
 
     //Set up
@@ -138,6 +140,7 @@ body {
     &.mgroup-5,
     .mgroup-5 {
         --rgb: 220, 105, 102;
+        --rgb-filter: invert(57%) sepia(7%) saturate(4856%) hue-rotate(315deg) brightness(96%) contrast(78%);
     }
 
     //Other
@@ -150,6 +153,7 @@ body {
     &.mgroup-3,
     .mgroup-3 {
         --rgb: 220, 105, 102;
+        --rgb-filter: invert(57%) sepia(7%) saturate(4856%) hue-rotate(315deg) brightness(96%) contrast(78%);
     }
 
     //Admin
@@ -158,6 +162,7 @@ body {
     &.mgroup-4,
     .mgroup-4 {
         --rgb: 220, 105, 102;
+        --rgb-filter: invert(57%) sepia(7%) saturate(4856%) hue-rotate(315deg) brightness(96%) contrast(78%);
     }
 
     //Writer
@@ -166,5 +171,15 @@ body {
     &.mgroup-6,
     .mgroup-6 {
         --rgb: 220, 105, 102;
+        --rgb-filter: invert(57%) sepia(7%) saturate(4856%) hue-rotate(315deg) brightness(96%) contrast(78%);
+    }
+
+    //Group One
+    &.g-7,
+    .g-7,
+    &.mgroup-7,
+    .mgroup-7 {
+        --rgb: 220, 105, 102;
+        --rgb-filter: invert(57%) sepia(7%) saturate(4856%) hue-rotate(315deg) brightness(96%) contrast(78%);
     }
 }

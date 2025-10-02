@@ -368,6 +368,18 @@ function rgbToHex(r, g, b) {
 function cleanText(text) {
 	return text.replaceAll(' ', '').replaceAll('&amp;', '').replaceAll('&', '').replaceAll(`'`, '').replaceAll(`"`, '').replaceAll(`.`, '').replaceAll(`(`, '').replaceAll(`)`, '').replaceAll(`,`, '').replaceAll(`’`, '').replaceAll(`é`, `e`).replaceAll(`è`, `e`).replaceAll(`ê`, `e`).replaceAll(`ë`, `e`).replaceAll(`ě`, `e`).replaceAll(`ẽ`, `e`).replaceAll(`ē`, `e`).replaceAll(`ė`, `e`).replaceAll(`ę`, `e`).replaceAll(`à`, `a`).replaceAll(`á`, `a`).replaceAll(`â`, `a`).replaceAll(`ä`, `a`).replaceAll(`ǎ`, `a`).replaceAll(`æ`, `ae`).replaceAll(`ã`, `a`).replaceAll(`å`, `a`).replaceAll(`ā`, `a`).replaceAll(`í`, `i`).replaceAll(`ì`, `i`).replaceAll(`ı`, `i`).replaceAll(`î`, `i`).replaceAll(`ï`, `i`).replaceAll(`ǐ`, `i`).replaceAll(`ĭ`, `i`).replaceAll(`ī`, `i`).replaceAll(`ĩ`, `i`).replaceAll(`į`, `i`).replaceAll(`ḯ`, `i`).replaceAll(`ỉ`, `i`).replaceAll(`ó`, `o`).replaceAll(`ò`, `o`).replaceAll(`ȯ`, `o`).replaceAll(`ô`, `o`).replaceAll(`ö`, `o`).replaceAll(`ǒ`, `o`).replaceAll(`ŏ`, `o`).replaceAll(`ō`, `o`).replaceAll(`õ`, `o`).replaceAll(`ǫ`, `o`).replaceAll(`ő`, `o`).replaceAll(`ố`, `o`).replaceAll(`ồ`, `o`).replaceAll(`ø`, `o`).replaceAll(`ṓ`, `o`).replaceAll(`ṑ`, `o`).replaceAll(`ȱ`, `o`).replaceAll(`ṍ`, `o`).replaceAll(`ú`, `u`).replaceAll(`ù`, `u`).replaceAll(`û`, `u`).replaceAll(`ü`, `u`).replaceAll(`ǔ`, `u`).replaceAll(`ŭ`, `u`).replaceAll(`ū`, `u`).replaceAll(`ũ`, `u`).replaceAll(`ů`, `u`).replaceAll(`ų`, `u`).replaceAll(`ű`, `u`).replaceAll(`ʉ`, `u`).replaceAll(`ǘ`, `u`).replaceAll(`ǜ`, `u`).replaceAll(`ǚ`, `u`).replaceAll(`ṹ`, `u`).replaceAll(`ǖ`, `u`).replaceAll(`ṻ`, `u`).replaceAll(`ủ`, `u`).replaceAll(`ȕ`, `u`).replaceAll(`ȗ`, `u`).replaceAll(`ư`, `u`);
 }
+function formatHeroName(name) {
+    let nameArray = capitalize(name).split(' ').filter(item => item !== '');
+    let formattedName = ``;
+    if(nameArray.length > 1) {
+        let surnames = [...nameArray];
+        surnames.shift();
+        formattedName = `<span class="big">${nameArray[0]}</span><span class="small">${surnames.join(' ')}</span>`
+    } else {
+        formattedName = `<span class="big">${nameArray[0]}</span>`;
+    }
+    return formattedName;
+}
 function formatName(name, singleStyle = 'span', highlight = null, includeSpace = false) {
     let nameArray = capitalize(name).split(' ').filter(item => item !== '');
     let formattedName = ``;
@@ -1608,9 +1620,9 @@ function initHashCarousel(defaultTab, progressBarClass, wrapperClass = '.carouse
         });
         slides.forEach(slide => {
             slide.style.left = `${index * -100}%`;
-        })
+        });
     } else {
-        wrapper.querySelector(`.bullet[title="${defaultTab}"]`).classList.add('is-active');
+        wrapper.querySelector(`.bullet[data-tab="${defaultTab}"]`).classList.add('is-active');
     }
     if(progressBarClass) {
         let carousels = document.querySelectorAll(wrapperClass);
@@ -1667,8 +1679,6 @@ function carouselArrowAct(index, bullets, slides, wrapper, progressBar) {
     }
 
     if(progressBar) {
-        console.log(index + 1);
-        console.log(slides.length);
         progressBar.style.width = `${((index + 1) / slides.length) * 100}%`;
     }
 }
@@ -1887,7 +1897,7 @@ function sendAjax(form, data, staffDiscord, publicDiscord, async = true) {
         dataType: "json", 
         success: function () {
             console.log('success');
-            if(staffDiscord) {
+            if(staffDiscord && form) {
                 sendDiscordMessage(`https://discord.com/api/webhooks/${staffDiscord.hook}`, staffDiscord.title, staffDiscord.text, staffDiscord.notification, staffDiscord.color);
             }
         },
@@ -1900,17 +1910,20 @@ function sendAjax(form, data, staffDiscord, publicDiscord, async = true) {
         complete: function () {
             if(form) {
                 setFormStatus(form, false);
-            
-                if(staffDiscord.success || publicDiscord.success || successMessage) {
-                    form.innerHTML = staffDiscord.success ? staffDiscord.success : publicDiscord.success ? publicDiscord.success : successMessage;
+                
+                if(successMessage) {
+                    form.innerHTML = successMessage;
                 }
+    
+                window.scrollTo(0, 0);
             }
-
-            window.scrollTo(0, 0);
             
             console.log('complete');
-            if(publicDiscord) {
+            if(publicDiscord && form) {
                 sendDiscordMessage(`https://discord.com/api/webhooks/${publicDiscord.hook}`, publicDiscord.title, publicDiscord.text, publicDiscord.notification, publicDiscord.color);
+            }
+            if(staffDiscord && !form) {
+                sendDiscordMessage(`https://discord.com/api/webhooks/${staffDiscord.hook}`, staffDiscord.title, staffDiscord.text, staffDiscord.notification, staffDiscord.color);
             }
         }
     }).then(() => {

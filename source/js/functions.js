@@ -1,26 +1,9 @@
 /***** Profile *****/
-function formatAesthetics(aesthetics, images) {
-    let imageHTML;
-    switch (aesthetics) {
-        case 'Mosaic':
-            imageHTML = `<span class="twoWide"><img src="${images['square-1']}" title="Square #1" alt="Square #1" loading="lazy" /></span>
-                <span class="twoWide"><img src="${images['square-2']}" title="Square #2" alt="Square #2" loading="lazy" /></span>
-                <span><img src="${images['tall-1']}" title="Tall #1" alt="Tall #1" loading="lazy" /></span>
-                <span class="twoWide"><img src="${images['square-3']}" title="Square #3" alt="Square #3" loading="lazy" /></span>
-                <span class="twoHigh"><img src="${images['tall-2']}" title="Tall #2" alt="Tall #2" loading="lazy" /></span>
-                <span class="threeWide"><img src="${images['wide-1']}" title="Wide #1" alt="Wide #1" loading="lazy" /></span>`;
-            break;
-        case 'Grid':
-            imageHTML = `<span class="twoWide"><img src="${images['wide-1']}" title="Wide #1" alt="Wide #1" loading="lazy" /></span>
-                <span class="twoHigh"><img src="${images['tall-1']}" title="Tall #1" alt="Tall #1" loading="lazy" /></span>
-                <span><img src="${images['square-1']}" title="Square #1" alt="Square #1" loading="lazy" /></span>
-                <span><img src="${images['square-2']}" title="Square #2" alt="Square #2" loading="lazy" /></span>`;
-            break;
-        case 'Single':
-        default: 
-        imageHTML = `<span><img src="${images['tall-1']}" title="Tall #1" alt="Tall #1" loading="lazy" /></span>`;
-            break;
-    }
+function formatAesthetics(images) {
+    let imageHTML = ``;
+    images.forEach((image, i) => {
+        imageHTML += `<img src="${image}" title="Aesthetic Image #${i + 1}" alt="Aesthetic Image #${i + 1}" loading="lazy" />`;
+    })
     return imageHTML;
 }
 function setRoster() {   
@@ -36,19 +19,132 @@ function setRoster() {
         document.querySelector('.profile--roster').insertAdjacentHTML('beforeend', html);
     });
 }
-function initProfile (title, ratings) {
-    document.querySelector('.profile--header h1').innerHTML = capitalize(title);
-    ratings.forEach(rating => formatRating(rating));
-    removeBlankFields();
+function initProfile(type, data, id, avatar, posts, money, awards) {
+    let tab = document.querySelector('.profile--slide[data-tab="player"]');
+
+    let leftColumn = ``;
+    if(type === 'member') {
+        leftColumn = `<div class="container"><div class="scroll"><div class="profile--roster"></div></div></div>`;
+    } else {
+        leftColumn = `<img src="${avatar}" loading="lazy" />`;
+    }
+
+    if(data.length > 0) {
+        data = data.filter(item => item.AccountID === id);
+        if(data.length > 0) {
+            data = data.map(item => ({
+                ...item,
+                Ratings: JSON.parse(item.Ratings),
+                Style: JSON.parse(item.Style)
+            }))[0];
+            if(type === 'character') {
+                document.querySelector('.profile--page[data-tab="player"] > span').innerHTML = data.Member;
+            }
+            tab.innerHTML = `<div class="profile--tab">
+                <div class="profile--tab-title">
+                    <div class="h2">${data.Member}</div>
+                    <div class="profile--tab-title-sub links">
+                        <span>${data.Pronouns}</span>
+                        <span>${data.Age}</span>
+                        <span>${data.Timezone}</span>
+                    </div>
+                </div>
+                <div class="profile--tab-inner">
+                    <div class="profile--tab-column">
+                        ${leftColumn}
+                    </div>
+                    <div class="profile--tab-column">
+                        <div class="container">
+                            <div class="scroll">
+                                <div class="items">
+                                    <div class="items--item">
+                                        <b>Comfort Zone</b>
+                                        <span>
+                                            <span><u>L</u><lang-clip>${data.Ratings.lang}</lang-clip></span>
+                                            <span><u>S</u><sex-clip>${data.Ratings.sex}</sex-clip></span>
+                                            <span><u>V</u><vio-clip>${data.Ratings.vio}</vio-clip></span>
+                                        </span>
+                                    </div>
+                                    <div class="items--item">
+                                        <b>Style</b>
+                                        <span>${data.Style.pov}, ${data.Style.tense}</span>
+                                    </div>
+                                    <div class="items--item">
+                                        <b>Writes</b>
+                                        <span>${data.Frequency}</span>
+                                    </div>
+                                    <div class="items--item">
+                                        <b>Stats</b>
+                                        <span>${posts} Posts, $${money}</span>
+                                    </div>
+                                    <div class="items--item">
+                                        <b>Please Avoid</b>
+                                        <span>${data.Triggers}</span>
+                                    </div>
+                                    <div class="items--item">
+                                        <b>Awards</b>
+                                        <span class="awards">${awards}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        } else {
+            if(type === 'character') {
+                document.querySelector('.profile--page[data-tab="player"] > span').innerHTML = `Pending`;
+            }
+            tab.innerHTML = `<div class="profile--tab">
+                <div class="profile--tab-title">
+                    <div class="h2">Pending</div>
+                </div>
+                <div class="profile--tab-inner">
+                    <div class="profile--tab-column">
+                        ${leftColumn}
+                    </div>
+                    <div class="profile--tab-column">
+                        <div class="container">
+                            <div class="scroll">
+                                Member data pending
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        }
+    } else {
+        if(type === 'character') {
+            document.querySelector('.profile--page[data-tab="player"] > span').innerHTML = `Pending`;
+        }
+        tab.innerHTML = `<div class="profile--tab">
+            <div class="profile--tab-title">
+                <div class="h2">Pending</div>
+            </div>
+            <div class="profile--tab-inner">
+                <div class="profile--tab-column">
+                    ${leftColumn}
+                </div>
+                <div class="profile--tab-column">
+                    <div class="container">
+                        <div class="scroll">
+                            Member data pending
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+    }
 }
-function initCharacter(aesthetics, images, overflow, title, birthday, isLocal = false) {
+function initCharacter(images, overflow, title, birthday, speciality, isLocal = false) {
+    document.querySelector('.profile--header h1').innerHTML = formatHeroName(capitalize(title));
+
     //remove member sections
     document.querySelectorAll('.memAccOnly').forEach(item => item.remove());
 
     //set up aesthetics
-    if(aesthetics !== `<i>No Information</i>` && aesthetics !== ``) {
-        document.querySelector('.profile--aesthetic').innerHTML = formatAesthetics(aesthetics, images);
-    }
+    document.querySelector('.profile--aesthetics.top-left').innerHTML = formatAesthetics(images.splice(4, 7));
+    document.querySelector('.profile--aesthetics.bottom-right').innerHTML = formatAesthetics(images.splice(0, 4));
 
     //set up age & birthday
     document.querySelector('age-clip').innerText = calculateAge(birthday);
@@ -60,13 +156,30 @@ function initCharacter(aesthetics, images, overflow, title, birthday, isLocal = 
 
     //Freeform Overflow
     if(overflow !== `` && overflow !== `<i>No Information</i>`) {
-        document.querySelector('.clip-freeform-overflow').insertAdjacentHTML('beforeend', overflow);
+        document.querySelector('.freeform .scroll').insertAdjacentHTML('beforeend', overflow);
+    }
+
+    //Specialty Fields
+    if(speciality) {
+        let preceding = document.querySelector('.clip-specialty-fields');
+        let html = `<div class="items--item ${speciality.field1.optional ? 'optional' : ''}">
+                <b>${speciality.field1.title}</b>
+                <span>${speciality.field1.value}</span>
+            </div>
+            <div class="items--item ${speciality.field2.optional ? 'optional' : ''}">
+                <b>${speciality.field2.title}</b>
+                <span>${speciality.field2.value}</span>
+            </div>`;
+        preceding.insertAdjacentHTML('afterend', html);
     }
 
     //Tracker
+    initAccordion();
     if(!isLocal) {
         FillTracker(title, trackerParams);
     }
+
+    initHashCarousel('intro', '.profile--progress-bar');
 }
 function initMember() {
     //remove character only sections
@@ -120,15 +233,18 @@ function submitMemberData(e) {
 
     let form = document.querySelector('#ucpcontent form'),
         accountId = document.querySelector('body').dataset.accountId,
-        alias = form.querySelector('#field_3_input'),
-        pronouns = form.querySelector('#field_4_input'),
-        age = form.querySelector('#field_5_input'),
-        timezone = form.querySelector('#field_6_input'),
-        mature = form.querySelector('#field_7_input'),
-        pov = form.querySelector('#field_8_input'),
-        tense = form.querySelector('#field_9_input'),
-        triggers = form.querySelector('#field_10_input'),
-        image = form.querySelector('#field_60_input');
+        alias = form.querySelector('#field_2_input'),
+        pronouns = form.querySelector('#field_3_input'),
+        age = form.querySelector('#field_4_input'),
+        timezone = form.querySelector('#field_5_input'),
+        language = form.querySelector('#field_6_input'),
+        sexual = form.querySelector('#field_7_input'),
+        violence = form.querySelector('#field_8_input'),
+        pov = form.querySelector('#field_9_input'),
+        tense = form.querySelector('#field_10_input'),
+        activity = form.querySelector('#field_11_input'),
+        intro = form.querySelector('#field_12_input'),
+        triggers = form.querySelector('#field_13_input');
 
     let sheetData = {
         SubmissionType: `edit-member`,
@@ -136,11 +252,18 @@ function submitMemberData(e) {
         Pronouns: getStandardValue(pronouns),
         Age: getValue(age),
         Timezone: getStandardValue(timezone),
-        Mature: getSelectText(mature),
-        POV: getSelectText(pov),
-        Tense: getSelectText(tense),
-        Image: getValue(image),
+        About: getValue(intro),
         Triggers: getValue(triggers),
+        Ratings: JSON.stringify({
+            lang: getSelectValue(language),
+            sex: getSelectValue(sexual),
+            vio: getSelectValue(violence)
+        }),
+        Style: JSON.stringify({
+            pov: getSelectText(pov),
+            tense: getSelectText(tense)
+        }),
+        Frequency: getSelectText(activity),
     }
 
     fetch(members)
@@ -210,44 +333,50 @@ function editMember(existing, data) {
         changeMessage += `**Timezone:** ${existing.Timezone}`;
     }
 
-    if(data.Mature !== original.Mature) {
-        existing.Mature = data.Mature;
+    if(data.Frequency !== original.Frequency) {
+        existing.Frequency = data.Frequency;
         if(initialMessage !== '') {
             initialMessage += `\n`;
             changeMessage += `\n`;
         }
-        initialMessage += `**Mature:** ${original.Mature}\n`;
-        changeMessage += `**Mature:** ${existing.Mature}\n`;
+        initialMessage += `**Frequency:** ${original.Frequency}`;
+        changeMessage += `**Frequency:** ${existing.Frequency}`;
     }
 
-    if(data.POV !== original.POV) {
-        existing.POV = data.POV;
+    if(data.Ratings !== original.Ratings) {
+        existing.Ratings = data.Ratings;
         if(initialMessage !== '') {
             initialMessage += `\n`;
             changeMessage += `\n`;
         }
-        initialMessage += `**POV:** ${original.POV}`;
-        changeMessage += `**POV:** ${existing.POV}`;
+        let originalRatings = JSON.parse(original.Ratings);
+        let newRatings = JSON.parse(existing.Ratings);
+        initialMessage += `**Ratings:** ${originalRatings.lang}-${originalRatings.sex}-${originalRatings.vio}`;
+        changeMessage += `**Ratings:** ${newRatings.lang}-${newRatings.sex}-${newRatings.vio}`;
     }
 
-    if(data.Tense !== original.Tense) {
-        existing.Tense = data.Tense;
+    if(data.Style !== original.Style) {
+        existing.Style = data.Style;
         if(initialMessage !== '') {
             initialMessage += `\n`;
             changeMessage += `\n`;
         }
-        initialMessage += `**Tense:** ${original.Tense}`;
-        changeMessage += `**Tense:** ${existing.Tense}`;
+        let originalStyle = JSON.parse(original.Style);
+        let newStyle = JSON.parse(existing.Style);
+        initialMessage += `**Style:** ${originalStyle.pov}, ${originalStyle.tense}`;
+        changeMessage += `**Style:** ${newStyle.pov}, ${newStyle.tense}`;
     }
 
-    if(data.Image !== original.Image) {
-        existing.Image = data.Image;
+    if(data.About !== original.About) {
+        existing.About = data.About;
         if(initialMessage !== '') {
             initialMessage += `\n`;
             changeMessage += `\n`;
         }
-        initialMessage += `**Image:** <${original.Image}>`;
-        changeMessage += `**Image:** <${existing.Image}>`;
+        initialMessage += `**Intro:**
+        > ${original.About}\n`;
+        changeMessage += `**Intro:**
+        > ${existing.About}\n`;
     }
 
     if(data.Triggers !== original.Triggers) {
@@ -281,97 +410,81 @@ function editMember(existing, data) {
 
 /****** UserCP/Messages ******/
 function cpShift() {
-	let imageType = document.querySelector(toggleFields[1]).value,
+	let creatureType = document.querySelector(toggleFields[2]).value,
+        characterType = document.querySelector(toggleFields[1]).value,
 	    account = document.querySelector(toggleFields[0]).value,
 	    showFields = [],
-	    hideFields = characterFields
-                    .concat(defaultImages)
-                    .concat(gridImages)
-                    .concat(mosaicImages),
+	    hideFields = [...characterFields, ...memberFields, ...deityFields, ...heroFields, ...creatureFields, ...spiritFields, ...beastFields, ...mortalFields],
 	    showHeaders = allHeaders;
 
 	if(account.toLowerCase() == 'character') {
-        if(imageType.toLowerCase() === 'grid') {
-            showFields = characterFields
-                        .concat(defaultImages)
-                        .concat(gridImages);
-            hideFields = mosaicImages;
-            showHeaders = allHeaders
-                        .concat(charHeaders);
-            document.querySelector(defaultImages[0]).classList.remove('fullWidth');
-        } else if (imageType.toLowerCase() === 'mosaic') {
-            showFields = characterFields
-                        .concat(defaultImages)
-                        .concat(gridImages)
-                        .concat(mosaicImages);
-            hideFields = [];
-            showHeaders = allHeaders
-                        .concat(charHeaders);
-            document.querySelector(defaultImages[0]).classList.remove('fullWidth');
+        showHeaders = [...allHeaders, ...charHeaders];
+        showFields = [...characterFields];
+        hideFields = [...memberFields];
+
+        if(characterType.toLowerCase() === 'deity') {
+            showFields = [...showFields, ...deityFields];
+            hideFields = [...hideFields, ...heroFields, ...creatureFields, ...mortalFields, ...spiritFields, ...beastFields];
+        } else if(characterType.toLowerCase() === 'hero') {
+            showFields = [...showFields, ...heroFields];
+            hideFields = [...hideFields, ...deityFields, ...creatureFields, ...mortalFields, ...spiritFields, ...beastFields];
+        } else if(characterType.toLowerCase() === 'creature') {
+            if(creatureType.toLowerCase() === 'beast') {
+                showFields = [...showFields, ...creatureFields, ...beastFields];
+                hideFields = [...hideFields, ...heroFields, ...deityFields, ...mortalFields, ...spiritFields];
+            } else if (creatureType.toLowerCase() === 'spirit') {
+                showFields = [...showFields, ...creatureFields, ...spiritFields];
+                hideFields = [...hideFields, ...heroFields, ...deityFields, ...mortalFields, ...beastFields];
+            } else {
+                showFields = [...showFields, ...creatureFields];
+                hideFields = [...hideFields, ...heroFields, ...deityFields, ...mortalFields, ...spiritFields, ...beastFields];
+            }
+        } else if(characterType.toLowerCase() === 'mortal') {
+            showFields = [...showFields, ...mortalFields];
+            hideFields = [...hideFields, ...heroFields, ...creatureFields, ...deityFields, ...spiritFields, ...beastFields];
         } else {
-            showFields = characterFields
-                        .concat(defaultImages);
-            hideFields = gridImages
-                        .concat(mosaicImages);
-            showHeaders = allHeaders
-                        .concat(charHeaders);
-            document.querySelector(defaultImages[0]).classList.add('fullWidth');
+            hideFields = [...hideFields, ...mortalFields, ...heroFields, ...creatureFields, ...deityFields, ...spiritFields, ...beastFields];
         }
+    } else {
+        showHeaders = [...allHeaders];
+        showFields = [...memberFields];
+        hideFields = [...characterFields, ...deityFields, ...heroFields, ...creatureFields, ...mortalFields, ...spiritFields, ...beastFields];
+        completed = checkMemberInputs();
+
+        if(completed) {
+            document.querySelector('.sheet-button').classList.remove('hidden');
+            document.querySelector('.sheet-button + *').classList.add('hidden');
+        } else {
+            document.querySelector('.sheet-button').classList.add('hidden');
+            document.querySelector('.sheet-button + *').classList.remove('hidden');
+        }
+
+        memberInputs.forEach(input => {
+            document.querySelector(input).addEventListener('change', () => {
+                completed = checkMemberInputs();
+                if(completed) {
+                    document.querySelector('.sheet-button').classList.remove('hidden');
+                    document.querySelector('.sheet-button + *').classList.add('hidden');
+                } else {
+                    document.querySelector('.sheet-button').classList.add('hidden');
+                    document.querySelector('.sheet-button + *').classList.remove('hidden');
+                }
+            });
+        });
     }
-    
+
     adjustCP(showFields, hideFields, showHeaders);
 }
-function setUpAesthetics() {
-    let aestheticsObj = {
-        'tall-1': document.querySelector('#field_20_input').value,
-        'tall-2': document.querySelector('#field_21_input').value,
-        'wide-1': document.querySelector('#field_22_input').value,
-        'square-1': document.querySelector('#field_23_input').value,
-        'square-2': document.querySelector('#field_24_input').value,
-        'square-3': document.querySelector('#field_25_input').value,
-    };
-    let aesthetics = getSelectText(document.querySelector('#field_19_input')).replace(' ', '');
-    return {aestheticsObj, aesthetics};
-}
-function ucpAesthetics() {
-    let imageObj = setUpAesthetics().aestheticsObj;
-    let aesthetics = setUpAesthetics().aesthetics;
+function checkMemberInputs() {
+    let completed = true;
 
-    let aestheticsSample = document.querySelector('.ucp--description[data-section="Aesthetics"] .sample');
-    if(aestheticsSample) {
-        aestheticsSample.classList.add(aesthetics.replace(' ', ''));
-        aestheticsSample.innerHTML = formatAesthetics(aesthetics, imageObj);
-    }
-}
-function ucpAvatars() {
-    let avatarSample = document.querySelector('.ucp--description[data-section="Images"] .sample');
-    let avatarObj = {
-        'tall': document.querySelector('#field_17_input').value,
-        'wide': document.querySelector('#field_18_input').value,
-    }
-    let { aesthetics, aestheticsObj } = setUpAesthetics();
-
-    let accType = getSelectText(document.querySelector('#field_1_input'));
-    if(avatarSample) {
-        let html = `<div><strong>Avatars</strong>
-            <div class="avatars">
-            ${formatAvatars(avatarObj)}
-        </div></div>`;
-
-        if(accType === 'character') {
-            html += `<div><strong>Aesthetics</strong>
-                <div class="profile--aesthetic ${aesthetics}">
-                ${formatAesthetics(aesthetics, aestheticsObj)}
-            </div></div>`;
+    memberInputs.forEach(field => {
+        if(!document.querySelector(field).value) {
+            completed = false;
         }
-        
-        avatarSample.innerHTML = html;
-    }
-}
-function formatAvatars(images) {
-    let imageHTML = `<span class="tall"><img src="${images['tall']}" title="Tall Avatar" alt="Tall Avatar" loading="lazy" /></span>
-    <span class="wide"><img src="${images['wide']}" title="Wide Avatar" alt="Wide Avatar" loading="lazy" /></span>`;
-    return imageHTML;
+    });
+
+    return completed;
 }
 function createFieldArray(arr, input = false) {
     if(input) {

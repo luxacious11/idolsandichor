@@ -19,6 +19,21 @@
         opacity: var(--opacity-texture);
     }
 }
+@mixin pattern() {
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        filter: var(--rgb-filter);
+        opacity: 0.7;
+        background-size: 600px;
+        background-repeat: repeat;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 1422 800" opacity="0.57"><g stroke-width="1" stroke="%23000000" fill="none" stroke-linecap="square"><line x1="74" y1="0" x2="0" y2="74" opacity="0.65"></line><line x1="148" y1="0" x2="74" y2="74" opacity="0.84"></line><line x1="222" y1="0" x2="148" y2="74" opacity="0.27"></line><line x1="222" y1="0" x2="296" y2="74" opacity="0.84"></line><line x1="370" y1="0" x2="296" y2="74" opacity="0.79"></line><line x1="444" y1="0" x2="370" y2="74" opacity="0.27"></line><line x1="518" y1="0" x2="444" y2="74" opacity="0.98"></line><line x1="592" y1="0" x2="518" y2="74" opacity="0.43"></line><line x1="666" y1="0" x2="592" y2="74" opacity="0.67"></line><line x1="666" y1="0" x2="740" y2="74" opacity="0.67"></line><line x1="814" y1="0" x2="740" y2="74" opacity="0.46"></line><line x1="814" y1="0" x2="888" y2="74" opacity="0.08"></line><line x1="962" y1="0" x2="888" y2="74" opacity="0.75"></line><line x1="1036" y1="0" x2="962" y2="74" opacity="0.68"></line><line x1="1036" y1="0" x2="1110" y2="74" opacity="0.70"></line><line x1="1184" y1="0" x2="1110" y2="74" opacity="0.89"></line><line x1="1184" y1="0" x2="1258" y2="74" opacity="0.49"></line><line x1="1258" y1="0" x2="1332" y2="74" opacity="0.80"></line><line x1="1406" y1="0" x2="1332" y2="74" opacity="0.27"></line><line x1="1480" y1="0" x2="1406" y2="74" opacity="0.49"></line><line x1="0" y1="74" x2="74" y2="148" opacity="0.93"></line><line x1="74" y1="74" x2="148" y2="148" opacity="0.10"></line><line x1="222" y1="74" x2="148" y2="148" opacity="0.55"></line><line x1="222" y1="74" x2="296" y2="148" opacity="0.39"></line><line x1="370" y1="74" x2="296" y2="148" opacity="0.77"></line><line x1="444" y1="74" x2="370" y2="148" opacity="0.86"></line><line x1="444" y1="74" x2="518" y2="148" opacity="0.12"></line><line x1="518" y1="74" x2="592" y2="148" opacity="0.71"></line><line x1="592" y1="74" x2="666" y2="148" opacity="0.79"></line><line x1="666" y1="74" x2="740" y2="148" opacity="0.75"></line><line x1="740" y1="74" x2="814" y2="148" opacity="0.24"></line><line x1="888" y1="74" x2="814" y2="148" opacity="0.18"></line><line x1="962" y1="74" x2="888" y2="148" opacity="0.29"></line><line x1="1036" y1="74" x2="962" y2="148" opacity="0.82"></line><line x1="1036" y1="74" x2="1110" y2="148" opacity="0.60"></line><line x1="1184" y1="74" x2="1110" y2="148" opacity="1.00"></line><line x1="1184" y1="74" x2="1258" y2="148" opacity="0.78"></line><line x1="1258" y1="74" x2="1332" y2="148" opacity="0.88"></line><line x1="1332" y1="74" x2="1406" y2="148" opacity="0.98"></line><line x1="1406" y1="74" x2="1480" y2="148" opacity="0.29"></line><line x1="74" y1="148" x2="0" y2="222" opacity="0.18"></line><line x1="148" y1="148" x2="74" y2="222" opacity="0.22"></line><line x1="222" y1="148" x2="148" y2="222" opacity="0.08"></line><line x1="296" y1="148" x2="222" y2="222" opacity="0.43"></line><line x1="370" y1="148" x2="296" y2="222" opacity="0.29"></line><line x1="370" y1="148" x2="444" y2="222" opacity="0.60"></line><line x1="518" y1="148" x2="444" y2="222" opacity="0.51"></line><line x1="518" y1="148" x2="592" y2="222" opacity="0.56"></line><line x1="666" y1="148" x2="592" y2="222" opacity="0.27"></line><line x1="740" y1="148" x2="666" y2="222" opacity="0.62"></line><line x1="740" y1="148" x2="814" y2="222" opacity="0.55"></line><line x1="888" y1="148" x2="814" y2="222" opacity="0.33"></line><line x1="888" y1="148" x2="962" y2="222" opacity="0.72"></line><line x1="1036" y1="148" x2="962" y2="222" opacity="0.39"></line><line x1="1110" y1="148" x2="1036" y2="222" opacity="0.53"></line><line x1="1184" y1="148" x2="1110" y2="222" opacity="0.96"></line><line x1="1184" y1="148" x2="1258" y2="222" opacity="0.94"></line><line x1="1332" y1="148" x2="1258" y2="222" opacity="0.62"></line><line x1="1406" y1="148" x2="1332" y2="222" opacity="0.83"></line><line x1="1480" y1="148" x2="1406" y2="222" opacity="0.08"></line><line x1="74" y1="222" x2="0" y2="296" opacity="0.41"></line><line x1="148" y1="222" x2="74" y2="296" opacity="0.77"></line><line x1="148" y1="222" x2="222" y2="296" opacity="0.81"></line><line x1="222" y1="222" x2="296" y2="296" opacity="0.48"></line><line x1="370" y1="222" x2="296" y2="296" opacity="0.21"></line><line x1="370" y1="222" x2="444" y2="296" opacity="0.55"></line><line x1="518" y1="222" x2="444" y2="296" opacity="0.23"></line><line x1="592" y1="222" x2="518" y2="296" opacity="0.32"></line><line x1="592" y1="222" x2="666" y2="296" opacity="0.35"></line><line x1="666" y1="222" x2="740" y2="296" opacity="0.68"></line><line x1="814" y1="222" x2="740" y2="296" opacity="0.72"></line><line x1="814" y1="222" x2="888" y2="296" opacity="0.56"></line><line x1="888" y1="222" x2="962" y2="296" opacity="0.71"></line><line x1="962" y1="222" x2="1036" y2="296" opacity="0.62"></line><line x1="1110" y1="222" x2="1036" y2="296" opacity="0.72"></line><line x1="1110" y1="222" x2="1184" y2="296" opacity="0.56"></line><line x1="1258" y1="222" x2="1184" y2="296" opacity="0.61"></line><line x1="1258" y1="222" x2="1332" y2="296" opacity="0.93"></line><line x1="1406" y1="222" x2="1332" y2="296" opacity="0.76"></line><line x1="1406" y1="222" x2="1480" y2="296" opacity="0.16"></line><line x1="0" y1="296" x2="74" y2="370" opacity="0.12"></line><line x1="74" y1="296" x2="148" y2="370" opacity="0.59"></line><line x1="148" y1="296" x2="222" y2="370" opacity="0.44"></line><line x1="222" y1="296" x2="296" y2="370" opacity="0.76"></line><line x1="296" y1="296" x2="370" y2="370" opacity="0.17"></line><line x1="370" y1="296" x2="444" y2="370" opacity="0.50"></line><line x1="444" y1="296" x2="518" y2="370" opacity="0.82"></line><line x1="518" y1="296" x2="592" y2="370" opacity="0.50"></line><line x1="592" y1="296" x2="666" y2="370" opacity="0.40"></line><line x1="666" y1="296" x2="740" y2="370" opacity="0.69"></line><line x1="740" y1="296" x2="814" y2="370" opacity="0.83"></line><line x1="888" y1="296" x2="814" y2="370" opacity="0.45"></line><line x1="962" y1="296" x2="888" y2="370" opacity="0.71"></line><line x1="962" y1="296" x2="1036" y2="370" opacity="0.74"></line><line x1="1110" y1="296" x2="1036" y2="370" opacity="0.87"></line><line x1="1184" y1="296" x2="1110" y2="370" opacity="0.94"></line><line x1="1184" y1="296" x2="1258" y2="370" opacity="0.60"></line><line x1="1258" y1="296" x2="1332" y2="370" opacity="0.39"></line><line x1="1332" y1="296" x2="1406" y2="370" opacity="0.83"></line><line x1="1480" y1="296" x2="1406" y2="370" opacity="0.21"></line><line x1="0" y1="370" x2="74" y2="444" opacity="0.79"></line><line x1="74" y1="370" x2="148" y2="444" opacity="0.17"></line><line x1="222" y1="370" x2="148" y2="444" opacity="0.09"></line><line x1="222" y1="370" x2="296" y2="444" opacity="0.18"></line><line x1="370" y1="370" x2="296" y2="444" opacity="0.90"></line><line x1="444" y1="370" x2="370" y2="444" opacity="0.95"></line><line x1="518" y1="370" x2="444" y2="444" opacity="0.82"></line><line x1="592" y1="370" x2="518" y2="444" opacity="0.89"></line><line x1="592" y1="370" x2="666" y2="444" opacity="0.79"></line><line x1="666" y1="370" x2="740" y2="444" opacity="0.94"></line><line x1="814" y1="370" x2="740" y2="444" opacity="0.97"></line><line x1="888" y1="370" x2="814" y2="444" opacity="0.80"></line><line x1="962" y1="370" x2="888" y2="444" opacity="0.67"></line><line x1="1036" y1="370" x2="962" y2="444" opacity="0.49"></line><line x1="1110" y1="370" x2="1036" y2="444" opacity="0.36"></line><line x1="1184" y1="370" x2="1110" y2="444" opacity="0.63"></line><line x1="1258" y1="370" x2="1184" y2="444" opacity="0.69"></line><line x1="1332" y1="370" x2="1258" y2="444" opacity="0.27"></line><line x1="1332" y1="370" x2="1406" y2="444" opacity="0.34"></line><line x1="1406" y1="370" x2="1480" y2="444" opacity="0.76"></line><line x1="0" y1="444" x2="74" y2="518" opacity="0.21"></line><line x1="74" y1="444" x2="148" y2="518" opacity="0.45"></line><line x1="148" y1="444" x2="222" y2="518" opacity="0.62"></line><line x1="222" y1="444" x2="296" y2="518" opacity="0.72"></line><line x1="370" y1="444" x2="296" y2="518" opacity="0.34"></line><line x1="444" y1="444" x2="370" y2="518" opacity="0.76"></line><line x1="518" y1="444" x2="444" y2="518" opacity="0.98"></line><line x1="518" y1="444" x2="592" y2="518" opacity="0.58"></line><line x1="666" y1="444" x2="592" y2="518" opacity="0.41"></line><line x1="666" y1="444" x2="740" y2="518" opacity="0.81"></line><line x1="814" y1="444" x2="740" y2="518" opacity="0.83"></line><line x1="888" y1="444" x2="814" y2="518" opacity="0.71"></line><line x1="962" y1="444" x2="888" y2="518" opacity="0.46"></line><line x1="962" y1="444" x2="1036" y2="518" opacity="0.81"></line><line x1="1110" y1="444" x2="1036" y2="518" opacity="0.31"></line><line x1="1110" y1="444" x2="1184" y2="518" opacity="0.95"></line><line x1="1184" y1="444" x2="1258" y2="518" opacity="0.27"></line><line x1="1258" y1="444" x2="1332" y2="518" opacity="0.41"></line><line x1="1332" y1="444" x2="1406" y2="518" opacity="0.91"></line><line x1="1406" y1="444" x2="1480" y2="518" opacity="0.99"></line><line x1="74" y1="518" x2="0" y2="592" opacity="0.47"></line><line x1="148" y1="518" x2="74" y2="592" opacity="0.73"></line><line x1="148" y1="518" x2="222" y2="592" opacity="0.08"></line><line x1="222" y1="518" x2="296" y2="592" opacity="0.40"></line><line x1="296" y1="518" x2="370" y2="592" opacity="0.34"></line><line x1="444" y1="518" x2="370" y2="592" opacity="0.62"></line><line x1="444" y1="518" x2="518" y2="592" opacity="0.48"></line><line x1="592" y1="518" x2="518" y2="592" opacity="0.73"></line><line x1="666" y1="518" x2="592" y2="592" opacity="0.42"></line><line x1="740" y1="518" x2="666" y2="592" opacity="0.46"></line><line x1="740" y1="518" x2="814" y2="592" opacity="0.77"></line><line x1="888" y1="518" x2="814" y2="592" opacity="0.09"></line><line x1="888" y1="518" x2="962" y2="592" opacity="0.95"></line><line x1="962" y1="518" x2="1036" y2="592" opacity="0.66"></line><line x1="1036" y1="518" x2="1110" y2="592" opacity="0.10"></line><line x1="1110" y1="518" x2="1184" y2="592" opacity="0.72"></line><line x1="1258" y1="518" x2="1184" y2="592" opacity="0.56"></line><line x1="1258" y1="518" x2="1332" y2="592" opacity="0.08"></line><line x1="1406" y1="518" x2="1332" y2="592" opacity="0.22"></line><line x1="1406" y1="518" x2="1480" y2="592" opacity="0.26"></line><line x1="74" y1="592" x2="0" y2="666" opacity="0.77"></line><line x1="148" y1="592" x2="74" y2="666" opacity="0.77"></line><line x1="222" y1="592" x2="148" y2="666" opacity="0.17"></line><line x1="296" y1="592" x2="222" y2="666" opacity="0.71"></line><line x1="296" y1="592" x2="370" y2="666" opacity="0.61"></line><line x1="370" y1="592" x2="444" y2="666" opacity="0.78"></line><line x1="518" y1="592" x2="444" y2="666" opacity="0.31"></line><line x1="518" y1="592" x2="592" y2="666" opacity="0.52"></line><line x1="666" y1="592" x2="592" y2="666" opacity="0.84"></line><line x1="666" y1="592" x2="740" y2="666" opacity="0.26"></line><line x1="740" y1="592" x2="814" y2="666" opacity="0.48"></line><line x1="888" y1="592" x2="814" y2="666" opacity="0.20"></line><line x1="888" y1="592" x2="962" y2="666" opacity="0.45"></line><line x1="962" y1="592" x2="1036" y2="666" opacity="0.28"></line><line x1="1110" y1="592" x2="1036" y2="666" opacity="0.23"></line><line x1="1184" y1="592" x2="1110" y2="666" opacity="0.78"></line><line x1="1184" y1="592" x2="1258" y2="666" opacity="0.57"></line><line x1="1332" y1="592" x2="1258" y2="666" opacity="0.31"></line><line x1="1406" y1="592" x2="1332" y2="666" opacity="0.18"></line><line x1="1480" y1="592" x2="1406" y2="666" opacity="0.87"></line><line x1="74" y1="666" x2="0" y2="740" opacity="0.08"></line><line x1="74" y1="666" x2="148" y2="740" opacity="0.96"></line><line x1="222" y1="666" x2="148" y2="740" opacity="0.78"></line><line x1="222" y1="666" x2="296" y2="740" opacity="0.86"></line><line x1="296" y1="666" x2="370" y2="740" opacity="0.93"></line><line x1="444" y1="666" x2="370" y2="740" opacity="0.56"></line><line x1="518" y1="666" x2="444" y2="740" opacity="0.17"></line><line x1="592" y1="666" x2="518" y2="740" opacity="0.24"></line><line x1="666" y1="666" x2="592" y2="740" opacity="0.16"></line><line x1="740" y1="666" x2="666" y2="740" opacity="0.85"></line><line x1="814" y1="666" x2="740" y2="740" opacity="0.09"></line><line x1="814" y1="666" x2="888" y2="740" opacity="0.10"></line><line x1="888" y1="666" x2="962" y2="740" opacity="0.11"></line><line x1="962" y1="666" x2="1036" y2="740" opacity="0.62"></line><line x1="1110" y1="666" x2="1036" y2="740" opacity="0.51"></line><line x1="1184" y1="666" x2="1110" y2="740" opacity="0.28"></line><line x1="1258" y1="666" x2="1184" y2="740" opacity="0.38"></line><line x1="1332" y1="666" x2="1258" y2="740" opacity="0.24"></line><line x1="1406" y1="666" x2="1332" y2="740" opacity="0.62"></line><line x1="1406" y1="666" x2="1480" y2="740" opacity="0.77"></line><line x1="0" y1="740" x2="74" y2="814" opacity="0.83"></line><line x1="148" y1="740" x2="74" y2="814" opacity="0.84"></line><line x1="222" y1="740" x2="148" y2="814" opacity="0.20"></line><line x1="296" y1="740" x2="222" y2="814" opacity="0.13"></line><line x1="296" y1="740" x2="370" y2="814" opacity="0.60"></line><line x1="370" y1="740" x2="444" y2="814" opacity="0.64"></line><line x1="444" y1="740" x2="518" y2="814" opacity="0.89"></line><line x1="518" y1="740" x2="592" y2="814" opacity="0.91"></line><line x1="592" y1="740" x2="666" y2="814" opacity="0.24"></line><line x1="666" y1="740" x2="740" y2="814" opacity="0.84"></line><line x1="814" y1="740" x2="740" y2="814" opacity="0.95"></line><line x1="888" y1="740" x2="814" y2="814" opacity="0.40"></line><line x1="962" y1="740" x2="888" y2="814" opacity="0.53"></line><line x1="1036" y1="740" x2="962" y2="814" opacity="0.53"></line><line x1="1036" y1="740" x2="1110" y2="814" opacity="0.15"></line><line x1="1110" y1="740" x2="1184" y2="814" opacity="0.47"></line><line x1="1184" y1="740" x2="1258" y2="814" opacity="0.86"></line><line x1="1332" y1="740" x2="1258" y2="814" opacity="0.78"></line><line x1="1406" y1="740" x2="1332" y2="814" opacity="0.61"></line><line x1="1406" y1="740" x2="1480" y2="814" opacity="0.56"></line></g></svg>');
+    }
+}
 @mixin diamond($width, $strength) {
     &::before {
         content: '';
@@ -59,42 +74,42 @@
         }
     }
 }
-@mixin diamonds($width, $offset, $direction, $position, $translateX, $translateY) {
+@mixin diamonds($width, $offset: 10px, $direction: horizontal) {
     @if $direction == horizontal {
         &::before {
-            top: $position;
-            left: ($offset / -2);
+            top: 50%;
+            left: #{'calc(50% - (#{$offset} / -2))'};
         }
         &::after {
-            top: $position;
-            left: ($offset / 2);
+            top: 50%;
+            left: #{'calc(50% - (#{$offset} / 2))'};
         }
     
         &:hover {
             &::before {
-                left: ($offset / 2);
+                left: #{'calc(50% - (#{$offset} / 2))'};
             }
             &::after {
-                left: ($offset / -2);
+                left: #{'calc(50% - (#{$offset} / -2))'};
             }
         }
     }
     @else if $direction == vertical {
         &::before {
-            left: $position;
-            top: ($offset / -2);
+            left: 50%;
+            top: #{'calc(50% - (#{$offset} / -2))'};
         }
         &::after {
-            left: $position;
-            top: ($offset / 2);
+            left: 50%;
+            top: #{'calc(50% - (#{$offset} / 2))'};
         }
     
         &:hover {
             &::before {
-                top: ($offset / 2);
+                top: #{'calc(50% - (#{$offset} / 2))'};
             }
             &::after {
-                top: ($offset / -2);
+                top: #{'calc(50% - (#{$offset} / -2))'};
             }
         }
     }
@@ -106,8 +121,9 @@
         aspect-ratio: 1 / 1;
         display: block;
         position: absolute;
-        transform: rotate(45deg) translateX($translateX) translateY($translateY);
+        transform: rotate(45deg) translateX(-50%) translateY(-50%);
         transition: var(--transition-standard);
+        transform-origin: top left;
     }
     &::before {
         border: var(--border-accent-mid);
@@ -137,10 +153,11 @@
         content: '\e7f8';
     }
 }
-@mixin info($color, $style) {
+@mixin info($color: var(--text-primary), $style: normal, $weight: 400, $spacing: 0.2em) {
     color: $color;
-    letter-spacing: 0.2em;
     text-transform: uppercase;
+    font-weight: $weight;
+    letter-spacing: $spacing;
 
     @if $style == normal {
         font-size: var(--text-size-xs);
@@ -149,10 +166,18 @@
     @else if $style == narrow {
         font-size: var(--text-size-sm);
         font-family: var(--font-sans-narrow);
-        font-weight: 700;
+    }
+    @else if $style == detail {
+        font-size: var(--text-size-xs);
+        font-family: var(--font-sans);
+        font-style: italic;
+    }
+    @else if $style == larger {
+        font-size: var(--text-size-sm);
+        font-family: var(--font-sans);
     }
 }
-@mixin offsetRect($offset, $direction) {
+@mixin offsetRect($offset: 5px, $direction: topleft) {
     &::before {
         content: '';
         position: absolute;
@@ -228,7 +253,7 @@
         text-align: center;
         background: transparent;
         transition: var(--transition-standard);
-        @include info(var(--text-primary), narrow);
+        @include info(var(--text-primary), narrow, 400);
         @include offsetRect(5px, topleft);
 
         &:hover {
@@ -283,7 +308,7 @@
 @mixin diamondCrop() {
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
-@mixin scroll($color) {
+@mixin scroll($color: normal) {
     overflow-x: hidden;
     overflow-y: auto;
     max-height: 100%;
@@ -310,6 +335,79 @@
 
         &::-webkit-scrollbar-thumb {
             background: var(--bg-accent-mid);
+        }
+    }
+}
+@mixin header($size, $highlight: var(--text-accent)) {
+    @if $size == 2 {
+        font-family: var(--font-sans-narrow);
+        text-transform: uppercase;
+        font-size: 40px;
+        color: var(--text-secondary);
+        font-weight: 700;
+        top: var(--space-xs);
+    }
+    @else if $size == 4 {
+        font-family: var(--font-serif);
+        color: var(--text-secondary);
+        font-weight: 900;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        @include decoration;
+
+        @include mq-up(xxs) {
+            font-size: 20px;
+        }
+    }
+    @else if $size == 5 {
+        font-family: var(--font-sans-narrow);
+        color: var(--text-secondary);
+        font-weight: 900;
+        font-size: calc(var(--text-size-lg) + 2px);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        width: max-content;
+        max-width: 100%;
+        border-bottom: var(--border-accent-mid);
+        padding: 0 var(--space-lg) var(--space-xs) var(--space-xs);
+    }
+    @else if $size == 6 {
+        display: flex;
+        align-items: center;
+        color: var(--text-secondary);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: calc(var(--text-size-md) + 1px);
+        font-family: var(--font-sans-narrow);
+        gap: var(--space-xs);
+
+        &::before {
+            content: '';
+            height: 1px;
+            width: var(--space-lg);
+            background: $highlight;
+        }
+    }
+    @else if $size == 7 {
+        display: flex;
+        align-items: center;
+        color: var(--text-secondary);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: var(--text-size-sm);
+        font-family: var(--font-sans-narrow);
+        gap: var(--space-xs);
+
+        &::after {
+            content: '';
+            height: 1px;
+            width: var(--space-lg);
+            background: $highlight;
         }
     }
 }

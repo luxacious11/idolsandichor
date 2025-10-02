@@ -15,7 +15,7 @@ body {
         height: calc(100vh - var(--size-menu-main) - var(--size-menu-breadcrumbs));
 
         h1 {
-            @include diamonds(100%, 10px, horizontal, -10%, 0, 0);
+            @include diamonds(100%, 10px, horizontal);
             margin: 0;
             color: var(--text-secondary);
             font-family: var(--font-serif);
