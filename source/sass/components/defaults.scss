@@ -19,24 +19,70 @@ a[href="<i>No Information</i>"] {
 
 /***** Custom Defaults - Input Wraps *****/
 .input-wrap {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+    
     input {
         display: none;
         
         &:checked ~ .fancy-input {
-            color: black;
+            color: var(--text-primary);
         }
     }
     .fancy-input {
-        border: 1px solid black;
+        border: var(--border-accent-mid);
         display: flex;
         align-items: center;
         justify-content: center;
         color: transparent;
-        width: var(--space-lg);
-        height: var(--space-lg);
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+        cursor: pointer;
 
         &.radio {
             border-radius: 50%;
+        }
+
+        i.fa-xmark {
+            left: 1px;
+        }
+    }
+}
+
+/***** Pagination *****/
+.pagination {
+    display: flex;
+    gap: calc(var(--space-xs) / 2);
+    font-size: 0;
+
+    &_pagetxt {
+        display: none;
+    }
+    &_current,
+    &_page {
+        border: var(--border-accent-mid);
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-family: var(--font-sans-narrow);
+        font-size: 12px;
+        color: var(--text-primary);
+    }
+    &_current {
+        background: var(--bg-accent-low);
+        color: var(--text-secondary);
+    }
+    &_page {
+        transition: var(--transition-standard);
+
+        &:hover {
+            background: var(--bg-accent-low);
+            color: var(--text-secondary);
         }
     }
 }

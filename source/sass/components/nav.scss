@@ -44,6 +44,13 @@
             display: flex;
             flex-wrap: wrap;
             max-width: calc(100% - var(--size-menu));
+            @include info(var(--text-primary), normal, 400);
+            align-items: center;
+            gap: var(--space-xs);
+
+            i {
+                color: var(--text-accent);
+            }
 
             a {
                 @include info(var(--text-primary), normal, 400);

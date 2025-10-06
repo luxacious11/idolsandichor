@@ -937,15 +937,16 @@ function splitProfile() {
             $(this).nextUntil('thead').wrapAll(`<tbody class="ucp--section fullWidth" data-section="${$(this)[0].dataset.section}"></tbody>`);
         }
     });
+    initAccordion('.code-accordion');
 }
 function insertCPHeader (title, field, description) {
     let html = `<thead data-section="${cleanText(title)}" class="fullWidth"><tr class="ucp--header"><td>
         <div class="sticky">
             <div class="ucp--header-title" data-section="${cleanText(title)}">${title}</div>`;
     if(description) {
-        html += `<div class="ucp--description scroll" data-section="${cleanText(title)}">
+        html += `<div class="ucp--description" data-section="${cleanText(title)}"><div class="scroll">
             ${description}
-        </div>`;
+        </div></div>`;
     }
     html += `</div></td></tr></thead>`;
 	$(`#field_${field}`).before(html);
@@ -958,8 +959,8 @@ function toggleModCPMenu(e) {
 }
 function initUCPMenu() {
     document.querySelector('#ucpmenu').innerHTML = `<button class="macro--button" onclick="toggleUCPMenu(this)">
-        <i class="fa-solid fa-bars open-button"></i>
-        <i class="fa-solid fa-xmark close-button"></i>
+        <i class="fa-light fa-sharp fa-bars open-button"></i>
+        <i class="fa-light fa-sharp fa-xmark close-button"></i>
     </button>
     <div class="accordion">
         ${typeof localUCPLinks !== 'undefined' ? localUCPLinks : jcinkUCPLinks}

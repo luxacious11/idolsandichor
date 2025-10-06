@@ -32,6 +32,8 @@
     --size-menu-breadcrumbs: 30px;
     --size-store-image: 24px;
     --size-switcher-image: 50px;
+    --size-page-menu-width: 300px;
+    --size-ucp-menu-height: 62px;
 
     @include mq-up(xs) {
         --size-alert-max-height: 150px;
@@ -67,11 +69,12 @@ body {
         --bg-primary: rgb(214, 209, 201);
         --bg-secondary: rgb(206, 200, 193, 0.9);
         --bg-secondary-mid: rgba(206, 200, 193, 0.5);
-        --bg-tertiary: rgba(53, 51, 51, 0.9);
+        --bg-tertiary: rgba(220, 215, 209, 0.9);
         --bg-overlay: rgba(214, 209, 201, 0.7);
 
         --blend-texture-primary: soft-light;
         --opacity-texture-primary: 0.5;
+        --opacity-pattern: 1;
 
         --text-primary: rgb(88, 86, 84);
         --text-secondary: rgb(40, 39, 38);
@@ -89,6 +92,7 @@ body {
         
         --blend-texture-primary: color-dodge;
         --opacity-texture-primary: 0.5;
+        --opacity-pattern: 0.7;
 
         --text-primary: rgb(185, 185, 185);
         --text-secondary: rgb(235, 235, 235);

@@ -46,23 +46,43 @@ body {
 
 .macro {
     &--button {
+        border: var(--border-accent-low);
+        background: none;
+        color: var(--text-primary);
+        font-size: 16px;
+        width: 30px;
+        height: 30px;
+        
         &[onclick] {
             cursor: pointer;
+        }
+    }
+}
 
-            .is-open > & {
-                .open-button {
-                    display: none;
-                }
+#ucpmenu,
+.webpage--menu {
+    .macro--button {
+        @include mq-up(md) {
+            display: none;
+        }
+    }
+    @include mq-down(md) {
+        &.is-open > .macro--button {
+            .open-button {
+                display: none;
             }
+            & ~ .accordion {
+                margin-top: var(--space-md);
+            }
+        }
 
-            *:not(.is-open) > & {
-                .close-button {
-                    display: none;
-                }
-                & + tag-labels,
-                & ~ .accordion {
-                    display: none;
-                }
+        &:not(.is-open) > .macro--button {
+            .close-button {
+                display: none;
+            }
+            & + tag-labels,
+            & ~ .accordion {
+                display: none;
             }
         }
     }
@@ -336,5 +356,68 @@ tag-rel {
         object-fit: contain;
         object-position: center;
         padding: calc(var(--space-xs) / 2);
+    }
+}
+
+p {
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+input,
+select {
+    background: var(--bg-secondary-mid);
+    border: var(--border-primary);
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
+    color: var(--text-primary);
+    padding: 0 var(--space-sm);
+    font-size: calc(var(--text-size-md) + 1px);
+}
+input[type="file"] {
+    height: auto;
+    padding: var(--space-sm);
+}
+.sheet-button,
+input[type="submit"],
+#ucpcontent input[type="button"],
+#ucpcontent input[name="delete"] {
+    max-width: 100%;
+    width: max-content;
+    background: var(--bg-accent-low);
+    border: var(--border-accent-mid);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: 900;
+    font-family: var(--font-sans-narrow);
+    letter-spacing: 0.1em;
+    font-size: 16px;
+    padding: var(--space-sm) calc(var(--space-md) + var(--space-xs));
+    height: auto;
+    transition: var(--transition-standard);
+    cursor: pointer;
+
+    &:hover {
+        background: var(--bg-accent-mid);
+    }
+}
+textarea {
+    background: var(--bg-secondary-mid);
+    border: var(--border-primary);
+    width: 100%;
+    box-sizing: border-box;
+    color: var(--text-primary);
+    padding: var(--space-sm);
+    font-size: calc(var(--text-size-md) + 1px);
+    line-height: 200%;
+
+    .staticHeight & {
+        height: 40px;
+        padding: var(--space-xs) var(--space-sm);
     }
 }

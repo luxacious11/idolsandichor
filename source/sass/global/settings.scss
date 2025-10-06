@@ -15,15 +15,31 @@ body.g-4 .accordion--trigger.staffOnly {
 .nav > a:not(:last-child)::after, .nav--inline:not(:last-child)::after,
 .nav--popout .menu--section > strong::before,
 .items--item > b::before,
+h3::before,
+.h3::before,
 h4::before,
 .h4::before,
-.profile--tab-section > b::before {
+.ucp--header-title::before,
+.profile--tab-section > b::before,
+#UserCP:not(.code-alerts_settings) #ucpcontent .pformstrip:not(:has(input))::before,
+#Msg:not(.code-04) #ucpcontent .pformstrip:not(:has(input))::before,
+#Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) td:first-child::before,
+#UserCP.code-50 #ucpcontent .tableborder > table > tbody > tr.pformstrip::before,
+#UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr.pformstrip::before {
     content: '\e7f9';
 }
 .nav--popout .menu--section > strong::after,
+h3::after,
+.h3::after,
 h4::after,
 .h4::after,
-.profile--tab-section > b::after {
+.ucp--header-title::after,
+.profile--tab-section > b::after,
+#UserCP:not(.code-alerts_settings) #ucpcontent .pformstrip:not(:has(input))::after,
+#Msg:not(.code-04) #ucpcontent .pformstrip:not(:has(input))::after,
+#Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) td:first-child::after,
+#UserCP.code-50 #ucpcontent .tableborder > table > tbody > tr.pformstrip::after,
+#UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr.pformstrip::after {
   content: '\e7f8'; }
 
 ul li::marker {

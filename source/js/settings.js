@@ -16,7 +16,7 @@ const uploads = `uploads2`;
 const siteName = `idolsandichor`;
 const fileTypes = ['gif', 'jpg', 'jpeg', 'png'];
 const defaultSquare = 'https://picsum.photos/250';
-const checkboxChecked = `<i class="fa-solid fa-check"></i>`;
+const checkboxChecked = `<i class="fa-light fa-sharp fa-xmark"></i>`;
 
 const colors = {
     'group name': [0, 0, 0],
@@ -272,10 +272,10 @@ trackerParams = {
     eventHistoryForumIds: [], //event history
 }
 
-const fullWidthFields = [];
-const thirdWidthFields = [];
+const fullWidthFields = [1, 11, 47, 14, 25, 26, 31, 32, 41, 42, 43, 44, 45, 46];
+const thirdWidthFields = [6, 7, 8, 17, 18, 19];
 const setHeightFields = [15, 16, 36];
-const requiredFields = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32, 33, 36, 37, 38, 39, 40, 41, 42, 44, 45, 46, 47, 48,49, 50, 51, 52, 53, 54, 55];
+const requiredFields = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32, 33, 36, 37, 38, 39, 40, 41, 42, 44, 45, 46, 47, 48,49, 50, 51, 52, 53, 54, 55, 62];
 
 //toggle fields: account type, image type
 const toggleFields = createFieldArray([1, 26, 31], true);
@@ -303,26 +303,75 @@ const allHeaders = [
         sectionDescription: ``,
     },
 ];
+const memHeaders = [
+    {
+        sectionTitle: `Player`,
+        insertBefore: 2,
+        sectionDescription: `<p>All member fields are <u>mandatory</u>. Once filled out, the button at the bottom of the page will change and allow submission of the information to the Google Sheet that pulls the data into all your profiles. This allows you to only need to update your information on one account when something changes- and it will change across all of them within minutes!<p>`,
+    },
+];
 const charHeaders = [
     {
         sectionTitle: `Basics`,
         insertBefore: 14,
-        sectionDescription: ``,
+        sectionDescription: `<p>All required fields are marked with an asterisk. Optional fields will hide on your profile if not filled out, so please leave them blank. Content warnings are not marked as required - however, if your profile contains triggering material, consider this field required anyway.</p>`,
     },
     {
         sectionTitle: `Details`,
         insertBefore: 41,
-        sectionDescription: ``,
+        sectionDescription: `<p>This section includes your character's Cheatsheet and Freeform. The Cheatsheet is a bullet-point set of notes about your character and should ideally provide a summary of the most important things to know about them. The Freeform content is entirely up to you- and while there's no minimum length for it, it should give us another taste of what your character is like. Feel free to reach out in the Discord server for freeform ideas if you find yourself drawing a blank!</p>
+<p>On the other hand, if you happen to hit the character maximum for the freeform, use the Freeform Overflow to continue writing. In most cases, however, this field can simply be left blank.</p>
+<p>Most, if not all, of our HTML-based codes in our Code Bank should work in our freeform.</p>
+<p>It is worth noting that these, and most, sections of the application do support some limited markdown options for easier coding. These include ** on either side to bold, __ on either side to italicize, ~~ on either side to strikeout, and || on either side to spoiler. Additionally, we have quicker ways to do lists available as markdown. The code is below:</p>
+
+<div class="code-accordion">
+<div class="h7 accordion--trigger">Code</div>
+<div class="accordion--content"><div class="accordion--inner">
+<tag-code class="custom-code"><button type="button" onclick="highlightCode()" class="copyQuick">copy</button><pre><textarea class="scroll"><tl>+ item
++ item
++ item</tl></textarea></pre>
+</tag-code>
+</div></div>`,
+    },
+    {
+        sectionTitle: `Relationships`,
+        insertBefore: 44,
+        sectionDescription: `<p>This is more for your reference than anything else, but we still expect it to be filled out. Here you can keep track of any relationships developing with your character, from friendships to rivalries to romances. We do ask that you use the pre-formatted options available to you, however, so we've provided them below:</p>
+
+<div class="code-accordion">
+<div class="h7 accordion--trigger">Headers</div>
+<div class="accordion--content"><div class="accordion--inner">
+<tag-code class="custom-code"><button type="button" onclick="highlightCode()" class="copyQuick">copy</button>
+<pre><textarea class="scroll">&lt;tag-relheader&gt;Content&lt;/tag-relheader&gt;</textarea></pre>
+</tag-code>
+</div></div>
+
+<div class="h7 accordion--trigger">Relationships - Not Linked</div>
+<div class="accordion--content"><div class="accordion--inner">
+<tag-code class="custom-code"><button type="button" onclick="highlightCode()" class="copyQuick">copy</button>
+<pre><textarea class="scroll">&lt;tag-rel&gt;&lt;b&gt;Name&lt;/b&gt;
+&lt;span&gt;Content (Can be a block of text or a list)&lt;/span&gt;&lt;/tag-rel&gt;</textarea></pre>
+</tag-code>
+</div></div>
+
+<div class="h7 accordion--trigger">Relationships - Linked</div>
+<div class="accordion--content"><div class="accordion--inner">
+<tag-code class="custom-code"><button type="button" onclick="highlightCode()" class="copyQuick">copy</button>
+<pre><textarea class="scroll">&lt;tag-rel&gt;&lt;a href="url"&gt;Name&lt;/a&gt;
+&lt;span&gt;Content (Can be a block of text or a list)&lt;/span&gt;&lt;/tag-rel&gt;</textarea></pre>
+</tag-code>
+</div></div>
+</div>`,
     },
     {
         sectionTitle: `Plotting`,
-        insertBefore: 44,
-        sectionDescription: ``,
+        insertBefore: 45,
+        sectionDescription: `<p>This section serves as your "shipper" on-site and should give others some ideas for potential plots you're looking for, as well as plots you have no interest in pursuing. Please do not leave either field blank; we ask you provide at least a few solid ideas in the "Plot Hooks" field, and if you are open to any plot types at all, please write that in the "Not Interested" field as well rather than leaving it empty.</p>`,
     },
     {
         sectionTitle: `Links`,
         insertBefore: 56,
-        sectionDescription: ``,
+        sectionDescription: `<p>These are for optional links to further information/resources for your character! Some things you might include here are links to your development forum/threads, links to playlists, or even to a Pinterest board you've put together. You can even place wanted ads here! Please leave these fields blank if you do not want to use them, and please keep the titles on the shorter side- 1 to 2 words each.</p>`,
     },
 ];
 
@@ -356,62 +405,62 @@ const limitReached = `<blockquote class="fullWidth warning">Uh-oh! This role has
 const completedButton = `<button onClick="submitMemberData(this)" type="button" class="hidden sheet-button">Submit Member Data</button>`;
 
 const jcinkUCPLinks = `<div class="accordion--trigger" data-category="account"><b>Account</b></div>
-        <div class="accordion--content" data-category="account">
+        <div class="accordion--content" data-category="account"><div class="accordion--inner">
             <a href="?act=UserCP&CODE=01">Edit Profile</a>
             <a href="?act=UserCP&CODE=24">Update Avatar</a>
             <a href="?act=UserCP&CODE=54">Sub-accounts</a>
             <a href="?act=UserCP&CODE=52">Edit Username</a>
             <a href="?act=UserCP&CODE=28">Change Password</a>
             <a href="?act=UserCP&CODE=08">Update Email</a>
-        </div>
+        </div></div>
         <div class="accordion--trigger" data-category="messages"><b>Messages</b></div>
-        <div class="accordion--content" data-category="messages">
+        <div class="accordion--content" data-category="messages"><div class="accordion--inner">
             <a href="?act=Msg&CODE=01">Inbox</a>
             <a href="?act=Msg&CODE=04">Send Message</a>
-        </div>
+        </div></div>
         <div class="accordion--trigger" data-category="tracking"><b>Tracking</b></div>
-        <div class="accordion--content" data-category="tracking">
+        <div class="accordion--content" data-category="tracking"><div class="accordion--inner">
             <a href="?act=UserCP&CODE=alerts">Alerts</a>
             <a href="?act=UserCP&CODE=50">Forums</a>
             <a href="?act=UserCP&CODE=26">Topics</a>
-        </div>
+        </div></div>
         <div class="accordion--trigger" data-category="settings"><b>Settings</b></div>
-        <div class="accordion--content" data-category="settings">
+        <div class="accordion--content" data-category="settings"><div class="accordion--inner">
             <a href="?act=UserCP&CODE=04">Board</a>
             <a href="?act=UserCP&CODE=alerts_settings">Alerts</a>
             <a href="?act=UserCP&CODE=02">Emails</a>
-        </div>`;
+        </div></div>`;
 
 const jcinkStoreLinks = `<div class="accordion--trigger" data-category="personal"><b>Personal</b></div>
-        <div class="accordion--content" data-category="personal">
+        <div class="accordion--content" data-category="personal"><div class="accordion--inner">
             <a href="?act=store&CODE=inventory">Inventory</a>
             <a href="?act=store&code=donate_money">Send Money</a>
             <a href="?act=store&code=donate_item">Send Item</a>
-        </div>
+        </div></div>
         <div class="accordion--trigger" data-category="shop"><b>Shop</b></div>
-        <div class="accordion--content" data-category="shop">
+        <div class="accordion--content" data-category="shop"><div class="accordion--inner">
             <a href="?act=store">Home</a>
             <a href="?act=store&code=shop&category=000">Category</a>
-        </div>
+        </div></div>
         <div class="accordion--trigger staffOnly" data-category="staff"><b>Staff</b></div>
-        <div class="accordion--content staffOnly" data-category="staff">
+        <div class="accordion--content staffOnly" data-category="staff"><div class="accordion--inner">
             <a href="?act=store&code=fine" class="staffOnly">Fine</a>
             <a href="?act=store&code=edit_points" class="staffOnly">Edit Points</a>
             <a href="?act=store&code=edit_inventory" class="staffOnly">Edit Inventory</a>
-        </div>`;
+        </div></div>`;
 
 const jcinkModCPLinks = `<div class="accordion--trigger" data-category="forumsposts"><b>Forums & Posts</b></div>
-        <div class="accordion--content" data-category="forumsposts">
+        <div class="accordion--content" data-category="forumsposts"><div class="accordion--inner">
             <a href="?act=modcp&CODE=queue">Queue</a>
             <a href="?act=modcp&CODE=reported">Reported</a>
             <a href="?act=modcp&CODE=modlogs">Logs</a>
             <a href="?act=modcp&CODE=prune">Prune</a>
-        </div>
+        </div></div>
         <div class="accordion--trigger" data-category="users"><b>Users</b></div>
-        <div class="accordion--content" data-category="users">
+        <div class="accordion--content" data-category="users"><div class="accordion--inner">
             <a href="?act=modcp&CODE=members">Edit</a>
             <a href="?act=modcp&CODE=warnpanel">Warn</a>
             <a href="?act=modcp&CODE=warnlogs">Logs</a>
             <a href="?act=modcp&CODE=ip">IP Tools</a>
             <a href="?act=modcp&CODE=validating">Validation</a>
-        </div>`;
+        </div></div>`;

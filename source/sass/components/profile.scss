@@ -68,28 +68,44 @@
 
             img {
                 &:first-child {
-                    height: 150px;
-                    width: 150px;
-                    top: 5px;
-                    left: 5px;
+                    top: -3px;
+                    left: -3px;
+                    height: 175px;
+                    width: 175px;
+                    //top: 5px;
+                    //left: 5px;
+                    //height: 150px;
+                    //width: 150px;
                 }
                 &:nth-child(2) {
-                    top: 3px;
-                    left: 138px;
-                    width: 100px;
-                    height: 100px;
+                    top: -29px;
+                    left: 144px;
+                    width: 150px;
+                    height: 150px;
+                    //top: 3px;
+                    //left: 138px;
+                    //width: 100px;
+                    //height: 100px;
                 }
                 &:nth-child(3) {
-                    top: 85px;
-                    left: 110px;
-                    width: 100px;
-                    height: 100px;
+                    top: 90px;
+                    left: 114px;
+                    width: 125px;
+                    height: 125px;
+                    //top: 85px;
+                    //left: 110px;
+                    //width: 100px;
+                    //height: 100px;
                 }
                 &:nth-child(4) {
-                    top: 85px;
-                    left: -35px;
-                    width: 70px;
-                    height: 70px;
+                    top: 89px;
+                    left: -58px;
+                    width: 100px;
+                    height: 100px;
+                    //top: 85px;
+                    //left: -35px;
+                    //width: 70px;
+                    //height: 70px;
                 }
             }
         }
@@ -102,28 +118,44 @@
 
             img {
                 &:first-child {
-                    height: 150px;
-                    width: 150px;
-                    bottom: 5px;
-                    right: 5px;
+                    height: 175px;
+                    width: 175px;
+                    bottom: -3px;
+                    right: -3px;
+                    //height: 150px;
+                    //width: 150px;
+                    //bottom: 5px;
+                    //right: 5px;
                 }
                 &:nth-child(2) {
-                    bottom: 3px;
-                    right: 138px;
-                    width: 100px;
-                    height: 100px;
+                    bottom: -29px;
+                    right: 144px;
+                    width: 150px;
+                    height: 150px;
+                    //bottom: 3px;
+                    //right: 138px;
+                    //width: 100px;
+                    //height: 100px;
                 }
                 &:nth-child(3) {
-                    bottom: 85px;
-                    right: 110px;
-                    width: 100px;
-                    height: 100px;
+                    bottom: 90px;
+                    right: 114px;
+                    width: 125px;
+                    height: 125px;
+                    //bottom: 85px;
+                    //right: 110px;
+                    //width: 100px;
+                    //height: 100px;
                 }
                 &:nth-child(4) {
-                    bottom: 85px;
-                    right: -35px;
-                    width: 70px;
-                    height: 70px;
+                    bottom: 89px;
+                    right: -58px;
+                    width: 100px;
+                    height: 100px;
+                    //bottom: 85px;
+                    //right: -35px;
+                    //width: 70px;
+                    //height: 70px;
                 }
             }
         }
@@ -160,7 +192,7 @@
         flex-grow: 1;
         display: flex;
         height: 1px;
-        background: rgba(232, 231, 229, 0.3);
+        background: var(--border-primary-color-strong);
 
         &-bar {
             height: 100%;
@@ -265,6 +297,7 @@
         width: 100%;
         flex: 0 0 100%;
         transition: var(--transition-long);
+        left: 0;
     }
     &--tab {
         background: var(--bg-secondary);
@@ -359,6 +392,7 @@
 
             @include mq-down(md) {
                 border-top: 0;
+                grid-template-columns: 100%;
             }
 
             @include mq-up(md) {
