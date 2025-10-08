@@ -25,7 +25,8 @@ h4::before,
 #Msg:not(.code-04) #ucpcontent .pformstrip:not(:has(input))::before,
 #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) td:first-child::before,
 #UserCP.code-50 #ucpcontent .tableborder > table > tbody > tr.pformstrip::before,
-#UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr.pformstrip::before {
+#UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr.pformstrip::before,
+.category--title::before {
     content: '\e7f9';
 }
 .nav--popout .menu--section > strong::after,
@@ -39,7 +40,8 @@ h4::after,
 #Msg:not(.code-04) #ucpcontent .pformstrip:not(:has(input))::after,
 #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) td:first-child::after,
 #UserCP.code-50 #ucpcontent .tableborder > table > tbody > tr.pformstrip::after,
-#UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr.pformstrip::after {
+#UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr.pformstrip::after,
+.category--title::after {
   content: '\e7f8'; }
 
 ul li::marker {

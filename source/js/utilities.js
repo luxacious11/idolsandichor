@@ -417,6 +417,20 @@ function calculateAge(birthday) {
 
 /****** Index ******/
 function initForums() {
+    //forum images
+    document.querySelectorAll('.forum .forum--image').forEach(image => {
+        image.closest('.forum').insertAdjacentHTML('afterbegin', `<div class="forum--image">${image.innerHTML}</div>`);
+        let subforumEl = image.closest('.forum').querySelector('.subforums');
+        let linkSet = image.closest('.forum').querySelector('.forum--manual-links');
+        if(subforumEl) {
+            image.closest('.forum').querySelector('.forum--location-links').insertAdjacentHTML('beforeend', subforumEl.innerHTML);
+            subforumEl.remove();
+        }
+        if(linkSet) {
+            image.closest('.forum').querySelector('.forum--location-links').insertAdjacentHTML('beforeend', linkSet.innerHTML);
+        }
+    });
+
     //manual links
     document.querySelectorAll('.forum .forum--manual-links').forEach(linkSet => {
         //subforums exist
@@ -438,6 +452,11 @@ function initForums() {
         }
     });
     document.querySelectorAll('.forum--desc').forEach(el => el.remove());
+
+    //empty avatars
+    document.querySelectorAll('.forum--avatar img[src="https://"]').forEach(item => {
+        item.setAttribute('src', defaultSquare);
+    });
 }
 
 /****** Webpages ******/
