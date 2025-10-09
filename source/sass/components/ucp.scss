@@ -82,6 +82,10 @@
                             }
                             .accordion--trigger {
                                 @include header(6);
+
+                                &::before {
+                                    background: none;
+                                }
                             }
                             .accordion--inner {
                                 display: flex;
@@ -430,7 +434,7 @@
                                 flex: 0 0 calc(50% - (var(--space-md) / 2));
                             }
     
-                            @include mq-up(smdm) {
+                            @include mq-up(md) {
                                 flex: 0 0 calc((100% / 3) - (var(--space-md) * 2 / 3));
                             }
     

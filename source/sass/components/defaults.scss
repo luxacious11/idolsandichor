@@ -16,6 +16,20 @@ a[href=""],
 a[href="<i>No Information</i>"] {
   display: none !important;
 }
+#delcookiesrow,
+#mark-as-read-subto,
+.copyright {
+    text-align: center;
+    opacity: 0.75;
+    @include info(var(--text-primary), xs);
+
+    a {
+        color: var(--text-primary);
+    }
+}
+.copyright {
+    margin-bottom: var(--space-lg);
+}
 
 /***** Custom Defaults - Input Wraps *****/
 .input-wrap {

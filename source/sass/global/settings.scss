@@ -48,8 +48,5 @@ ul li::marker {
   content: '\f86c';
 }
 .accordion--trigger::before {
-  content: '\f322';
-}
-.accordion--trigger.is-active::before {
-  content: '\f325';
+  content: '\f322' !important;
 }

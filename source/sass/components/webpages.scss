@@ -4,3 +4,119 @@
 /*******************************
     Webpages
 ********************************/
+.webpage {
+    background: var(--bg-secondary);
+    @include pattern;
+    max-width: 1200px;
+    margin: var(--space-md) auto;
+    grid-template-rows: calc(max(calc(100vh - var(--size-menu-main) - var(--size-menu-breadcrumbs) - (2 * var(--space-md))), 500px));
+    max-width: calc(100% - (2 * var(--space-md)));
+
+    @include mq-up(xxs) {
+        margin: var(--space-lg) auto;
+        max-width: calc(100% - (2 * var(--space-lg)));
+    }
+
+    @include mq-down(md) {
+        display: flex;
+        flex-direction: column;
+    }
+    @include mq-up(md) {
+        display: grid;
+        grid-template-columns: var(--size-page-menu-width) auto;
+        grid-template-rows: calc(max(calc(100vh - var(--size-menu-main) - var(--size-menu-breadcrumbs) - (2 * var(--space-lg))), 500px));
+        min-height: 500px;
+        max-height: calc(100vh - var(--size-menu-main) - var(--size-menu-breadcrumbs) - (2 * var(--space-lg)));
+    }
+
+    & ~ div {
+        display: none;
+    }
+
+    &--menu {
+        background: var(--bg-accent-low);
+        border: var(--border-accent-mid);
+        padding: var(--space-lg);
+
+        @include mq-down(md) {
+            position: sticky;
+            top: calc(var(--size-menu-breadcrumbs) + var(--size-menu-main));
+            z-index: 1;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(2px);
+            padding: var(--space-md);
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: var(--bg-accent-low);
+            }
+        }
+
+        .accordion--trigger {
+            @include header(6);
+            margin-bottom: var(--space-xs);
+
+            &::before {
+                background: none;
+            }
+        }
+        .accordion--inner {
+            display: flex;
+            flex-direction: column;
+
+            a {
+                @include info(var(--text-primary), larger, 400, $spacing: 0.05em);
+                transition: var(--transition-standard);
+
+                &:hover,
+                &.is-active {
+                    color: var(--text-secondary);
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    &--content {
+        border: var(--border-primary);
+
+        @include mq-down(md) {
+            border-top: 0;
+        }
+
+        @include mq-up(md) {
+            border-left: 0;
+        }
+
+        .tab-category {
+            & > tag-tabset {
+                height: 100%;
+
+                & > tag-tab {
+                    margin: var(--space-lg);
+                    width: calc(100% - (2 * var(--space-lg)));
+                    flex: 0 0 calc(100% - (2 * var(--space-lg)));
+                    max-width: calc(100% - (2 * var(--space-lg)));
+                    height: calc(100% - (2 * var(--space-lg)));
+                    display: block;
+                }
+            }
+        }
+
+        &-inner {
+            border: var(--border-primary);
+            background: var(--bg-tertiary);
+            height: 100%;
+            padding: var(--space-lg);
+            overflow: auto;
+            text-align: justify;
+            font-size: calc(var(--text-size-md) + 1px);
+            line-height: 200%;
+        }
+    }
+}

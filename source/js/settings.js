@@ -394,6 +394,9 @@ const plotReserves = `https://opensheet.elk.sh/${sheetID}/PlotReserves`;
 const members = `https://opensheet.elk.sh/${sheetID}/Members`;
 const plots = `https://opensheet.elk.sh/${sheetID}/Plots`;
 const businesses = `https://opensheet.elk.sh/${sheetID}/Businesses`;
+const groups = `https://opensheet.elk.sh/${sheetID}/Groups`;
+const locations = `https://opensheet.elk.sh/${sheetID}/Locations`;
+const creatures = `https://opensheet.elk.sh/${sheetID}/Creatures`;
 
 const defaultReserve = 14;
 const successMessage = `<blockquote class="fullWidth">Submission successful!</blockquote>

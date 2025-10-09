@@ -67,21 +67,6 @@
          margin: calc(-2 * var(--space-lg)) var(--space-lg) calc(-2 * var(--space-lg))  calc(-2 * var(--space-lg));
       }
 
-      .forum--decor {
-         position: absolute;
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: 100%;
-         overflow: hidden;
-         @include diamonds(80%, 10px, vertical);
-
-         &::before,
-         &::after {
-            left: 100%;
-         }
-      }
-
       .forum--title {
          font-family: var(--font-serif);
          text-transform: capitalize;
@@ -142,6 +127,13 @@
             grid-template-columns: 175px 1fr 1fr;
          }
 
+         .forum--left {
+            align-self: end;
+         }
+         .forum--latest {
+            align-self: start;
+         }
+
          &:has(.forum--location-links:empty) {
             @include mq-down(md) {
                grid-template-rows: calc(150px + (2 * var(--space-md))) max-content max-content;
@@ -153,7 +145,27 @@
             .forum--image {
                grid-row: span 1;
             }
+
+            .forum--left,
+            .forum--latest {
+               align-self: center;
+            }
          }
+      }
+   }
+
+   &--decor {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      @include diamonds(80%, 10px, vertical);
+
+      &::before,
+      &::after {
+         left: 100%;
       }
    }
 
@@ -161,11 +173,7 @@
       @include header(2, var(--text-secondary));
       line-height: 120%;
       margin-bottom: var(--space-sm);
-      @include fluid-type(24, 30, 480, 1024);
-
-      @include mq-up(md) {
-         @include fluid-type(30, 40, 1024, 1280);
-      }
+      @include fluid-type(24, 36, 480, 1280);
 
       a {
          color: var(--text-secondary);
@@ -173,7 +181,7 @@
    }
 
    &--stats {
-      @include info(var(--text-primary), normal, 900, 0.3em);
+      @include info(var(--text-primary), normal, 700, 0.3em);
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-xs) var(--space-lg);
@@ -185,7 +193,7 @@
    }
 
    &--links {
-      @include info(var(--text-primary), narrow, 900);
+      @include info(var(--text-primary), normal, 700);
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-xs) var(--space-md);
@@ -308,16 +316,21 @@
    }
 
    &--location-links {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-
       @include mq-down(md) {
          order: 2;
          margin-top: var(--space-md);
       }
 
-      &:empty {
+      .scroll {
+         display: flex;
+         flex-direction: column;
+         gap: var(--space-md);
+         padding-top: var(--space-xs);
+         padding-left: var(--space-xs);
+         max-height: 170px;
+      }
+
+      &:has(.scroll:empty) {
          display: none;
       }
 

@@ -6,7 +6,17 @@
 ********************************/
 h2,
 .h2 {
-    @include header(2, var(--text-accent));
+    &:not(.serif) {
+        @include header(2, var(--text-accent));
+    }
+
+    &.serif {
+        @include header(2, var(--text-accent), serif);
+    }
+}
+h3,
+.h3 {
+    @include header(3, var(--text-accent));
 }
 h4,
 .h4 {
@@ -14,7 +24,13 @@ h4,
 }
 h5,
 .h5 {
-    @include header(5, var(--text-accent));
+    &:not(.serif) {
+        @include header(5, var(--text-accent));
+    }
+
+    &.serif {
+        @include header(5, var(--text-accent), serif);
+    }
 }
 h6,
 .h6 {
@@ -23,6 +39,10 @@ h6,
 h7,
 .h7 {
     @include header(7, var(--text-accent));
+}
+h8,
+.h8 {
+    @include header(8, var(--text-accent));
 }
 
 ul {
@@ -40,4 +60,13 @@ ul {
             font-weight: 300;
         }
     }
+}
+
+blockquote {
+    border: var(--border-accent-mid);
+    background: var(--bg-accent-low);
+    text-align: justify;
+    padding: var(--space-lg);
+    max-width: 500px;
+    margin: 1rem auto;
 }
