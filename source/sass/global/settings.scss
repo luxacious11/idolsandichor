@@ -1,20 +1,25 @@
-.alert-section .input-wrap .fancy-input::before {
-    content: '\f00c';
-}
+.alert-section .input-wrap .fancy-input::before,
+[data-filter-group] label::before,
+.members--menu .members--sort-buttons .members--sort::before {
+  content: '\f00c'; }
 
 body.g-2 .memOnly,
 body:not(.g-2) .guestOnly,
 body:not(.g-4) .staffOnly {
-    display: none !important;
-}
+  display: none !important; }
+
 body.g-4 .webpage--menu .accordion--content.staffOnly,
 body.g-4 .accordion--trigger.staffOnly {
-    display: flex;
-}
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
 
 .nav > a:not(:last-child)::after, .nav--inline:not(:last-child)::after,
 .nav--popout .menu--section > strong::before,
 .items--item > b::before,
+h2.serif::before,
+.h2.serif::before,
 h3::before,
 .h3::before,
 h4::before,
@@ -26,10 +31,20 @@ h4::before,
 #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) td:first-child::before,
 #UserCP.code-50 #ucpcontent .tableborder > table > tbody > tr.pformstrip::before,
 #UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr.pformstrip::before,
-.category--title::before {
-    content: '\e7f9';
-}
+.category--title::before,
+.macro--header::before,
+.posts .tableborder .maintitle .topic-title::before,
+#Search.code-show main > .tableborder > .maintitle::before,
+#Post #posting-form .maintitle::before,
+#qr_open .maintitle:not(:has(a))::before,
+#topic_open .maintitle:not(:has(a))::before,
+#qr_open .maintitle a::before,
+#topic_open .maintitle a::before {
+  content: '\e7f9'; }
+
 .nav--popout .menu--section > strong::after,
+h2.serif::after,
+.h2.serif::after,
 h3::after,
 .h3::after,
 h4::after,
@@ -41,12 +56,33 @@ h4::after,
 #Msg.code-03 #ucpcontent .msg-normal > table tbody tr:nth-child(2n + 1) td:first-child::after,
 #UserCP.code-50 #ucpcontent .tableborder > table > tbody > tr.pformstrip::after,
 #UserCP.code-26 #ucpcontent .tableborder > table > tbody > tr.pformstrip::after,
-.category--title::after {
+.category--title::after,
+.macro--header::after,
+.posts .tableborder .maintitle .topic-title::after,
+#Search.code-show main > .tableborder > .maintitle::after,
+#Post #posting-form .maintitle::after,
+#qr_open .maintitle:not(:has(a))::after,
+#topic_open .maintitle:not(:has(a))::after,
+#qr_open .maintitle a::after,
+#topic_open .maintitle a::after {
   content: '\e7f8'; }
 
 ul li::marker {
-  content: '\f86c';
-}
+  content: '\f86c'; }
+
 .accordion--trigger::before {
-  content: '\f322' !important;
+  content: '\f322' !important; }
+
+a.external::after,
+a [target="_blank"]::after {
+  content: '\f08e';
+}
+
+
+tag-rel > a::before {
+  content: '\f0c1';
+}
+
+.comm--top::after {
+  content: '\f00d';
 }

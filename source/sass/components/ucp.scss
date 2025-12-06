@@ -266,6 +266,9 @@
 
                 tr {
                     margin-bottom: 0 !important;
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--space-sm);
 
                     @include mq-up(sm) {
                         grid-column: span 3;
@@ -314,6 +317,12 @@
         .scroll {
             max-height: 200px;
         }
+
+        &:has(.profile--aesthetics) {
+            .scroll {
+                max-height: 300px;
+            }
+        }
     }
     &--section {
         background: var(--bg-tertiary);
@@ -328,9 +337,121 @@
                 font-size: 1.4em;
                 color: var(--text-accent);
             }
+
+            & ~ br {
+                display: none;
+            }
+            & ~ span {
+                @include info;
+            }
         }
         .pformright {
             display: block;
+        }
+    }
+}
+.ucp--image-previews {
+    display: flex;
+    gap: var(--space-lg);
+
+    @include mq-down(xs) {
+        flex-direction: column;
+    }
+}
+.clip-avatar {
+    flex: 0 0 150px;
+
+    img {
+        width: 150px;
+        aspect-ratio: 35 / 50;
+    }
+
+    @include mq-up(md) {
+        flex: 0 0 200px;
+
+        img {
+            width: 200px;
+        }
+    }
+}
+.ucp--aesthetics {
+    width: 100%;
+}
+.clip-aesthetics {
+    display: flex;
+    flex-wrap: wrap;
+    
+    .profile--aesthetics {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        aspect-ratio: 352 / 245;
+        max-width: 200px;
+        display: block;
+
+        @include mq-up(md) {
+            max-width: 325px;
+        }
+
+        &.bottom-right {
+            img {
+                &:first-child {
+                    top: calc((26 / 245) * 100%);
+                    left: calc((55 / 352) * 100%);
+                    width: calc((175 / 352) * 100%);
+                    height: calc((175 / 245) * 100%);
+                }
+                &:nth-child(2) {
+                    top: 0;
+                    left: calc((202 / 352) * 100%);
+                    width: calc((150 / 352) * 100%);
+                    height: calc((150 / 245) * 100%);
+                }
+                &:nth-child(3) {
+                    top: calc((119 / 245) * 100%);
+                    left: calc((172 / 352) * 100%);
+                    width: calc((125 / 352) * 100%);
+                    height: calc((125 / 245) * 100%);
+                }
+                &:nth-child(4) {
+                    top: calc((118 / 245) * 100%);
+                    left: 0;
+                    width: calc((100 / 352) * 100%);
+                    height: calc((100 / 245) * 100%);
+                }
+            }
+        }
+
+        &.top-left {
+            img {
+                &:first-child {
+                    bottom: calc((26 / 245) * 100%);
+                    right: calc((55 / 352) * 100%);
+                    height: calc((175 / 245) * 100%);
+                    width: calc((175 / 352) * 100%);
+                }
+                &:nth-child(2) {
+                    bottom: 0;
+                    right: calc((202 / 352) * 100%);
+                    width: calc((150 / 352) * 100%);
+                    height: calc((150 / 245) * 100%);
+                }
+                &:nth-child(3) {
+                    bottom: calc((119 / 245) * 100%);
+                    right: calc((172 / 352) * 100%);
+                    width: calc((125 / 352) * 100%);
+                    height: calc((125 / 245) * 100%);
+                }
+                &:nth-child(4) {
+                    bottom: calc((118 / 245) * 100%);
+                    right: 0;
+                    width: calc((100 / 352) * 100%);
+                    height: calc((100 / 245) * 100%);
+                }
+            }
         }
     }
 }

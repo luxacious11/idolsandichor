@@ -18,6 +18,20 @@
             <a name="top"></a>
 		
 
+            <!--Category-->
+            <section class="category subforums f-1">
+                <div class="category--title">Subforums</div>
+                <div class="category--list">
+                    @@include('../source/templates/blocks/forum.html', {
+                        "id": "2",
+                        "name": "Out of Town",
+                        "subforums": "no",
+                        "links": "no",
+                        "image": "no"
+                    })
+                </div>
+            </section>
+
             <!--IBF.MODLINK-->
             <table width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
@@ -55,44 +69,70 @@
 
             <br>
             
-            <form action="?act=modcp&amp;f=1&amp;CODE=topicchoice" name="mod_topics" method="POST">
+            <form action="https://idolsandichor.jcink.net/index.php?act=modcp&amp;f=5&amp;CODE=topicchoice" name="mod_topics" method="POST"> <!-- / start of the mod topic form -->
                 <input type="hidden" id="tact" name="tact" value="close">	
-                
-                <!--Topic List-->
-                <section class="topic"></section>
-            </form>
+                <section class="category topics">
+                    <div class="category--list">
+                        <div class="macro--header">All Topics</div>
+                        <div class="macro--header">Announcements</div>
+                        @@include('../source/templates/blocks/topic.html', {
+                            "description": "",
+                            "newpost": ""
+                        })
 
-            <div class="topiclist--info">
-                <form action="https://victis.jcink.net/index.php?act=SF&amp;f=5&amp;st=" method="post">      
-                    <div class="darkrow2" style="padding:4px" align="center">Showing 2 of 2 topics sorted by <select name="sort_key" class="forminput">
-            <option value="last_post" selected="selected">last post date</option>
-            <option value="title">topic title</option>
-            <option value="starter_name">topic starter</option>
-            <option value="posts">number of replies</option>
-            <option value="views">number of views</option>
-            <option value="start_date">topic start date</option>
-            <option value="last_poster_name">last poster</option>
-            </select> in <select name="sort_by" class="forminput">
-            <option value="Z-A" selected="selected">descending order</option>
-            <option value="A-Z">ascending order</option>
-            </select> from <select name="prune_day" class="forminput">
-            <option value="1">today</option>
-            <option value="5">the last 5 days</option>
-            <option value="7">the last week</option>
-            <option value="10">the last 10 days</option>
-            <option value="15">the last 15 days</option>
-            <option value="20">the last 20 days</option>
-            <option value="25">the last 25 days</option>
-            <option value="30">the last 30 days</option>
-            <option value="60">the last 60 days</option>
-            <option value="90">the last 90 days</option>
-            <option value="100" selected="selected">the beginning</option>
-            </select>&nbsp;<input type="submit" value="Go!" class="forminput"></div>
-                </form>
-                <div class="darkrow2" style="padding:6px">1 User(s) are browsing this forum (0 Guests and 0 Anonymous Users)</div>
-                <div class="row2" style="padding:6px">1 Members: <a href="https://victis.jcink.net/index.php?showuser=1">lux</a></div>
-                <span id="forumName" class="hide">Lux</span>
-            </div>
+                        <div class="macro--header">General</div>
+                        @@include('../source/templates/blocks/topic.html', {
+                            "description": "plain description",
+                            "newpost": "topic-new-post"
+                        })
+                        @@include('../source/templates/blocks/topic.html', {
+                            "description": "[highlights]",
+                            "newpost": ""
+                        })
+                        @@include('../source/templates/blocks/topic.html', {
+                            "description": "[highlights] and plain",
+                            "newpost": ""
+                        })
+                        @@include('../source/templates/blocks/topic.html', {
+                            "description": "[multiple][highlights]",
+                            "newpost": ""
+                        })
+                        <div class="macro--header">Viewing</div>
+                        <div class="topics--info">
+                            
+                            <div align="center" class="darkrow2" style="padding:4px">Showing 0 of 0 topics sorted by <select name="sort_key" class="forminput">
+                                <option value="last_post" selected="selected">last post date</option>
+                                <option value="title">topic title</option>
+                                <option value="starter_name">topic starter</option>
+                                <option value="posts">number of replies</option>
+                                <option value="views">number of views</option>
+                                <option value="start_date">topic start date</option>
+                                <option value="last_poster_name">last poster</option>
+                                </select> in <select name="sort_by" class="forminput">
+                                <option value="Z-A" selected="selected">descending order</option>
+                                <option value="A-Z">ascending order</option>
+                                </select> from <select name="prune_day" class="forminput">
+                                <option value="1">today</option>
+                                <option value="5">the last 5 days</option>
+                                <option value="7">the last week</option>
+                                <option value="10">the last 10 days</option>
+                                <option value="15">the last 15 days</option>
+                                <option value="20">the last 20 days</option>
+                                <option value="25">the last 25 days</option>
+                                <option value="30">the last 30 days</option>
+                                <option value="60">the last 60 days</option>
+                                <option value="90">the last 90 days</option>
+                                <option value="100" selected="selected">the beginning</option>
+                                </select>&nbsp;<input type="submit" value="Go!" class="forminput">
+                            </div>
+                    
+                            <div class="darkrow2" style="padding:6px">1 User(s) are browsing this forum (0 Guests and 0 Anonymous Users)</div>
+                            <div class="row2" style="padding:6px">1 Members: <a href="https://idolsandichor.jcink.net/index.php?showuser=1"><span class="g-4">lux</span></a></div>
+                        </div>
+                    </div>
+                </section>
+            </form>
+            
             <br>
             <table width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody><tr>

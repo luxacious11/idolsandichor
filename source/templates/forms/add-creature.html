@@ -1,0 +1,107 @@
+<form id="form-creature" data-type="grid" data-columns="2">
+    <label class="fullWidth">
+        <b>Creature Name</b>
+        <span><input type="text" id="creature" placeholder="Creature Name" required /></span>
+    </label>
+    <label>
+        <b>Type</b>
+        <span><select id="type" required>
+            <option value="">(select)</option>
+            <option value="beast">Beast</option>
+            <option value="spirit">Spirit</option>
+        </select></span>
+    </label>
+    <label>
+        <b>Lifespan</b>
+        <span><input type="text" id="lifespan" placeholder="Lifespan" required /></span>
+    </label>
+    <label class="fullWidth adjustable ifSpirit hidden">
+        <b>Subtypes</b>
+        <div class="rows subtypes-wrap"></div>
+        <div class="multi-buttons" data-row-type="subtypes">
+            <button type="button" onclick="addRow(this)">+ New Row</button>
+            <button type="button" onclick="removeRow(this)">- Remove Row</button>
+        </div>
+    </label>
+    <label class="fullWidth">
+        <b>Overview</b>
+        <span><textarea id="overview" placeholder="HTML allowed; use br or wrap paragraphs in p tags" required></textarea></span>
+    </label>
+    <label class="fullWidth">
+        <b>Physiology</b>
+        <span><textarea id="physiology" placeholder="HTML allowed; use br or wrap paragraphs in p tags" required></textarea></span>
+    </label>
+    <label class="fullWidth adjustable">
+        <b>Abilities</b>
+        <div class="rows abilities-wrap"></div>
+        <div class="multi-buttons" data-row-type="abilities">
+            <button type="button" onclick="addRow(this)">+ New Row</button>
+            <button type="button" onclick="removeRow(this)">- Remove Row</button>
+        </div>
+    </label>
+    <label class="fullWidth adjustable">
+        <b>Weaknesses</b>
+        <div class="rows weaknesses-wrap"></div>
+        <div class="multi-buttons" data-row-type="weaknesses">
+            <button type="button" onclick="addRow(this)">+ New Row</button>
+            <button type="button" onclick="removeRow(this)">- Remove Row</button>
+        </div>
+    </label>
+    <label>
+        <b>Public Perception</b>
+        <i>Is public perception of this species positive?</i>
+        <span><select id="perception" required>
+            <option value="">(select)</option>
+            <option value="very low">Very Low</option>
+            <option value="low">Low</option>
+            <option value="average">Average</option>
+            <option value="high">High</option>
+            <option value="very high">Very High</option>
+        </select></span>
+    </label>
+    <label>
+        <b>Public Trust</b>
+        <i>Does the public generally trust this species?</i>
+        <span><select id="trust" required>
+            <option value="">(select)</option>
+            <option value="very low">Very Low</option>
+            <option value="low">Low</option>
+            <option value="average">Average</option>
+            <option value="high">High</option>
+            <option value="very high">Very High</option>
+        </select></span>
+    </label>
+    <label>
+        <b>Presence in Civilization</b>
+        <i>Is this species frequently found living among mortals?</i>
+        <span><select id="presence" required>
+            <option value="">(select)</option>
+            <option value="very low">Very Low</option>
+            <option value="low">Low</option>
+            <option value="average">Average</option>
+            <option value="high">High</option>
+            <option value="very high">Very High</option>
+        </select></span>
+    </label>
+    <label>
+        <b>Level of Knowledge</b>
+        <i>Does the general public know a lot about this creature?</i>
+        <span><select id="knowledge" required>
+            <option value="">(select)</option>
+            <option value="very low">Very Low</option>
+            <option value="low">Low</option>
+            <option value="average">Average</option>
+            <option value="high">High</option>
+            <option value="very high">Very High</option>
+        </select></span>
+    </label>
+    <label class="fullWidth adjustable">
+        <b>Subspecies</b>
+        <div class="rows subspecies-wrap"></div>
+        <div class="multi-buttons" data-row-type="subspecies">
+            <button type="button" onclick="addRow(this)">+ New Row</button>
+            <button type="button" onclick="removeRow(this)">- Remove Row</button>
+        </div>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>

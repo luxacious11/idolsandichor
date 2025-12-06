@@ -138,6 +138,10 @@
         opacity: 0;
         z-index: 9;
 
+        &:not(.is-open) {
+            pointer-events: none;
+        }
+
         &:not(.fullWidth) {
             & > .scroll {
                 padding: var(--space-md);
@@ -408,6 +412,7 @@
 .switch {
     &--container {
         padding: var(--space-md);
+        height: 100%;
     }
 
     .scroll {
@@ -426,8 +431,9 @@
         grid-template-columns: var(--size-switcher-image) auto;
         gap: 0 var(--space-lg);
         cursor: pointer;
-        padding: 12px 0 12px 12px;
+        padding: 12px 0 12px 12px !important;
         align-items: center;
+        border: none !important;
 
         &.parent-account {
             padding: var(--space-lg) var(--space-md) var(--space-lg) var(--space-lg);
@@ -473,12 +479,13 @@
         flex-direction: column;
 
         b {
-            font-family: var(--font-serif);
-            font-weight: 900;
-            font-size: 1.5em;
+            font-family: var(--font-serif) !important;
+            font-weight: 900 !important;
+            font-size: 1.5em !important;
             line-height: 120%;
-            color: var(--text-secondary);
+            color: var(--text-secondary) !important;
             transition: var(--transition-standard);
+            letter-spacing: 0 !important;
         }
 
         span {
@@ -525,6 +532,7 @@
             align-items: center;
             grid-template-columns: var(--size-switcher-image) 1fr;
             margin-bottom: var(--space-md);
+            gap: var(--space-xs) 0;
 
             & > div:only-of-type {
                 grid-column: 1 / -1;
@@ -585,8 +593,8 @@
                         grid-column: 2 / 3;
                         font-family: var(--font-serif);
                         font-weight: 900;
-                        font-size: calc(1.5 * var(--text-size-md));
-                        line-height: 120%;
+                        font-size: var(--text-size-lg);
+                        line-height: 140%;
                         color: var(--text-secondary);
                         text-transform: capitalize;
                         transition: var(--transition-standard);

@@ -1,0 +1,401 @@
+/*******************************
+    Extensions
+********************************/
+/*******************************
+   Categories and Forums
+********************************/
+.category {
+  padding: var(--space-md);
+  max-width: 700px;
+  margin: 0 auto; }
+  @media (min-width: 601px) {
+    .category {
+      padding: var(--space-lg); } }
+  @media (min-width: 1025px) {
+    .category {
+      max-width: 1200px; } }
+  .category--title {
+    font-family: var(--font-serif);
+    color: var(--text-secondary);
+    font-weight: 900;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    text-align: center;
+    line-height: 120%;
+    line-height: 160%;
+    margin-bottom: var(--space-lg); }
+    .category--title::before, .category--title::after {
+      font-family: 'Font Awesome 7 Pro';
+      font-weight: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--text-accent);
+      transition: var(--transition-standard);
+      background: var(--bg-accent-mid);
+      height: 1px;
+      padding: 0 10px; }
+    .category--title::before {
+      content: '\e7f9'; }
+    .category--title::after {
+      content: '\e7f8'; }
+    @media (min-width: 481px) {
+      .category--title {
+        font-size: 30px; } }
+  .category--list {
+    display: grid;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    border: var(--border-primary);
+    background: var(--bg-secondary); }
+    .category--list::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      filter: var(--rgb-filter);
+      opacity: var(--opacity-pattern);
+      background-size: 700px;
+      background-repeat: repeat;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 1422 800" opacity="0.57"><g stroke-width="1" stroke="%23000000" fill="none" stroke-linecap="square"><line x1="74" y1="0" x2="0" y2="74" opacity="0.65"></line><line x1="148" y1="0" x2="74" y2="74" opacity="0.84"></line><line x1="222" y1="0" x2="148" y2="74" opacity="0.27"></line><line x1="222" y1="0" x2="296" y2="74" opacity="0.84"></line><line x1="370" y1="0" x2="296" y2="74" opacity="0.79"></line><line x1="444" y1="0" x2="370" y2="74" opacity="0.27"></line><line x1="518" y1="0" x2="444" y2="74" opacity="0.98"></line><line x1="592" y1="0" x2="518" y2="74" opacity="0.43"></line><line x1="666" y1="0" x2="592" y2="74" opacity="0.67"></line><line x1="666" y1="0" x2="740" y2="74" opacity="0.67"></line><line x1="814" y1="0" x2="740" y2="74" opacity="0.46"></line><line x1="814" y1="0" x2="888" y2="74" opacity="0.08"></line><line x1="962" y1="0" x2="888" y2="74" opacity="0.75"></line><line x1="1036" y1="0" x2="962" y2="74" opacity="0.68"></line><line x1="1036" y1="0" x2="1110" y2="74" opacity="0.70"></line><line x1="1184" y1="0" x2="1110" y2="74" opacity="0.89"></line><line x1="1184" y1="0" x2="1258" y2="74" opacity="0.49"></line><line x1="1258" y1="0" x2="1332" y2="74" opacity="0.80"></line><line x1="1406" y1="0" x2="1332" y2="74" opacity="0.27"></line><line x1="1480" y1="0" x2="1406" y2="74" opacity="0.49"></line><line x1="0" y1="74" x2="74" y2="148" opacity="0.93"></line><line x1="74" y1="74" x2="148" y2="148" opacity="0.10"></line><line x1="222" y1="74" x2="148" y2="148" opacity="0.55"></line><line x1="222" y1="74" x2="296" y2="148" opacity="0.39"></line><line x1="370" y1="74" x2="296" y2="148" opacity="0.77"></line><line x1="444" y1="74" x2="370" y2="148" opacity="0.86"></line><line x1="444" y1="74" x2="518" y2="148" opacity="0.12"></line><line x1="518" y1="74" x2="592" y2="148" opacity="0.71"></line><line x1="592" y1="74" x2="666" y2="148" opacity="0.79"></line><line x1="666" y1="74" x2="740" y2="148" opacity="0.75"></line><line x1="740" y1="74" x2="814" y2="148" opacity="0.24"></line><line x1="888" y1="74" x2="814" y2="148" opacity="0.18"></line><line x1="962" y1="74" x2="888" y2="148" opacity="0.29"></line><line x1="1036" y1="74" x2="962" y2="148" opacity="0.82"></line><line x1="1036" y1="74" x2="1110" y2="148" opacity="0.60"></line><line x1="1184" y1="74" x2="1110" y2="148" opacity="1.00"></line><line x1="1184" y1="74" x2="1258" y2="148" opacity="0.78"></line><line x1="1258" y1="74" x2="1332" y2="148" opacity="0.88"></line><line x1="1332" y1="74" x2="1406" y2="148" opacity="0.98"></line><line x1="1406" y1="74" x2="1480" y2="148" opacity="0.29"></line><line x1="74" y1="148" x2="0" y2="222" opacity="0.18"></line><line x1="148" y1="148" x2="74" y2="222" opacity="0.22"></line><line x1="222" y1="148" x2="148" y2="222" opacity="0.08"></line><line x1="296" y1="148" x2="222" y2="222" opacity="0.43"></line><line x1="370" y1="148" x2="296" y2="222" opacity="0.29"></line><line x1="370" y1="148" x2="444" y2="222" opacity="0.60"></line><line x1="518" y1="148" x2="444" y2="222" opacity="0.51"></line><line x1="518" y1="148" x2="592" y2="222" opacity="0.56"></line><line x1="666" y1="148" x2="592" y2="222" opacity="0.27"></line><line x1="740" y1="148" x2="666" y2="222" opacity="0.62"></line><line x1="740" y1="148" x2="814" y2="222" opacity="0.55"></line><line x1="888" y1="148" x2="814" y2="222" opacity="0.33"></line><line x1="888" y1="148" x2="962" y2="222" opacity="0.72"></line><line x1="1036" y1="148" x2="962" y2="222" opacity="0.39"></line><line x1="1110" y1="148" x2="1036" y2="222" opacity="0.53"></line><line x1="1184" y1="148" x2="1110" y2="222" opacity="0.96"></line><line x1="1184" y1="148" x2="1258" y2="222" opacity="0.94"></line><line x1="1332" y1="148" x2="1258" y2="222" opacity="0.62"></line><line x1="1406" y1="148" x2="1332" y2="222" opacity="0.83"></line><line x1="1480" y1="148" x2="1406" y2="222" opacity="0.08"></line><line x1="74" y1="222" x2="0" y2="296" opacity="0.41"></line><line x1="148" y1="222" x2="74" y2="296" opacity="0.77"></line><line x1="148" y1="222" x2="222" y2="296" opacity="0.81"></line><line x1="222" y1="222" x2="296" y2="296" opacity="0.48"></line><line x1="370" y1="222" x2="296" y2="296" opacity="0.21"></line><line x1="370" y1="222" x2="444" y2="296" opacity="0.55"></line><line x1="518" y1="222" x2="444" y2="296" opacity="0.23"></line><line x1="592" y1="222" x2="518" y2="296" opacity="0.32"></line><line x1="592" y1="222" x2="666" y2="296" opacity="0.35"></line><line x1="666" y1="222" x2="740" y2="296" opacity="0.68"></line><line x1="814" y1="222" x2="740" y2="296" opacity="0.72"></line><line x1="814" y1="222" x2="888" y2="296" opacity="0.56"></line><line x1="888" y1="222" x2="962" y2="296" opacity="0.71"></line><line x1="962" y1="222" x2="1036" y2="296" opacity="0.62"></line><line x1="1110" y1="222" x2="1036" y2="296" opacity="0.72"></line><line x1="1110" y1="222" x2="1184" y2="296" opacity="0.56"></line><line x1="1258" y1="222" x2="1184" y2="296" opacity="0.61"></line><line x1="1258" y1="222" x2="1332" y2="296" opacity="0.93"></line><line x1="1406" y1="222" x2="1332" y2="296" opacity="0.76"></line><line x1="1406" y1="222" x2="1480" y2="296" opacity="0.16"></line><line x1="0" y1="296" x2="74" y2="370" opacity="0.12"></line><line x1="74" y1="296" x2="148" y2="370" opacity="0.59"></line><line x1="148" y1="296" x2="222" y2="370" opacity="0.44"></line><line x1="222" y1="296" x2="296" y2="370" opacity="0.76"></line><line x1="296" y1="296" x2="370" y2="370" opacity="0.17"></line><line x1="370" y1="296" x2="444" y2="370" opacity="0.50"></line><line x1="444" y1="296" x2="518" y2="370" opacity="0.82"></line><line x1="518" y1="296" x2="592" y2="370" opacity="0.50"></line><line x1="592" y1="296" x2="666" y2="370" opacity="0.40"></line><line x1="666" y1="296" x2="740" y2="370" opacity="0.69"></line><line x1="740" y1="296" x2="814" y2="370" opacity="0.83"></line><line x1="888" y1="296" x2="814" y2="370" opacity="0.45"></line><line x1="962" y1="296" x2="888" y2="370" opacity="0.71"></line><line x1="962" y1="296" x2="1036" y2="370" opacity="0.74"></line><line x1="1110" y1="296" x2="1036" y2="370" opacity="0.87"></line><line x1="1184" y1="296" x2="1110" y2="370" opacity="0.94"></line><line x1="1184" y1="296" x2="1258" y2="370" opacity="0.60"></line><line x1="1258" y1="296" x2="1332" y2="370" opacity="0.39"></line><line x1="1332" y1="296" x2="1406" y2="370" opacity="0.83"></line><line x1="1480" y1="296" x2="1406" y2="370" opacity="0.21"></line><line x1="0" y1="370" x2="74" y2="444" opacity="0.79"></line><line x1="74" y1="370" x2="148" y2="444" opacity="0.17"></line><line x1="222" y1="370" x2="148" y2="444" opacity="0.09"></line><line x1="222" y1="370" x2="296" y2="444" opacity="0.18"></line><line x1="370" y1="370" x2="296" y2="444" opacity="0.90"></line><line x1="444" y1="370" x2="370" y2="444" opacity="0.95"></line><line x1="518" y1="370" x2="444" y2="444" opacity="0.82"></line><line x1="592" y1="370" x2="518" y2="444" opacity="0.89"></line><line x1="592" y1="370" x2="666" y2="444" opacity="0.79"></line><line x1="666" y1="370" x2="740" y2="444" opacity="0.94"></line><line x1="814" y1="370" x2="740" y2="444" opacity="0.97"></line><line x1="888" y1="370" x2="814" y2="444" opacity="0.80"></line><line x1="962" y1="370" x2="888" y2="444" opacity="0.67"></line><line x1="1036" y1="370" x2="962" y2="444" opacity="0.49"></line><line x1="1110" y1="370" x2="1036" y2="444" opacity="0.36"></line><line x1="1184" y1="370" x2="1110" y2="444" opacity="0.63"></line><line x1="1258" y1="370" x2="1184" y2="444" opacity="0.69"></line><line x1="1332" y1="370" x2="1258" y2="444" opacity="0.27"></line><line x1="1332" y1="370" x2="1406" y2="444" opacity="0.34"></line><line x1="1406" y1="370" x2="1480" y2="444" opacity="0.76"></line><line x1="0" y1="444" x2="74" y2="518" opacity="0.21"></line><line x1="74" y1="444" x2="148" y2="518" opacity="0.45"></line><line x1="148" y1="444" x2="222" y2="518" opacity="0.62"></line><line x1="222" y1="444" x2="296" y2="518" opacity="0.72"></line><line x1="370" y1="444" x2="296" y2="518" opacity="0.34"></line><line x1="444" y1="444" x2="370" y2="518" opacity="0.76"></line><line x1="518" y1="444" x2="444" y2="518" opacity="0.98"></line><line x1="518" y1="444" x2="592" y2="518" opacity="0.58"></line><line x1="666" y1="444" x2="592" y2="518" opacity="0.41"></line><line x1="666" y1="444" x2="740" y2="518" opacity="0.81"></line><line x1="814" y1="444" x2="740" y2="518" opacity="0.83"></line><line x1="888" y1="444" x2="814" y2="518" opacity="0.71"></line><line x1="962" y1="444" x2="888" y2="518" opacity="0.46"></line><line x1="962" y1="444" x2="1036" y2="518" opacity="0.81"></line><line x1="1110" y1="444" x2="1036" y2="518" opacity="0.31"></line><line x1="1110" y1="444" x2="1184" y2="518" opacity="0.95"></line><line x1="1184" y1="444" x2="1258" y2="518" opacity="0.27"></line><line x1="1258" y1="444" x2="1332" y2="518" opacity="0.41"></line><line x1="1332" y1="444" x2="1406" y2="518" opacity="0.91"></line><line x1="1406" y1="444" x2="1480" y2="518" opacity="0.99"></line><line x1="74" y1="518" x2="0" y2="592" opacity="0.47"></line><line x1="148" y1="518" x2="74" y2="592" opacity="0.73"></line><line x1="148" y1="518" x2="222" y2="592" opacity="0.08"></line><line x1="222" y1="518" x2="296" y2="592" opacity="0.40"></line><line x1="296" y1="518" x2="370" y2="592" opacity="0.34"></line><line x1="444" y1="518" x2="370" y2="592" opacity="0.62"></line><line x1="444" y1="518" x2="518" y2="592" opacity="0.48"></line><line x1="592" y1="518" x2="518" y2="592" opacity="0.73"></line><line x1="666" y1="518" x2="592" y2="592" opacity="0.42"></line><line x1="740" y1="518" x2="666" y2="592" opacity="0.46"></line><line x1="740" y1="518" x2="814" y2="592" opacity="0.77"></line><line x1="888" y1="518" x2="814" y2="592" opacity="0.09"></line><line x1="888" y1="518" x2="962" y2="592" opacity="0.95"></line><line x1="962" y1="518" x2="1036" y2="592" opacity="0.66"></line><line x1="1036" y1="518" x2="1110" y2="592" opacity="0.10"></line><line x1="1110" y1="518" x2="1184" y2="592" opacity="0.72"></line><line x1="1258" y1="518" x2="1184" y2="592" opacity="0.56"></line><line x1="1258" y1="518" x2="1332" y2="592" opacity="0.08"></line><line x1="1406" y1="518" x2="1332" y2="592" opacity="0.22"></line><line x1="1406" y1="518" x2="1480" y2="592" opacity="0.26"></line><line x1="74" y1="592" x2="0" y2="666" opacity="0.77"></line><line x1="148" y1="592" x2="74" y2="666" opacity="0.77"></line><line x1="222" y1="592" x2="148" y2="666" opacity="0.17"></line><line x1="296" y1="592" x2="222" y2="666" opacity="0.71"></line><line x1="296" y1="592" x2="370" y2="666" opacity="0.61"></line><line x1="370" y1="592" x2="444" y2="666" opacity="0.78"></line><line x1="518" y1="592" x2="444" y2="666" opacity="0.31"></line><line x1="518" y1="592" x2="592" y2="666" opacity="0.52"></line><line x1="666" y1="592" x2="592" y2="666" opacity="0.84"></line><line x1="666" y1="592" x2="740" y2="666" opacity="0.26"></line><line x1="740" y1="592" x2="814" y2="666" opacity="0.48"></line><line x1="888" y1="592" x2="814" y2="666" opacity="0.20"></line><line x1="888" y1="592" x2="962" y2="666" opacity="0.45"></line><line x1="962" y1="592" x2="1036" y2="666" opacity="0.28"></line><line x1="1110" y1="592" x2="1036" y2="666" opacity="0.23"></line><line x1="1184" y1="592" x2="1110" y2="666" opacity="0.78"></line><line x1="1184" y1="592" x2="1258" y2="666" opacity="0.57"></line><line x1="1332" y1="592" x2="1258" y2="666" opacity="0.31"></line><line x1="1406" y1="592" x2="1332" y2="666" opacity="0.18"></line><line x1="1480" y1="592" x2="1406" y2="666" opacity="0.87"></line><line x1="74" y1="666" x2="0" y2="740" opacity="0.08"></line><line x1="74" y1="666" x2="148" y2="740" opacity="0.96"></line><line x1="222" y1="666" x2="148" y2="740" opacity="0.78"></line><line x1="222" y1="666" x2="296" y2="740" opacity="0.86"></line><line x1="296" y1="666" x2="370" y2="740" opacity="0.93"></line><line x1="444" y1="666" x2="370" y2="740" opacity="0.56"></line><line x1="518" y1="666" x2="444" y2="740" opacity="0.17"></line><line x1="592" y1="666" x2="518" y2="740" opacity="0.24"></line><line x1="666" y1="666" x2="592" y2="740" opacity="0.16"></line><line x1="740" y1="666" x2="666" y2="740" opacity="0.85"></line><line x1="814" y1="666" x2="740" y2="740" opacity="0.09"></line><line x1="814" y1="666" x2="888" y2="740" opacity="0.10"></line><line x1="888" y1="666" x2="962" y2="740" opacity="0.11"></line><line x1="962" y1="666" x2="1036" y2="740" opacity="0.62"></line><line x1="1110" y1="666" x2="1036" y2="740" opacity="0.51"></line><line x1="1184" y1="666" x2="1110" y2="740" opacity="0.28"></line><line x1="1258" y1="666" x2="1184" y2="740" opacity="0.38"></line><line x1="1332" y1="666" x2="1258" y2="740" opacity="0.24"></line><line x1="1406" y1="666" x2="1332" y2="740" opacity="0.62"></line><line x1="1406" y1="666" x2="1480" y2="740" opacity="0.77"></line><line x1="0" y1="740" x2="74" y2="814" opacity="0.83"></line><line x1="148" y1="740" x2="74" y2="814" opacity="0.84"></line><line x1="222" y1="740" x2="148" y2="814" opacity="0.20"></line><line x1="296" y1="740" x2="222" y2="814" opacity="0.13"></line><line x1="296" y1="740" x2="370" y2="814" opacity="0.60"></line><line x1="370" y1="740" x2="444" y2="814" opacity="0.64"></line><line x1="444" y1="740" x2="518" y2="814" opacity="0.89"></line><line x1="518" y1="740" x2="592" y2="814" opacity="0.91"></line><line x1="592" y1="740" x2="666" y2="814" opacity="0.24"></line><line x1="666" y1="740" x2="740" y2="814" opacity="0.84"></line><line x1="814" y1="740" x2="740" y2="814" opacity="0.95"></line><line x1="888" y1="740" x2="814" y2="814" opacity="0.40"></line><line x1="962" y1="740" x2="888" y2="814" opacity="0.53"></line><line x1="1036" y1="740" x2="962" y2="814" opacity="0.53"></line><line x1="1036" y1="740" x2="1110" y2="814" opacity="0.15"></line><line x1="1110" y1="740" x2="1184" y2="814" opacity="0.47"></line><line x1="1184" y1="740" x2="1258" y2="814" opacity="0.86"></line><line x1="1332" y1="740" x2="1258" y2="814" opacity="0.78"></line><line x1="1406" y1="740" x2="1332" y2="814" opacity="0.61"></line><line x1="1406" y1="740" x2="1480" y2="814" opacity="0.56"></line></g></svg>'); }
+    @media (min-width: 1025px) {
+      .category--list:has(.redirect) {
+        grid-template-columns: 1fr 2fr;
+        min-height: 600px;
+        padding: calc(2 * var(--space-lg));
+        gap: calc(2 * var(--space-lg)) var(--space-lg); } }
+    .category--list:has(.redirect) .forum:not(.redirect) .forum--avatar {
+      display: none; }
+    @media (min-width: 769px) {
+      .category--list:has(.redirect) .forum:not(.redirect) {
+        grid-template-columns: 1fr 1fr; } }
+
+.forum.redirect {
+  grid-row: span 2;
+  padding: var(--space-lg);
+  background: var(--bg-accent-low);
+  border: var(--border-accent-mid);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  margin: calc(-1 * var(--space-lg)) calc(-1 * var(--space-lg)) 0 calc(-1 * var(--space-lg)); }
+  @media (min-width: 1025px) {
+    .forum.redirect {
+      margin: calc(-2 * var(--space-lg)) var(--space-lg) calc(-2 * var(--space-lg)) calc(-2 * var(--space-lg)); } }
+  .forum.redirect .forum--title {
+    font-family: var(--font-serif);
+    text-transform: capitalize;
+    font-size: 40px;
+    letter-spacing: -0.05em;
+    z-index: 1;
+    margin-bottom: var(--space-md); }
+    @media only screen and (min-width: 480px) {
+      .forum.redirect .forum--title {
+        font-size: calc(40px + 20 * (100vw - 480px) / (768 - 480)); } }
+    @media only screen and (min-width: 768px) {
+      .forum.redirect .forum--title {
+        font-size: 60px; } }
+    @media (min-width: 1025px) {
+      .forum.redirect .forum--title {
+        margin-right: calc(-2 * var(--space-lg)); } }
+  .forum.redirect .forum--links {
+    justify-content: end;
+    z-index: 1; }
+
+.subforums .forum.redirect {
+  display: none; }
+
+.forum:not(.redirect) {
+  display: grid;
+  gap: var(--space-xs) var(--space-xl);
+  background: var(--bg-tertiary);
+  border: var(--border-primary);
+  padding: var(--space-md);
+  align-items: center; }
+  @media (min-width: 481px) {
+    .forum:not(.redirect) {
+      padding: var(--space-lg); } }
+  @media (max-width: 600px) {
+    .forum:not(.redirect):not(:has(.forum--image)) {
+      grid-template-rows: max-content max-content max-content; } }
+  @media (min-width: 601px) {
+    .forum:not(.redirect):not(:has(.forum--image)) {
+      grid-template-columns: 100px 1fr; }
+      .forum:not(.redirect):not(:has(.forum--image)) .forum--avatar {
+        grid-row: span 2; } }
+  @media (min-width: 1025px) {
+    .forum:not(.redirect):not(:has(.forum--image)) {
+      grid-template-columns: 100px 1.5fr 2fr; }
+      .forum:not(.redirect):not(:has(.forum--image)) .forum--avatar {
+        grid-row: span 1; } }
+  @media (max-width: 1024px) {
+    .forum:not(.redirect):has(.forum--image) {
+      grid-template-rows: calc(150px + (2 * var(--space-md))) max-content max-content max-content; } }
+  @media (min-width: 1025px) {
+    .forum:not(.redirect):has(.forum--image) {
+      grid-template-columns: 175px 1fr 1fr; } }
+  .forum:not(.redirect):has(.forum--image) .forum--left {
+    align-self: end; }
+  .forum:not(.redirect):has(.forum--image) .forum--latest {
+    align-self: start; }
+  @media (max-width: 1024px) {
+    .forum:not(.redirect):has(.forum--image):has(.forum--location-links .scroll:empty) {
+      grid-template-rows: calc(150px + (2 * var(--space-md))) max-content max-content; } }
+  @media (min-width: 1025px) {
+    .forum:not(.redirect):has(.forum--image):has(.forum--location-links .scroll:empty) {
+      grid-template-columns: 125px 1fr 1fr; } }
+  .forum:not(.redirect):has(.forum--image):has(.forum--location-links .scroll:empty) .forum--image {
+    grid-row: span 1; }
+  .forum:not(.redirect):has(.forum--image):has(.forum--location-links .scroll:empty) .forum--left,
+  .forum:not(.redirect):has(.forum--image):has(.forum--location-links .scroll:empty) .forum--latest {
+    align-self: center; }
+
+.forum--decor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+  .forum--decor::before {
+    left: 50%;
+    top: calc(50% - (10px / -2)); }
+  .forum--decor::after {
+    left: 50%;
+    top: calc(50% - (10px / 2)); }
+  .forum--decor:hover::before {
+    top: calc(50% - (10px / 2)); }
+  .forum--decor:hover::after {
+    top: calc(50% - (10px / -2)); }
+  .forum--decor::before, .forum--decor::after {
+    content: '';
+    width: 80%;
+    aspect-ratio: 1 / 1;
+    display: block;
+    position: absolute;
+    transform: rotate(45deg) translateX(-50%) translateY(-50%);
+    transition: var(--transition-standard);
+    transform-origin: top left; }
+  .forum--decor::before {
+    border: var(--border-accent-mid); }
+  .forum--decor::after {
+    border: var(--border-accent-high); }
+  .forum--decor::before, .forum--decor::after {
+    left: 100%; }
+
+.forum--title {
+  font-family: var(--font-sans-narrow);
+  text-transform: uppercase;
+  font-size: 40px;
+  color: var(--text-secondary);
+  font-weight: 700;
+  top: var(--space-xs);
+  line-height: 120%;
+  line-height: 120%;
+  margin-bottom: var(--space-sm);
+  font-size: 24px; }
+  @media only screen and (min-width: 480px) {
+    .forum--title {
+      font-size: calc(24px + 12 * (100vw - 480px) / (1280 - 480)); } }
+  @media only screen and (min-width: 1280px) {
+    .forum--title {
+      font-size: 36px; } }
+  .forum--title a {
+    color: var(--text-secondary); }
+
+.forum--stats {
+  color: var(--text-primary);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  font-size: var(--text-size-xs);
+  font-family: var(--font-sans);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-lg);
+  line-height: 120%; }
+  .forum--stats b {
+    color: var(--text-accent); }
+
+.forum--links {
+  color: var(--text-primary);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  font-size: var(--text-size-xs);
+  font-family: var(--font-sans);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-md);
+  line-height: 160%;
+  margin-bottom: var(--space-sm); }
+  .forum--links:empty {
+    display: none; }
+  .forum--links > br {
+    display: none; }
+  .forum--links .subforums {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-md); }
+    .forum--links .subforums > br {
+      display: none; }
+  .forum--links a {
+    color: var(--text-primary);
+    transition: var(--transition-standard); }
+    .forum--links a:hover {
+      color: var(--text-secondary); }
+
+.forum--latest {
+  line-height: 160%; }
+  .forum--latest > a {
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    font-size: var(--text-size-sm);
+    font-family: var(--font-sans); }
+  .forum--latest > div:not(:last-child) {
+    color: var(--text-primary);
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    font-size: var(--text-size-xs);
+    font-family: var(--font-sans); }
+  .forum--latest > div:last-child {
+    color: var(--text-primary);
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    font-size: var(--text-size-xs);
+    font-family: var(--font-sans);
+    font-style: italic; }
+  .forum--latest > div a {
+    color: var(--text-accent); }
+
+.forum--avatar {
+  aspect-ratio: 1 / 1;
+  line-height: 0;
+  opacity: 0.5; }
+  @media (max-width: 600px) {
+    .forum--avatar {
+      display: none; } }
+  @media (min-width: 601px) {
+    .forum--avatar {
+      width: 100%;
+      margin: var(--space-sm); }
+      .forum--avatar::before {
+        top: 50%;
+        left: calc(50% - (5px / -2)); }
+      .forum--avatar::after {
+        top: 50%;
+        left: calc(50% - (5px / 2)); }
+      .forum--avatar:hover::before {
+        left: calc(50% - (5px / 2)); }
+      .forum--avatar:hover::after {
+        left: calc(50% - (5px / -2)); }
+      .forum--avatar::before, .forum--avatar::after {
+        content: '';
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        display: block;
+        position: absolute;
+        transform: rotate(45deg) translateX(-50%) translateY(-50%);
+        transition: var(--transition-standard);
+        transform-origin: top left; }
+      .forum--avatar::before {
+        border: var(--border-accent-mid); }
+      .forum--avatar::after {
+        border: var(--border-accent-high); } }
+  .forum--avatar img {
+    z-index: 1;
+    width: 100%;
+    height: 100%; }
+  .forum-new-post .forum--avatar {
+    opacity: 1; }
+
+.forum:has(.forum--image) .forum--avatar {
+  display: none; }
+
+@media (max-width: 1024px) {
+  .forum:has(.forum--image) .forum--left {
+    margin-top: calc(-1 * var(--space-md)); } }
+
+@media (min-width: 1025px) {
+  .forum:not(.redirect):has(.forum--image):has(.forum--location-links):not(:has(.forum--location-links .scroll:empty)) .forum--image, .forum--location-links {
+    grid-row: span 2; } }
+
+.forum--image {
+  line-height: 0;
+  height: 100%;
+  margin: calc(-1 * var(--space-md) - 1px) calc(-1 * var(--space-md) - 1px) var(--space-md);
+  background: var(--bg-accent-low);
+  padding: var(--space-md);
+  border: var(--border-accent-mid); }
+  @media (min-width: 481px) {
+    .forum--image {
+      margin: calc(-1 * var(--space-lg) - 1px) calc(-1 * var(--space-lg) - 1px) var(--space-lg); } }
+  @media (min-width: 1025px) {
+    .forum--image {
+      height: calc(100% + (2 * var(--space-lg)) + 2px);
+      margin: calc(-1 * var(--space-lg) - 1px) calc(-1 * var(--space-lg)); } }
+  .forum--image img {
+    height: 100%;
+    width: 100%; }
+
+@media (max-width: 1024px) {
+  .forum--location-links {
+    order: 2;
+    margin-top: var(--space-md); } }
+
+.forum--location-links .scroll {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-top: var(--space-xs);
+  padding-left: var(--space-xs);
+  max-height: 170px; }
+
+.forum--location-links:has(.scroll:empty) {
+  display: none; }
+
+.forum--location-links a {
+  border: var(--border-accent-mid);
+  padding: var(--space-xs) var(--space-sm);
+  text-align: center;
+  background: transparent;
+  transition: var(--transition-standard);
+  color: var(--text-primary);
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  font-size: var(--text-size-sm);
+  font-family: var(--font-sans-narrow); }
+  .forum--location-links a::before {
+    content: '';
+    position: absolute;
+    border: var(--border-accent-low);
+    width: 100%;
+    height: 100%;
+    transition: var(--transition-standard);
+    opacity: 1; }
+  .forum--location-links a:hover::before {
+    opacity: 0; }
+  .forum--location-links a::before {
+    top: -6px;
+    left: -6px;
+    clip-path: polygon(0 0, 100% 0, 100% 5px, 5px 5px, 5px 100%, 0 100%); }
+  .forum--location-links a:hover::before {
+    top: -1px;
+    left: -1px; }
+  .forum--location-links a:hover {
+    background: var(--bg-accent-low);
+    color: var(--text-secondary); }
+
+.forum .subforums-macro {
+  display: none; }

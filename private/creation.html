@@ -32,160 +32,43 @@
                         <i class="fa-solid fa-xmark close-button"></i>
                     </button>
                     <tag-labels class="accordion scroll">
-                        <tag-label class="tab-category accordion--trigger" data-category="info">
-                            <span>Required Reading</span>
+                        <tag-label class="tab-category accordion--trigger" data-category="sort">
+                            <span>Getting Sorted</span>
                         </tag-label>
-                        <div class="tab-category accordion--content" data-category="info">
-                            <a href="#formatting">Formatting Test</a><!--remove on launch-->
-                            <a href="#etiquette">Etiquette</a>
-                            <a href="#site-plot">Plot</a>
-                            <a href="#setting">Setting</a>
-                            <a href="#groups">Standard Groups</a>
-                            <a href="#credits">Credits</a>
-                        </div>
-                        <tag-label class="tab-category accordion--trigger" data-category="plots">
-                            <span>Subplots</span>
-                        </tag-label>
-                        <div class="tab-category accordion--content" data-category="plots"></div>
-                        <tag-label class="tab-category accordion--trigger" data-category="guides">
-                            <span>Guides</span>
-                        </tag-label>
-                        <div class="tab-category accordion--content" data-category="guides">
-                            <a href="#guide-one">Getting Started</a>
-                            <a href="./businesses.html">Businesses</a>
-                            <a href="#guide-two">Restricted Faces</a>
-                        </div>
-                        <tag-label class="tab-category accordion--trigger" data-category="registration">
-                            <span>Registration</span>
-                        </tag-label>
-                        <div class="tab-category accordion--content" data-category="registration">
-                            <a href="#reserve-face">Reserve a Face</a>
-                            <a href="#reserve-role">Reserve a Subplot Role</a>
+                        <div class="tab-category accordion--content" data-category="sort"><div class="accordion--inner">
+                            <a href="#start">Start Guide</a>
+                            <a href="#reserves">Reserve a Face / Canon</a>
                             <a href="#add-business">Add a Business</a>
                             <a href="#sort">Get Sorted</a>
-                            <a href="./connections.html#address">Register an Address</a>
-                            <a href="./connections.html#connection">Add Connections</a>
-                        </div>
-                        <tag-label class="tab-category accordion--trigger" data-category="claims">
-                            <span>Claims</span>
-                        </tag-label>
-                        <div class="tab-category accordion--content" data-category="claims">
-                            <a href="./claims.html#reserves">Reserves</a>
-                            <a href="./members.html">Members</a>
-                            <a href="./claims.html#faces">Faces</a>
-                            <a href="./businesses.html">Jobs</a>
-                            <a href="./connections.html">Connections</a>
-                        </div>
+                        </div></div>
                         <tag-label class="tab-category accordion--trigger" data-category="moderation">
                             <span>Moderation</span>
                         </tag-label>
-                        <div class="tab-category accordion--content" data-category="moderation">
-                            <a href="#edit-member">Edit Member Information</a>
+                        <div class="tab-category accordion--content" data-category="moderation"><div class="accordion--inner">
                             <a href="#edit-claims">Edit a Character</a>
                             <a href="#edit-business">Edit a Business</a>
-                            <a href="#staff-help">Request Staff Help</a>
-                        </div>
-                        <tag-label class="tab-category accordion--trigger staffOnly" data-category="staff">
-                            <span>Staff Only</span>
-                        </tag-label>
-                        <div class="tab-category accordion--content staffOnly" data-category="staff">
-                            <a href="#announce">Send Announcement</a>
-                            <a href="#add-plot">Add Subplot</a>
-                        </div>
+                        </div></div>
                     </tag-labels>
                 </div>
                 <tag-tabset class="webpage--content">
-                    <tag-tab class="tab-category" data-category="info">
+                    <tag-tab class="tab-category" data-category="sort">
                         <tag-tabset>
-                            <!--remove formatting tab on launch-->
-                            <tag-tab data-key="#formatting">
+                            <tag-tab data-key="#start">
                                 <div class="webpage--content-inner">
-                                    <h2>H2 Header</h2>
-                                    <h3>H3 Header</h3>
-                                    <h4>H4 Header</h4>
-                                    <h5>H5 Header</h5>
-                                    <h6>H6 Header</h6>
-                                    <h7>H7 Header</h7>
-                                    <h8>H8 Header</h8>
-                                    <p><b>Lorem ipsum dolor sit amet</b>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    <p><i>Lorem ipsum dolor sit amet</i>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    <p><u>Lorem ipsum dolor sit amet</u>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    <p><s>Lorem ipsum dolor sit amet</s>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    <p><tag-spoiler>Lorem ipsum dolor sit amet</tag-spoiler>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                    <ul>
-                                        <li>List Item</li>
-                                        <li>List Item</li>
-                                        <li>List Item</li>
-                                    </ul>
-                                    <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</blockquote>
+                                    text content
                                 </div>
                             </tag-tab>
-                            <tag-tab data-key="#etiquette">
+                            <tag-tab data-key="#reserves">
                                 <div class="webpage--content-inner">
-                                    Rules
-                                </div>
-                            </tag-tab>
-                            <tag-tab data-key="#site-plot">
-                                <div class="webpage--content-inner">
-                                    Plot
-                                </div>
-                            </tag-tab>
-                            <tag-tab data-key="#setting">
-                                <div class="webpage--content-inner">
-                                    Setting
-                                </div>
-                            </tag-tab>
-                            <tag-tab data-key="#groups">
-                                <div class="webpage--content-inner">
-                                    Groups
-                                </div>
-                            </tag-tab>
-                            <tag-tab data-key="#credits">
-                                <div class="webpage--content-inner">
-                                    Credits
-                                </div>
-                            </tag-tab>
-                        </tag-tabset>
-                    </tag-tab>
-                    <tag-tab class="tab-category" data-category="plots">
-                        <tag-tabset></tag-tabset>
-                    </tag-tab>
-                    <tag-tab class="tab-category" data-category="guides">
-                        <tag-tabset>
-                            <tag-tab data-key="#guide-one">
-                                <div class="webpage--content-inner">
-                                    Guide One
-                                </div>
-                            </tag-tab>
-                            <tag-tab data-key="#guide-two">
-                                <div class="webpage--content-inner">
-                                    Guide Two
-                                </div>
-                            </tag-tab>
-                        </tag-tabset>
-                    </tag-tab>
-                    <tag-tab class="tab-category" data-category="registration">
-                        <tag-tabset>
-                            <tag-tab data-key="#reserve-face">
-                                <h2 class="tab-heading">Reserve a Face</h2>
-                                <div class="webpage--content-inner">
-                                    @@include('../source/templates/forms/reserve-face.html')
-                                </div>
-                            </tag-tab>
-                            <tag-tab data-key="#reserve-role">
-                                <h2 class="tab-heading">Reserve a Subplot Role</h2>
-                                <div class="webpage--content-inner">
-                                    @@include('../source/templates/forms/reserve-role.html')
+                                    @@include('../source/templates/forms/reserve.html')
                                 </div>
                             </tag-tab>
                             <tag-tab data-key="#add-business">
-                                <h2 class="tab-heading">Add a Business</h2>
                                 <div class="webpage--content-inner">
                                     @@include('../source/templates/forms/add-business.html')
                                 </div>
                             </tag-tab>
                             <tag-tab data-key="#sort">
-                                <h2 class="tab-heading">Get Sorted</h2>
                                 <div class="webpage--content-inner">
                                     @@include('../source/templates/forms/get-sorted.html')
                                 </div>
@@ -194,44 +77,14 @@
                     </tag-tab>
                     <tag-tab class="tab-category" data-category="moderation">
                         <tag-tabset>
-                            <tag-tab data-key="#edit-member">
-                                <h2 class="tab-heading">Edit Member Info</h2>
-                                <div class="webpage--content-inner">
-                                    @@include('../source/templates/forms/edit-member.html')
-                                </div>
-                            </tag-tab>
                             <tag-tab data-key="#edit-claims">
-                                <h2 class="tab-heading">Edit a Character</h2>
                                 <div class="webpage--content-inner">
                                     @@include('../source/templates/forms/edit-character.html')
                                 </div>
                             </tag-tab>
                             <tag-tab data-key="#edit-business">
-                                <h2 class="tab-heading">Edit a Business</h2>
                                 <div class="webpage--content-inner">
                                     @@include('../source/templates/forms/edit-business.html')
-                                </div>
-                            </tag-tab>
-                            <tag-tab data-key="#staff-help">
-                                <h2 class="tab-heading">Request Staff Help</h2>
-                                <div class="webpage--content-inner">
-                                    @@include('../source/templates/forms/request-help.html')
-                                </div>
-                            </tag-tab>
-                        </tag-tabset>
-                    </tag-tab>
-                    <tag-tab class="tab-category" data-category="staff">
-                        <tag-tabset>
-                            <tag-tab data-key="#announce">
-                                <h2 class="tab-heading">Announce a Character</h2>
-                                <div class="webpage--content-inner">
-                                    @@include('../source/templates/forms/announce.html')
-                                </div>
-                            </tag-tab>
-                            <tag-tab data-key="#add-plot">
-                                <h2 class="tab-heading">Add a Subplot</h2>
-                                <div class="webpage--content-inner">
-                                    @@include('../source/templates/forms/add-plot.html')
                                 </div>
                             </tag-tab>
                         </tag-tabset>
@@ -239,41 +92,32 @@
                 </tag-tabset>
             </section>
 
-            <script src="../dist/js/formHelpers.js"></script>
             <script src="../dist/js/forms.js"></script>
+            <script src="../dist/js/formHelpers.js"></script>
             <script src="../dist/js/formatting.js"></script>
             <script>
-                let staticClaims, staticBusinesses, staticSubplots, staticPlotReserves;
-
-                fetch(claims)
+                            
+                let staticMembers = [], staticClaims = [], staticBusinesses = [];
+                fetch(fetchURL(membersJson))
                 .then((response) => response.json())
-                .then((claimsData) => {
-                    staticClaims = [...claimsData];
+                .then((memberData) => {
+                    staticMembers = [...memberData];
+                    setList('.clip-members', staticMembers, 'members');
 
-                    fetch(businesses)
+                    fetch(fetchURL(claimsJson))
                     .then((response) => response.json())
-                    .then((businessData) => {
-                        staticBusinesses = [...businessData];
-                        setBusinessList(`.clip-businesses`, businessData);
+                    .then((claimsData) => {
+                        staticClaims = [...claimsData];
+                        setList('.clip-characters', staticClaims, 'characters');
 
-                        fetch(plotReserves)
+                        fetch(fetchURL(businessesJson))
                         .then((response) => response.json())
-                        .then((plotReserveData) => {
-                            staticPlotReserves = [...plotReserveData];
-
-                            fetch(plots)
-                            .then((response) => response.json())
-                            .then((subplotData) => {
-                                //format plot claims
-                                staticSubplots = [...subplotData];
-                                setPlotOptions(subplotData, `#form-reserve-plot`, `.clip-plots`);
-                                formatSubplots(subplotData, staticClaims, staticPlotReserves);
-
-                            }).then(() => {
-                                initWebpages();
-                            });
-
-                        });
+                        .then((businessData) => {
+                            staticBusinesses = [...businessData];
+                            setList('.clip-businesses', staticBusinesses, 'businesses');
+                        }).then(() => {
+                            initWebpages();
+                        });;
 
                     });
 

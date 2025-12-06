@@ -1,11 +1,7 @@
 <form id="form-add-business" data-type="grid" data-columns="2">
-    <label>
+    <label class="fullWidth">
         <b>Alias</b>
-        <span><input type="text" id="alias" placeholder="Alias" required=""></span>
-    </label>
-    <label>
-        <b>OOC Account</b>
-        <span><input type="text" id="id" placeholder="URL or ID" required=""></span>
+        <span><select id="member" required class="clip-members business-members"></select></span>
     </label>
     <label>
         <b>Business Name</b>
@@ -18,9 +14,13 @@
             <option value="edu">Education</option>
             <option value="entertain">Entertainment</option>
             <option value="food">Food & Drink</option>
-            <option value="gov">Governmental</option>
+            <option value="gov">Healthcare</option>
+            <option value="gov">Hospitality</option>
+            <option value="gov">Law Enforcement</option>
+            <option value="gov">Media</option>
+            <option value="gov">Public Service</option>
             <option value="shop">Retail</option>
-            <option value="serve">Services</option>
+            <option value="serve">Trades & Services</option>
             <option value="misc">Miscellaneous</option>
         </select></span>
     </label>
@@ -28,9 +28,29 @@
         <b>Location</b>
         <span><select id="location" required>
             <option value="">(select)</option>
-            <option value="FORUM ID">Forum Name</option>
-            <option value="FORUM ID">Forum Name</option>
-            <option value="FORUM ID">Forum Name</option>
+            <optgroup label="Downtown Elysium">
+                <option value="52">Elysium Waterfront</option>
+                <option value="54">Harbour Bazaar</option>
+                <option value="53">Main Street</option>
+                <option value="47">Downtown Area</option>
+            </optgroup>
+            <optgroup label="Elysium Quarters">
+                <option value="48">Greek Quarter</option>
+                <option value="49">Roman Quarter</option>
+                <option value="50">Norse Quarter</option>
+                <option value="51">Egyptian Quarter</option>
+                <option value="67">Remnant Quarter</option>
+            </optgroup>
+            <optgroup label="Elysium Districts">
+                <option value="57">Art District</option>
+                <option value="60">Industrial District</option>
+                <option value="63">Trade District</option>
+                <option value="66">Entertainment District</option>
+            </optgroup>
+            <optgroup label="Beyond Elysium">
+                <option value="71">Elysium Outskirts</option>
+                <option value="43">Outside of Elysium</option>
+            </optgroup>
         </select></span>
     </label>
     <label>

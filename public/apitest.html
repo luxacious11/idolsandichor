@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drive API Quickstart</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <script>
+        fetch(`https://drive.google.com/file/d/1ZCII7n1KF0-hxTEN6KR0S_CYju9H-qHL/view?usp=sharing`)
+        .then(response => response.json())
+        .then(data => console.log(data));
+    </script>
+  </body>
+</html>

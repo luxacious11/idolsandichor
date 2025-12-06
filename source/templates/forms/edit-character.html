@@ -1,47 +1,42 @@
 <form id="form-edit-character" data-type="grid">
     <label>
-        <b>Profile</b>
-        <span><input type="text" id="accountid" placeholder="URL or ID" required=""></span>
+        <b>Character</b>
+        <span><select id="account" required class="clip-characters"></select></span>
     </label>
     <div class="form-multiselect" data-type="flex">
         <label class="input-wrap">
             <input type="checkbox" name="edit-character" value="character">
-            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <div class="fancy-input checkbox"><i class="fa-light fa-sharp fa-xmark"></i></div>
             <strong>Update Name</strong>
         </label>
         <label class="input-wrap">
             <input type="checkbox" name="edit-character" value="group">
-            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <div class="fancy-input checkbox"><i class="fa-light fa-sharp fa-xmark"></i></div>
             <strong>Update Group</strong>
         </label>
         <label class="input-wrap">
             <input type="checkbox" name="edit-character" value="jobs-add">
-            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <div class="fancy-input checkbox"><i class="fa-light fa-sharp fa-xmark"></i></div>
             <strong>Add Job(s)</strong>
         </label>
         <label class="input-wrap">
             <input type="checkbox" name="edit-character" value="jobs-change">
-            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <div class="fancy-input checkbox"><i class="fa-light fa-sharp fa-xmark"></i></div>
             <strong>Change Job(s)</strong>
         </label>
         <label class="input-wrap">
             <input type="checkbox" name="edit-character" value="jobs-remove">
-            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <div class="fancy-input checkbox"><i class="fa-light fa-sharp fa-xmark"></i></div>
             <strong>Remove Job(s)</strong>
         </label>
         <label class="input-wrap">
             <input type="checkbox" name="edit-character" value="roles-add">
-            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <div class="fancy-input checkbox"><i class="fa-light fa-sharp fa-xmark"></i></div>
             <strong>Add Subplot Role(s)</strong>
         </label>
         <label class="input-wrap">
-            <input type="checkbox" name="edit-character" value="roles-change">
-            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
-            <strong>Change Subplot Role(s)</strong>
-        </label>
-        <label class="input-wrap">
             <input type="checkbox" name="edit-character" value="roles-remove">
-            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
+            <div class="fancy-input checkbox"><i class="fa-light fa-sharp fa-xmark"></i></div>
             <strong>Remove Subplot Role(s)</strong>
         </label>
     </div>
@@ -53,10 +48,22 @@
         <b>Group</b>
         <span><select id="group">
             <option value="">(select)</option>
-            <option value="GROUP ID">Group Name</option>
-            <option value="GROUP ID">Group Name</option>
-            <option value="GROUP ID">Group Name</option>
-            <option value="GROUP ID">Group Name</option>
+            <optgroup label="Free">
+                <option value="8">Columba</option>
+                <option value="10">Crater</option>
+                <option value="11">Delphinus</option>
+                <option value="14">Lupus</option>
+                <option value="16">Norma</option>
+                <option value="17">Pictor</option>
+            </optgroup>
+            <optgroup label="Premium">
+                <option value="7">Apus</option>
+                <option value="9">Corvus</option>
+                <option value="12">Draco</option>
+                <option value="13">Fornax</option>
+                <option value="15">Lyra</option>
+                <option value="18">Pyxis</option>
+            </optgroup>
         </select></span>
     </label>
     <div class="hidden ifJobAdd adjustable field-wrap">
@@ -84,11 +91,6 @@
             <button type="button" onclick="addRow(this)">+ New Row</button>
             <button type="button" onclick="removeRow(this)">- Remove Row</button>
         </div>
-    </div>
-    <div class="hidden ifRoleChange field-wrap">
-        <b>Change Role(s)</b>
-        <div id="clip-role-change"></div>
-        <blockquote>There are no submitted characters matching the profile entered. Please confirm you have entered a profile correctly in the field above.</blockquote>
     </div>
     <div class="hidden ifRoleRemove field-wrap">
         <b>Remove Role(s)</b>

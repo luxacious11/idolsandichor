@@ -24,86 +24,211 @@
                 </div>
             </div>
 
-            <!--Webpage-->
-            <section class="webpage">
-                <div class="webpage--menu">
-                    <button class="macro--button" onclick="toggleListMenu(this)">
-                        <i class="fa-solid fa-bars open-button"></i>
-                        <i class="fa-solid fa-xmark close-button"></i>
-                    </button>
-                    <tag-labels class="accordion scroll">
-                        <tag-label class="tab-category accordion--trigger" data-category="claims">
-                            <span>Claims</span>
-                        </tag-label>
-                        <div class="tab-category accordion--content" data-category="claims">
-                            <a href="#reserves">Face Reserves</a>
-                            <a href="./members.html" class="external">Members</a>
-                            <a href="#faces">Faces</a>
-                            <a href="./businesses.html" class="external">Jobs</a>
-                            <a href="./connections.html" class="external">Connections</a>
+<!--Webpage-->
+<section class="webpage">
+    <div class="webpage--menu">
+        <button class="macro--button" onclick="toggleListMenu(this)">
+            <i class="fa-solid fa-bars open-button"></i>
+            <i class="fa-solid fa-xmark close-button"></i>
+        </button>
+        <tag-labels class="accordion scroll">
+            <tag-label class="tab-category accordion--trigger" data-category="reserves">
+                <span>Reserves</span>
+            </tag-label>
+            <div class="tab-category accordion--content" data-category="reserves"><div class="accordion--inner">
+                <a href="#face-reserves">Face Reserves</a>
+                <a href="#canon-reserves">Canon Reserves</a>
+                <a href="#deity-reserves">Deity Reserves</a>
+                <a href="#reincarnation-reserves">Reincarnation Reserves</a>
+                <a href="./subplots.html" class="external">Plot Reserves</a>
+            </div></div>
+            <tag-label class="tab-category accordion--trigger" data-category="claims">
+                <span>Basic Claims</span>
+            </tag-label>
+            <div class="tab-category accordion--content" data-category="claims"><div class="accordion--inner">
+                <a href="./subplots.html" class="external">Canons</a>
+                <a href="#faces">Faces</a>
+                <a href="./businesses.html" class="external">Jobs</a>
+            </div></div>
+            <tag-label class="tab-category accordion--trigger" data-category="folklore">
+                <span>Folklore Claims</span>
+            </tag-label>
+            <div class="tab-category accordion--content" data-category="folklore"><div class="accordion--inner">
+                <a href="#deities">Deities</a>
+                <a href="#heroes">Heroes</a>
+                <a href="#beasts">Beasts</a>
+                <a href="#spirits">Spirits</a>
+                <a href="#mortals">Mortals</a>
+                <a href="#reincarnations">Reincanations</a>
+            </div></div>
+            <tag-label class="tab-category accordion--trigger" data-category="members">
+                <span>Who's Who</span>
+            </tag-label>
+            <div class="tab-category accordion--content" data-category="members"><div class="accordion--inner"></div></div>
+        </tag-labels>
+    </div>
+    <tag-tabset class="webpage--content">
+        <tag-tab class="tab-category" data-category="reserves">
+            <tag-tabset>
+                <tag-tab data-key="#face-reserves">
+                    <div class="webpage--content-inner">
+                        <div class="claims--filter-wrap" data-type="grid" data-columns="2" data-gap="smsquare">
+                            <div>
+                                <strong class="h7">Filter by Face</strong>
+                                <input type="text" data-filter="#face-reserves" data-objects="> b" data-headers=".h5" onkeyup="filterValue(this)" placeholder="Face" style="width: 100%;">
+                            </div> 
+                            <div>
+                                <strong class="h7">Filter by Member</strong>
+                                <input type="text" data-filter="#face-reserves" data-objects="> b + span" data-headers=".h5" onkeyup="filterValue(this)" placeholder="Member" style="width: 100%;">
+                            </div>
                         </div>
-                    </tag-labels>
-                </div>
-                <tag-tabset class="webpage--content">
-                    <tag-tab class="tab-category" data-category="claims">
-                        <tag-tabset>
-                            <tag-tab data-key="#reserves">
-                                <h2 class="tab-heading">Face Reserves</h2>
-                                <div class="webpage--content-inner">
-                                    <div class="claims--filter-wrap two-col" data-type="grid">
-                                        <div>
-                                            <strong class="h7">Filter by Face</strong>
-                                            <input type="text" data-filter="#reserves" data-objects="> b" data-headers=".h5" onkeyup="filterValue(this)" placeholder="Face" style="width: 100%;">
-                                        </div> 
-                                        <div>
-                                            <strong class="h7">Filter by Member</strong>
-                                            <input type="text" data-filter="#reserves" data-objects="> b + span" data-headers=".h5" onkeyup="filterValue(this)" placeholder="Member" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                </div>
-                            </tag-tab>
-                            <tag-tab data-key="#faces">
-                                <h2 class="tab-heading">Face Claims</h2>
-                                <div class="webpage--content-inner">
-                                    <div class="claims--filter-wrap" data-type="grid">
-                                        <div>
-                                            <strong class="h7">Filter by Face</strong>
-                                            <input type="text" data-filter="#faces" data-objects=" > a" data-headers=".h5" data-hide-wrap="true" onkeyup="filterValue(this)" placeholder="Face" style="width: 100%;">
-                                        </div>
-                                        <div>
-                                            <strong class="h7">Filter by Character</strong>
-                                            <input type="text" data-filter="#faces" data-objects="> a + span > a" data-headers=".h5" data-hide-wrap="true" onkeyup="filterValue(this)" placeholder="Character" style="width: 100%;">
-                                        </div>
-                                        <div>
-                                            <strong class="h7">Filter by Member</strong>
-                                            <input type="text" data-filter="#faces" data-objects="> a + span + span > a" data-headers=".h5" data-hide-wrap="true" onkeyup="filterValue(this)" placeholder="Member" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                </div>
-                            </tag-tab>
-                        </tag-tabset>
-                    </tag-tab>
-                </tag-tabset>
-            </section>
+                    </div>
+                </tag-tab>
+                <tag-tab data-key="#canon-reserves">
+                    <div class="webpage--content-inner">
+                        <div class="claims--filter-wrap" data-type="grid" data-columns="2" data-gap="smsquare">
+                            <div>
+                                <strong class="h7">Filter by Canon</strong>
+                                <input type="text" data-filter="#canon-reserves" data-objects="> b" data-headers=".h5" onkeyup="filterValue(this)" placeholder="Canon" style="width: 100%;">
+                            </div> 
+                            <div>
+                                <strong class="h7">Filter by Member</strong>
+                                <input type="text" data-filter="#canon-reserves" data-objects="> b + span" data-headers=".h5" onkeyup="filterValue(this)" placeholder="Member" style="width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </tag-tab>
+                <tag-tab data-key="#deity-reserves">
+                    <div class="webpage--content-inner">
+                        <div class="claims--filter-wrap" data-type="grid" data-columns="2" data-gap="smsquare">
+                            <div>
+                                <strong class="h7">Filter by Deity</strong>
+                                <input type="text" data-filter="#deity-reserves" data-objects="> b" data-headers=".h5" onkeyup="filterValue(this)" placeholder="Deity" style="width: 100%;">
+                            </div> 
+                            <div>
+                                <strong class="h7">Filter by Member</strong>
+                                <input type="text" data-filter="#deity-reserves" data-objects="> b + span" data-headers=".h5" onkeyup="filterValue(this)" placeholder="Member" style="width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </tag-tab>
+                <tag-tab data-key="#reincarnation-reserves">
+                    <div class="webpage--content-inner">
+                        <div class="claims--filter-wrap" data-type="grid" data-columns="2" data-gap="smsquare">
+                            <div>
+                                <strong class="h7">Filter by Name</strong>
+                                <input type="text" data-filter="#reincarnation-reserves" data-objects="> b" data-headers=".h5" onkeyup="filterValue(this)" placeholder="Name" style="width: 100%;">
+                            </div> 
+                            <div>
+                                <strong class="h7">Filter by Member</strong>
+                                <input type="text" data-filter="#reincarnation-reserves" data-objects="> b + span" data-headers=".h5" onkeyup="filterValue(this)" placeholder="Member" style="width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </tag-tab>
+            </tag-tabset>
+        </tag-tab>
+        <tag-tab class="tab-category" data-category="claims">
+            <tag-tabset>
+                <tag-tab data-key="#faces">
+                    <div class="webpage--content-inner">
+                        <div class="claims--filter-wrap" data-type="grid" data-columns="2" data-gap="smsquare">
+                            <div class="fullWidth">
+                                <strong class="h7">Filter by Face</strong>
+                                <input type="text" data-filter="#faces" data-objects=" > a" data-headers=".h5" data-hide-wrap="true" onkeyup="filterValue(this)" placeholder="Face" style="width: 100%;">
+                            </div>
+                            <div>
+                                <strong class="h7">Filter by Character</strong>
+                                <input type="text" data-filter="#faces" data-objects="> a + span > a" data-headers=".h5" data-hide-wrap="true" onkeyup="filterValue(this)" placeholder="Character" style="width: 100%;">
+                            </div>
+                            <div>
+                                <strong class="h7">Filter by Member</strong>
+                                <input type="text" data-filter="#faces" data-objects="> a + span + span > a" data-headers=".h5" data-hide-wrap="true" onkeyup="filterValue(this)" placeholder="Member" style="width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </tag-tab>
+            </tag-tabset>
+        </tag-tab>
+        <tag-tab class="tab-category" data-category="folklore">
+            <tag-tabset>
+                <tag-tab data-key="#deities">
+                    <div class="webpage--content-inner"></div>
+                </tag-tab>
+                <tag-tab data-key="#heroes">
+                    <div class="webpage--content-inner"></div>
+                </tag-tab>
+                <tag-tab data-key="#beasts">
+                    <div class="webpage--content-inner"></div>
+                </tag-tab>
+                <tag-tab data-key="#spirits">
+                    <div class="webpage--content-inner"></div>
+                </tag-tab>
+                <tag-tab data-key="#mortals">
+                    <div class="webpage--content-inner"></div>
+                </tag-tab>
+                <tag-tab data-key="#reincarnations">
+                    <div class="webpage--content-inner">
+                        <div class="claims--filter-wrap" data-type="grid" data-columns="2" data-gap="smsquare">
+                            <div>
+                                <strong class="h7">Filter by Name</strong>
+                                <input type="text" data-filter="#reincarnation-reserves" data-objects="> b" data-headers=".h5" onkeyup="filterValue(this)" placeholder="Name" style="width: 100%;">
+                            </div> 
+                            <div>
+                                <strong class="h7">Filter by Member</strong>
+                                <input type="text" data-filter="#reincarnation-reserves" data-objects="> b + span" data-headers=".h5" onkeyup="filterValue(this)" placeholder="Member" style="width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </tag-tab>
+            </tag-tabset>
+        </tag-tab>
+        <tag-tab class="tab-category" data-category="members">
+            <tag-tabset></tag-tabset>
+        </tag-tab>
+    </tag-tabset>
+</section>
 
-            <script src="../dist/js/formatting.js"></script>
-            <script>
-                fetch(claims)
+<script src="../dist/js/formatting.js"></script>
+<script>
+    let staticClaims, staticCanons;
+
+    fetch(fetchURL(combinedReservesJson))
+    .then((response) => response.json())
+    .then((reservesData) => {
+
+
+        fetch(fetchURL(claimsJson))
+        .then((response) => response.json())
+        .then((claimData) => {
+            staticClaims = [...claimData];
+            formatFaceReserves(reservesData.filter(item => item.Type === 'face'));
+            formatDeityReserves(reservesData.filter(item => item.Type === 'deity'));
+            formatReincarnationReserves(reservesData.filter(item => item.Type === 'reincarnation'));
+            formatFaceClaims(claimData);
+            formatFolklore(claimData);
+            formatReincarnationClaims(claimData.filter(item => item.Reincarnation && item.Reincarnation !== ''));
+
+            fetch(fetchURL(canonsJson))
+            .then((response) => response.json())
+            .then((canonData) => {
+                staticCanons = [...canonData];
+                formatCanonReserves(reservesData.filter(item => item.Type === 'canon'));
+
+                fetch(fetchURL(membersJson))
                 .then((response) => response.json())
-                .then((claimsData) => {
-                    formatFaceClaims(claimsData);
+                .then((memberData) => {
+                    formatDirectory(memberData, staticClaims);
 
-                    fetch(faceReserves)
-                    .then((response) => response.json())
-                    .then((reservesData) => {
-                        formatFaceReserves(reservesData);
-
-                    }).then(() => {
-                        initWebpages();
-                    });
-
+                }).then(() => {
+                    initWebpages();
                 });
-            </script>
+            });
+
+        });
+
+    });
+</script>
 
             <!-- Copyright Information -->
             <div class="tableborder" align="center">

@@ -271,6 +271,71 @@
             color: var(--text-secondary);
         }
     }
+    @else if $style == submit {
+        max-width: 100%;
+        width: max-content;
+        background: var(--bg-accent-low);
+        border: var(--border-accent-mid);
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        font-weight: 900;
+        font-family: var(--font-sans-narrow);
+        letter-spacing: 0.1em;
+        font-size: var(--text-size-lg);
+        padding: var(--space-sm) calc(var(--space-md) + var(--space-xs));
+        height: auto;
+        transition: var(--transition-standard);
+        cursor: pointer;
+        margin: 0 auto;
+
+        &:hover {
+            background: var(--bg-accent-mid);
+        }
+    }
+    @else if $style == button {
+        max-width: 100%;
+        width: max-content;
+        background: var(--bg-accent-low);
+        border: var(--border-accent-mid);
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        font-weight: 900;
+        font-family: var(--font-sans-narrow);
+        letter-spacing: 0.1em;
+        font-size: var(--text-size-sm);
+        padding: var(--space-sm) calc(var(--space-md));
+        height: auto;
+        transition: var(--transition-standard);
+        line-height: 160%;
+        cursor: pointer;
+        margin: 0 auto;
+
+        &:hover {
+            background: var(--bg-accent-mid);
+        }
+    }
+    @else if $style == smlbtn {
+        max-width: 100%;
+        width: max-content;
+        background: var(--bg-accent-low);
+        border: var(--border-accent-mid);
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        font-weight: 900;
+        font-family: var(--font-sans-narrow);
+        letter-spacing: 0.1em;
+        font-size: var(--text-size-xs);
+        padding: var(--space-xs) calc(var(--space-sm));
+        height: auto;
+        transition: var(--transition-standard);
+        line-height: 160%;
+        cursor: pointer;
+        margin: 0 auto;
+
+        &:hover {
+            background: var(--bg-accent-mid);
+        }
+    }
     @else if $style == diamonds {
         display: flex;
         align-items: center;
@@ -318,13 +383,16 @@
 @mixin diamondCrop() {
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
-@mixin scroll($color: normal) {
+@mixin scroll($color: normal, $nospacing: false) {
     overflow-x: hidden;
     overflow-y: auto;
     max-height: 100%;
-    padding-right: var(--space-md);
-    margin-right: calc(-1 * var(--space-md));
     scrollbar-width: thin;
+
+    @if $nospacing == false {
+        padding-right: var(--space-md);
+        margin-right: calc(-1 * var(--space-md));
+    }
 
     &::-webkit-scrollbar {
         width: 6px;
@@ -356,20 +424,30 @@
         color: var(--text-secondary);
         font-weight: 700;
         top: var(--space-xs);
+        line-height: 120%;
     }
     @else if $size == 2 and $style == serif {
         font-family: var(--font-serif);
         color: var(--text-secondary);
         font-weight: 900;
-        font-size: 30px;
+        font-size: 26px;
         display: flex;
         align-items: center;
         gap: 10px;
         justify-content: center;
         @include decoration(100);
+        text-align: center;
+        line-height: 120%;
+
+        @include mq-down(xxs) {
+            &::before,
+            &::after {
+                font-size: 0.75em;
+            }
+        }
 
         @include mq-up(xxs) {
-            font-size: 48px;
+            @include fluid-type(30, 48, 480, 1280);
         }
     }
     @else if $size == 3 {
@@ -382,6 +460,8 @@
         gap: 10px;
         justify-content: center;
         @include decoration(100);
+        text-align: center;
+        line-height: 120%;
 
         @include mq-up(xxs) {
             font-size: 30px;
@@ -397,6 +477,8 @@
         gap: 10px;
         justify-content: center;
         @include decoration;
+        text-align: center;
+        line-height: 120%;
 
         @include mq-up(xxs) {
             font-size: calc(var(--text-size-lg) + 4px);
@@ -413,6 +495,8 @@
         max-width: 100%;
         border-bottom: var(--border-accent-mid);
         padding: 0 var(--space-lg) var(--space-xs) var(--space-xs);
+        line-height: 120%;
+        margin-left: 0;
 
         @include mq-up(xxs) {
             font-size: calc(var(--text-size-lg) + 2px);
@@ -429,6 +513,7 @@
         max-width: 100%;
         border-bottom: var(--border-accent-mid);
         padding: 0 var(--space-lg) var(--space-xs) var(--space-xs);
+        line-height: 120%;
 
         @include mq-up(xxs) {
             font-size: calc(var(--text-size-lg) + 2px);
@@ -443,7 +528,7 @@
         font-weight: 700;
         font-size: calc(var(--text-size-md) + 1px);
         font-family: var(--font-sans-narrow);
-        gap: var(--space-xs);
+        gap: var(--space-sm);
 
         &::before {
             content: '';
@@ -463,11 +548,20 @@
         font-family: var(--font-sans-narrow);
         gap: var(--space-xs);
 
-        &::after {
-            content: '';
-            height: 1px;
-            width: var(--space-lg);
-            background: $highlight;
+        @if $style == normal {
+            &::after {
+                content: '';
+                height: 1px;
+                width: var(--space-lg);
+                background: $highlight;
+            }
+        } @else {
+            &::before {
+                content: '';
+                height: 1px;
+                width: 100%;
+                background: $highlight;
+            }
         }
     }
     @else if $size == 8 {

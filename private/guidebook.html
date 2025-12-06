@@ -38,7 +38,8 @@
                         <div class="tab-category accordion--content" data-category="info"><div class="accordion--inner">
                             <a href="#etiquette">Etiquette</a>
                             <a href="#premise">Premise</a>
-                            <a href="#groups">Groups</a>
+                            <a href="#free-groups">Free Groups</a>
+                            <a href="#premium-groups">Premium Groups</a>
                             <a href="./subplots.html#canons">Canons</a>
                             <a href="#faq">FAQs</a>
                             <a href="#restricted">Restricted Faces</a>
@@ -80,6 +81,15 @@
                             <tag-tab data-key="#etiquette">
                                 <div class="webpage--content-inner">
                                     Rules
+                                    <div class="images--row">
+                                        <div class="item"><img src="https://picsum.photos/200" loading="lazy" /></div>
+                                        <div class="item"><img src="https://picsum.photos/200" loading="lazy" /></div>
+                                        <div class="item"><img src="https://picsum.photos/200" loading="lazy" /></div>
+                                        <div class="item"><img src="https://picsum.photos/200" loading="lazy" /></div>
+                                        <div class="item"><img src="https://picsum.photos/200" loading="lazy" /></div>
+                                        <div class="item"><img src="https://picsum.photos/200" loading="lazy" /></div>
+                                        <div class="item"><img src="https://picsum.photos/200" loading="lazy" /></div>
+                                    </div>
                                 </div>
                             </tag-tab>
                             <tag-tab data-key="#premise">
@@ -87,9 +97,16 @@
                                     Overarching Plot
                                 </div>
                             </tag-tab>
-                            <tag-tab data-key="#groups">
+                            <tag-tab data-key="#free-groups">
                                 <div class="webpage--content-inner">
-                                    Groups
+                                    <h2 class="serif">Free Groups</h2>
+                                    <div class="clip-free-groups"></div>
+                                </div>
+                            </tag-tab>
+                            <tag-tab data-key="#premium-groups">
+                                <div class="webpage--content-inner">
+                                    <h2 class="serif">Premium Groups</h2>
+                                    <div class="clip-premium-groups"></div>
                                 </div>
                             </tag-tab>
                             <tag-tab data-key="#faq">
@@ -113,12 +130,18 @@
                         <tag-tabset>
                             <tag-tab data-key="#neighbourhoods">
                                 <div class="webpage--content-inner">
-                                    neighbourhoods and map
+                                    <h2 class="serif">Map of Elysium</h2>
+                                    <div class="map">
+                                    @@include('../source/templates/blocks/map.html')
+                                    </div>
+                                    <div class="clip-neighbourhoods"></div>
                                 </div>
                             </tag-tab>
                             <tag-tab data-key="#locations">
                                 <div class="webpage--content-inner">
-                                    key locations
+                                    <h2 class="serif">Key Locations</h2>
+
+                                    <div class="clip-locations"></div>
                                 </div>
                             </tag-tab>
                         </tag-tabset>
@@ -178,23 +201,68 @@
                         </tag-tabset>
                     </tag-tab>
                     <tag-tab class="tab-category" data-category="playable">
-                        <tag-tabset></tag-tabset>
+                        <tag-tabset>
+                            <tag-tab data-key="#test">
+                                <div class="webpage--content-inner species">
+                                    <h2 class="serif">Species Name</h2>
+                                    <div class="species--info">
+                                        <div class="species--stat"><b>Class</b>Spirit</div>
+                                        <div class="species--stat"><b>Subtype</b>Breeze</div>
+                                    </div>
+                                    <div class="species--info">
+                                        <div class="species--stat"><b>Lifespan</b>000-000, aging slows at 00</div>
+                                    </div>
+                                    <div class="species--grid">
+                                        <div class="species--section">
+                                            <div class="h5">Overview</div>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                        </div>
+                                        <div class="species--section">
+                                            <div class="h5">Physiology</div>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                        </div>
+                                        <div class="species--section">
+                                            <div class="h5">Abilities</div>
+                                            <p><ul>
+                                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                            </ul></p>
+                                        </div>
+                                        <div class="species--section">
+                                            <div class="h5">Weaknesses</div>
+                                            <p><ul>
+                                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                                            </ul></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tag-tab>
+                        </tag-tabset>
                     </tag-tab>
                 </tag-tabset>
             </section>
 
+            <script src="../dist/js/formatting.js"></script>
             <script>
-                fetch(groups)
+                fetch(fetchURL(groupsJson, 'info'))
                 .then((response) => response.json())
                 .then((groupData) => {
+                    formatAllGroups(groupData);
 
-                    fetch(locations)
+                    fetch(fetchURL(locationsJson, 'info'))
                     .then((response) => response.json())
                     .then((locationsData) => {
+                        formatAllLocations(locationsData);
 
-                        fetch(creatures)
+                        fetch(fetchURL(creaturesJson, 'info'))
                         .then((response) => response.json())
                         .then((creatureData) => {
+                            formatAllSpecies(creatureData);
 
                         }).then(() => {
                             initWebpages();
@@ -204,7 +272,6 @@
 
                 });
             </script>
-
             <!-- Copyright Information -->
             <div class="tableborder" align="center">
                 <div class="row4" style="font-size: 7.5pt; padding-top: 1px; padding-bottom: 1px; line-height: 8pt;">

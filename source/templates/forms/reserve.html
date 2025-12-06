@@ -1,0 +1,48 @@
+<form id="form-reserve" data-type="grid" data-columns="2">
+    <blockquote class="fullWidth">Reserves last for 2 weeks and <i>cannot</i> be renewed.</blockquote>
+    <label>
+        <b>Alias</b>
+        <span><input type="text" id="alias" placeholder="Alias" required /></span>
+    </label>
+    <label>
+        <b>Reserve Type</b>
+        <span><select id="type" required>
+            <option value="">(select)</option>
+            <option value="face">Face</option>
+            <option value="subplot">Subplot Role</option>
+            <option value="canon">Canon</option>
+            <option value="deity">Deity</option>
+            <option value="reincarnation">Reincarnation</option>
+        </select></span>
+    </label>
+    <label class="fullWidth ifFace hidden">
+        <b>Face</b>
+        <span><input type="text" id="face" placeholder="Face" /></span>
+    </label>
+    <label class="fullWidth ifPlot hidden">
+        <b>Plot</b>
+        <span><select id="plot" class="clip-plots"></select></span>
+    </label>
+    <label class="ifPlot hidden">
+        <b>Section</b>
+        <span><select id="section" class="clip-sections"></select></span>
+    </label>
+    <label class="ifPlot hidden">
+        <b>Role</b>
+        <span><select id="role" class="clip-roles"></select></span>
+    </label>
+    <label class="fullWidth ifCanon hidden">
+        <b>Canon</b>
+        <span><select id="canon" class="clip-canons"></select></span>
+    </label>
+    <label class="fullWidth ifReserveDeity hidden">
+        <b>Deity</b>
+        <span><input type="text" id="deity" placeholder="Deity" /></span>
+        <i>Please use the [name] of the [pantheon] formatting. E.g., "Zeus of the Greeks"</i>
+    </label>
+    <label class="fullWidth ifReincarnation hidden">
+        <b>Reincarnation</b>
+        <span><input type="text" id="reincarnation" placeholder="Reincarnation" /></span>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>

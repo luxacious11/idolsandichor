@@ -134,7 +134,7 @@
             align-self: start;
          }
 
-         &:has(.forum--location-links:empty) {
+         &:has(.forum--location-links .scroll:empty) {
             @include mq-down(md) {
                grid-template-rows: calc(150px + (2 * var(--space-md))) max-content max-content;
             }
@@ -285,7 +285,7 @@
       }
    }
 
-   &--image,
+   &:not(.redirect):has(.forum--image):has(.forum--location-links):not(:has(.forum--location-links .scroll:empty)) .forum--image,
    &--location-links {
       @include mq-up(md) {
          grid-row: span 2;

@@ -503,7 +503,7 @@
         unset: null,
     };
 
-    fetch(members)
+    fetch(fetchURL(membersJson))
     .then(response => response.json())
     .then(data => {
         if(oocGroups.includes(memberProfile.groupID) ||

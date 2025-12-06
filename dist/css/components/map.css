@@ -1,0 +1,69 @@
+/*******************************
+    Map SVG
+********************************/
+.map {
+  margin: 0 auto;
+  max-width: 500px; }
+  .map--road-border {
+    stroke-dasharray: 4.2 4.2; }
+  .map--road-border, .map--road-link-border, .map--aeroway, .map--roman, .map--rail, .map--road-main-border, .map--road-main-link-border, .map--road-main2, .map--downtown, .map--norse, .map--egypt, .map--greek, .map--road-border3, .map--roads, .map--remnant {
+    stroke-linecap: round;
+    stroke-linejoin: round; }
+  .map--road-border, .map--road-link-border, .map--aeroway, .map--rail, .map--road-main-border, .map--road-main-link-border, .map--road-main2, .map--road-border3, .map--roads {
+    fill: none;
+    stroke: var(--map-roads); }
+  .map--road-border, .map--road-main-border {
+    stroke-width: 4.2px; }
+  .map--road-link-border {
+    stroke-dasharray: 4 4; }
+  .map--road-link-border, .map--road-main-link-border {
+    stroke-width: 4px; }
+  .map--road-main2 {
+    stroke-width: 3px; }
+  .map--rail {
+    stroke-dasharray: 3 4;
+    stroke-width: .5px; }
+  .map--road-border3 {
+    stroke-width: 1.5px; }
+  .map--roads {
+    stroke-width: 2px; }
+  .map--roman, .map--downtown, .map--norse, .map--egypt, .map--greek, .map--remnant {
+    stroke-width: 5px;
+    stroke: var(--map-stroke); }
+  .map--bg-fill {
+    fill: var(--map-bg); }
+  .map--water {
+    fill: var(--map-water); }
+  .map--downtown:hover, .map--downtown:has(+ text:hover) {
+    fill: var(--map-downtown); }
+  .map--norse:hover, .map--norse:has(+ text:hover) {
+    fill: var(--map-norse); }
+  .map--egypt:hover, .map--egypt:has(+ text:hover) {
+    fill: var(--map-egypt); }
+  .map--roman:hover, .map--roman:has(+ text:hover) {
+    fill: var(--map-roman); }
+  .map--greek:hover, .map--greek:has(+ text:hover) {
+    fill: var(--map-greek); }
+  .map--remnant:hover, .map--remnant:has(+ text:hover) {
+    fill: var(--map-remnant); }
+  .map--roman, .map--downtown, .map--norse, .map--egypt, .map--greek, .map--remnant {
+    fill: var(--map-unselected);
+    transition: var(--transition-standard); }
+
+path + text,
+polygon + text {
+  opacity: 0;
+  transition: var(--transition-standard);
+  font-size: 40px;
+  font-family: var(--font-sans-narrow);
+  font-weight: 700;
+  text-transform: uppercase;
+  fill: var(--map-text);
+  filter: drop-shadow(0px 0px 5px black); }
+  path + text:hover,
+  polygon + text:hover {
+    opacity: 1; }
+
+path:hover + text,
+polygon:hover + text {
+  opacity: 1; }

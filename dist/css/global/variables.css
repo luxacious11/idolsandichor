@@ -1,0 +1,236 @@
+/*******************************
+    Extensions
+********************************/
+/*******************************
+    Variables
+********************************/
+:root {
+  --text-size-xs: 9px;
+  --text-size-sm: 11px;
+  --text-size-md: 13px;
+  --text-size-lg: 15px;
+  --text-size-xl: 17px;
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "PT Sans", sans-serif;
+  --font-sans-narrow: "PT Sans Narrow", sans-serif;
+  --space-xs: 5px;
+  --space-sm: 10px;
+  --space-md: 15px;
+  --space-lg: 30px;
+  --space-xl: 60px;
+  --transition-quick: all 0.1s ease-in-out;
+  --transition-standard: all 0.3s ease-in-out;
+  --transition-long: all 0.5s ease-in-out;
+  --bg-texture: url(https://files.jcink.net/uploads2/idolsandichor/Skin1/idolsAndIchor_bg_min.jpg);
+  --size-max-popout-width: 350px;
+  --size-alert-max-height: 80px;
+  --size-menu-main: 50px;
+  --size-menu-breadcrumbs: 30px;
+  --size-store-image: 24px;
+  --size-switcher-image: 50px;
+  --size-page-menu-width: 300px;
+  --size-ucp-menu-height: 62px;
+  --size-mini-profile-width: 200px;
+  --accent: rgba(220, 105, 102, 0.65);
+  --accent-filter: invert(57%) sepia(7%) saturate(4856%) hue-rotate(315deg) brightness(96%) contrast(78%);
+  --xBlack: rgba(26, 25, 24, 1);
+  --black: rgba(40, 39, 38, 1);
+  --dkBeige: rgba(115, 111, 108, 1);
+  --beige: rgba(189, 179, 176, 1);
+  --bg-primary: rgba(26, 25, 24, 1);
+  --bg-secondary-solid: rgba(40, 39, 38, 1);
+  --bg-secondary: rgba(40, 39, 38, 0.9);
+  --bg-secondary-mid: rgba(40, 39, 38, 0.5);
+  --bg-tertiary: rgba(53, 51, 51, 0.9);
+  --bg-tertiary-mid: rgba(53, 51, 51, 0.4);
+  --bg-overlay: rgba(26, 25, 24, 0.7);
+  --blend-texture-primary: color-dodge;
+  --opacity-texture-primary: 0.5;
+  --opacity-pattern: 0.7;
+  --text-primary: rgb(185, 185, 185);
+  --text-secondary: rgb(235, 235, 235);
+  --border-primary: 1px solid rgba(232, 231, 229, 0.15);
+  --border-primary-color: rgba(232, 231, 229, 0.15);
+  --border-primary-color-strong: rgba(232, 231, 229, 0.3);
+  --map-roads: rgb(111, 111, 111);
+  --map-bg: rgb(72, 72, 72);
+  --map-water: rgb(71, 91, 101);
+  --map-downtown: rgba(235, 205, 149, 0.5);
+  --map-norse: rgba(84, 149, 188, 0.5);
+  --map-egypt: rgba(198, 115, 205, 0.5);
+  --map-roman: rgba(214, 116, 58, 0.5);
+  --map-greek: rgba(126, 165, 150, 0.5);
+  --map-remnant: rgba(91, 131, 87, 0.5);
+  --map-stroke: rgb(190, 190, 190);
+  --map-unselected: rgba(255, 255, 255, 0.1);
+  --map-text: rgb(235, 235, 235); }
+  @media (min-width: 601px) {
+    :root {
+      --size-alert-max-height: 150px; } }
+  @media (min-width: 1025px) {
+    :root {
+      --size-mini-profile-width: 300px; } }
+
+body {
+  /***** Free *****/
+  /***** Premium *****/ }
+  body.lgFont {
+    --text-size-xs: 10px;
+    --text-size-sm: 12px;
+    --text-size-md: 14px;
+    --text-size-lg: 16px;
+    --text-size-xl: 18px; }
+  body.xlFont {
+    --text-size-xs: 12px;
+    --text-size-sm: 14px;
+    --text-size-md: 16px;
+    --text-size-lg: 18px;
+    --text-size-xl: 20px; }
+  body.light {
+    --bg-primary: rgb(214, 209, 201);
+    --bg-secondary-solid: rgb(206, 200, 193, 1);
+    --bg-secondary: rgb(206, 200, 193, 0.9);
+    --bg-secondary-mid: rgba(206, 200, 193, 0.5);
+    --bg-tertiary: rgba(220, 215, 209, 0.9);
+    --bg-overlay: rgba(214, 209, 201, 0.7);
+    --blend-texture-primary: soft-light;
+    --opacity-texture-primary: 0.5;
+    --opacity-pattern: 1;
+    --text-primary: rgb(88, 86, 84);
+    --text-secondary: rgb(40, 39, 38);
+    --border-primary: 1px solid rgba(101, 98, 94, 0.5);
+    --border-primary-color: rgba(101, 98, 94, 0.5);
+    --border-primary-color-strong: rgba(101, 98, 94, 0.5);
+    --map-roads: rgb(205, 205, 205);
+    --map-bg: rgb(175, 175, 175);
+    --map-water: rgb(152, 169, 177);
+    --map-downtown: rgba(235, 205, 149, 0.5);
+    --map-norse: rgba(84, 149, 188, 0.5);
+    --map-egypt: rgba(198, 115, 205, 0.5);
+    --map-roman: rgba(214, 116, 58, 0.5);
+    --map-greek: rgba(126, 165, 150, 0.5);
+    --map-remnant: rgba(91, 131, 87, 0.5);
+    --map-stroke: rgb(107, 107, 107);
+    --map-unselected: rgba(0, 0, 0, 0.15);
+    --map-text: rgb(235, 235, 235); }
+  body[class*="g-"],
+  body [class*="g-"], body[class*="mgroup-"],
+  body [class*="mgroup-"], body:has(.profile[class*="g-"]) {
+    --accent: rgb(var(--rgb));
+    --accent-90: rgba(var(--rgb), 0.9);
+    --accent-80: rgba(var(--rgb), 0.8);
+    --accent-70: rgba(var(--rgb), 0.7);
+    --accent-60: rgba(var(--rgb), 0.6);
+    --accent-50: rgba(var(--rgb), 0.5);
+    --accent-40: rgba(var(--rgb), 0.4);
+    --accent-30: rgba(var(--rgb), 0.3);
+    --accent-20: rgba(var(--rgb), 0.2);
+    --accent-10: rgba(var(--rgb), 0.1);
+    --bg-accent: var(--accent);
+    --bg-accent-high: var(--accent-80);
+    --bg-accent-mid: var(--accent-50);
+    --bg-accent-low: var(--accent-30);
+    --text-accent: var(--accent-70);
+    --text-accent-strong: var(--accent);
+    --text-on-accent: rgb(225, 225, 225);
+    --border-accent: 1px solid var(--accent);
+    --border-accent-high: 1px solid var(--accent-80);
+    --border-accent-mid: 1px solid var(--accent-50);
+    --border-accent-low: 1px solid var(--accent-30); }
+  body.light[class*="g-"],
+  body.light [class*="g-"], body.light[class*="mgroup-"],
+  body.light [class*="mgroup-"], body.light:has(.profile[class*="g-"]) {
+    --text-accent: var(--accent); }
+  body.g-1,
+  body .g-1, body.mgroup-1,
+  body .mgroup-1, body.g-5,
+  body .g-5, body.mgroup-5,
+  body .mgroup-5 {
+    --rgb: 105, 105, 105;
+    --rgb-filter: invert(40%) sepia(10%) saturate(0%) hue-rotate(227deg) brightness(96%) contrast(80%); }
+  body.g-2,
+  body .g-2, body.mgroup-2,
+  body .mgroup-2, body.g-3,
+  body .g-3, body.mgroup-3,
+  body .mgroup-3, body.g-4,
+  body .g-4, body.mgroup-4,
+  body .mgroup-4, body.g-6,
+  body .g-6, body.mgroup-6,
+  body .mgroup-6 {
+    --rgb: 220, 105, 102;
+    --rgb-filter: invert(57%) sepia(7%) saturate(4856%) hue-rotate(315deg) brightness(96%) contrast(78%); }
+  body.g-8,
+  body .g-8, body.mgroup-8,
+  body .mgroup-8 {
+    --rgb: 126, 165, 150;
+    --rgb-filter: invert(67%) sepia(20%) saturate(354%) hue-rotate(105deg) brightness(89%) contrast(92%); }
+  body.g-10,
+  body .g-10, body.mgroup-10,
+  body .mgroup-10 {
+    --rgb: 235, 205, 149;
+    --rgb-filter: invert(87%) sepia(30%) saturate(521%) hue-rotate(338deg) brightness(98%) contrast(88%); }
+  body.light.g-10,
+  body.light .g-10, body.light.mgroup-10,
+  body.light .mgroup-10 {
+    --rgb: 190, 160, 103;
+    --rgb-filter: invert(69%) sepia(44%) saturate(378%) hue-rotate(1deg) brightness(88%) contrast(81%); }
+  body.g-11,
+  body .g-11, body.mgroup-11,
+  body .mgroup-11 {
+    --rgb: 91, 131, 87;
+    --rgb-filter: invert(45%) sepia(48%) saturate(311%) hue-rotate(67deg) brightness(93%) contrast(87%); }
+  body.g-14,
+  body .g-14, body.mgroup-14,
+  body .mgroup-14 {
+    --rgb: 198, 115, 205;
+    --rgb-filter: invert(71%) sepia(22%) saturate(7257%) hue-rotate(234deg) brightness(90%) contrast(76%); }
+  body.g-16,
+  body .g-16, body.mgroup-16,
+  body .mgroup-16 {
+    --rgb: 84, 149, 188;
+    --rgb-filter: invert(57%) sepia(33%) saturate(612%) hue-rotate(159deg) brightness(90%) contrast(91%); }
+  body.g-17,
+  body .g-17, body.mgroup-17,
+  body .mgroup-17 {
+    --rgb: 214, 116, 58;
+    --rgb-filter: invert(48%) sepia(100%) saturate(419%) hue-rotate(336deg) brightness(91%) contrast(83%); }
+  body.g-7,
+  body .g-7, body.mgroup-7,
+  body .mgroup-7 {
+    --rgb: 237, 96, 195;
+    --rgb-filter: invert(59%) sepia(44%) saturate(3074%) hue-rotate(286deg) brightness(97%) contrast(91%); }
+  body.g-9,
+  body .g-9, body.mgroup-9,
+  body .mgroup-9 {
+    --rgb: 130, 113, 137;
+    --rgb-filter: invert(50%) sepia(7%) saturate(1001%) hue-rotate(238deg) brightness(91%) contrast(89%); }
+  body.g-12,
+  body .g-12, body.mgroup-12,
+  body .mgroup-12 {
+    --rgb: 216, 173, 189;
+    --rgb-filter: invert(85%) sepia(3%) saturate(2848%) hue-rotate(295deg) brightness(91%) contrast(85%); }
+  body.light.g-12,
+  body.light .g-12, body.light.mgroup-12,
+  body.light .mgroup-12 {
+    --rgb: 180, 141, 155;
+    --rgb-filter: invert(66%) sepia(5%) saturate(1441%) hue-rotate(287deg) brightness(91%) contrast(85%); }
+  body.g-13,
+  body .g-13, body.mgroup-13,
+  body .mgroup-13 {
+    --rgb: 161, 99, 84;
+    --rgb-filter: invert(45%) sepia(7%) saturate(2845%) hue-rotate(324deg) brightness(93%) contrast(87%); }
+  body.g-15,
+  body .g-15, body.mgroup-15,
+  body .mgroup-15 {
+    --rgb: 176, 186, 129;
+    --rgb-filter: invert(87%) sepia(19%) saturate(592%) hue-rotate(25deg) brightness(82%) contrast(87%); }
+  body.light.g-15,
+  body.light .g-15, body.light.mgroup-15,
+  body.light .mgroup-15 {
+    --rgb: 138, 146, 103;
+    --rgb-filter: invert(62%) sepia(9%) saturate(1111%) hue-rotate(31deg) brightness(90%) contrast(85%); }
+  body.g-18,
+  body .g-18, body.mgroup-18,
+  body .mgroup-18 {
+    --rgb: 44, 100, 186;
+    --rgb-filter: invert(32%) sepia(96%) saturate(803%) hue-rotate(188deg) brightness(88%) contrast(91%); }

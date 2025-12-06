@@ -30,13 +30,67 @@
                         <i class="fa-solid fa-bars open-button"></i>
                         <i class="fa-solid fa-xmark close-button"></i>
                     </button>
-                    <input id="quicksearch" class="forminput members--search" type="text" size="25" name="name" value="" placeholder="Filter by name...">
                     <div class="accordion scroll">
                         <!-- |pages| -->
                         <div class="accordion--trigger">
-                            <span>Sort By</span>
+                            <span>Name</span>
                         </div>
-                        <div class="accordion--content members--sort-buttons">
+                        <div class="accordion--content" data-filter-group="status"><div class="accordion--inner">
+                            <input id="quicksearch" class="forminput members--search" type="text" size="25" name="name" value="" placeholder="Filter by name...">
+                        </div></div>
+                        <div class="accordion--trigger">
+                            <span>Status</span>
+                        </div>
+                        <div class="accordion--content members--filter-group" data-filter-group="status"><div class="accordion--inner">
+                            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                            <label><input type="checkbox" value=".active">active</label>
+                            <label><input type="checkbox" value=".pending">pending</label>
+                        </div></div>
+                        <div class="accordion--trigger">
+                            <span>Type</span>
+                        </div>
+                        <div class="accordion--content members--filter-group" data-filter-group="type"><div class="accordion--inner">
+                            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                            <label><input type="checkbox" value=".character">character</label>
+                            <label><input type="checkbox" value=".writer">writer</label>
+                        </div></div>
+                        <div class="accordion--trigger">
+                            <span>Alias</span>
+                        </div>
+                        <div class="accordion--content members--filter-group" data-filter-group="alias"><div class="accordion--inner">
+                            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                        </div></div>
+                        <div class="accordion--trigger">
+                            <span>Age</span>
+                        </div>
+                        <div class="accordion--content members--filter-group" data-filter-group="age"><div class="accordion--inner">
+                            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                            <label><input type="checkbox" value=".1825">18 - 25</label>
+                            <label><input type="checkbox" value=".2635">26 - 35</label>
+                            <label><input type="checkbox" value=".3645">36 - 45</label>
+                            <label><input type="checkbox" value=".4655">46 - 55</label>
+                            <label><input type="checkbox" value=".56100">56 - 100</label>
+                            <label><input type="checkbox" value=".101500">101 - 500</label>
+                            <label><input type="checkbox" value=".5011000">501 - 1000</label>
+                            <label><input type="checkbox" value=".10012000">1001 - 2000</label>
+                            <label><input type="checkbox" value=".20013000">2001 - 3000</label>
+                            <label><input type="checkbox" value=".3000">3000+</label>
+                        </div></div>
+                        <div class="accordion--trigger">
+                            <span>Ancestry</span>
+                        </div>
+                        <div class="accordion--content members--filter-group" data-filter-group="ancestry"><div class="accordion--inner">
+                            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
+                            <label><input type="checkbox" value=".deity">Deity</label>
+                            <label><input type="checkbox" value=".hero">Hero</label>
+                            <label><input type="checkbox" value=".beast">Beast</label>
+                            <label><input type="checkbox" value=".spirit">Spirit</label>
+                            <label><input type="checkbox" value=".mortal">Mortal</label>
+                        </div></div>
+                        <div class="accordion--trigger">
+                            <span>Sort</span>
+                        </div>
+                        <div class="accordion--content members--sort-buttons"><div class="accordion--inner">
                             <button type="button" class="members--sort is-checked" data-sort="nameAsc">Name (A - Z)</button>
                             <button type="button" class="members--sort" data-sort="nameDesc">Name (Z - A)</button>
                             <button type="button" class="members--sort" data-sort="ageAsc">Age (Asc)</button>
@@ -45,62 +99,7 @@
                             <button type="button" class="members--sort" data-sort="postsDesc">Posts (Desc)</button>
                             <button type="button" class="members--sort" data-sort="newest">Newest</button>
                             <button type="button" class="members--sort" data-sort="oldest">Oldest</button>
-                        </div>
-                        <div class="accordion--trigger">
-                            <span>Status</span>
-                        </div>
-                        <div class="accordion--content members--filter-group" data-filter-group="status">
-                            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-                            <label><input type="checkbox" value=".active">active</label>
-                            <label><input type="checkbox" value=".pending">pending</label>
-                        </div>
-                        <div class="accordion--trigger">
-                            <span>Type</span>
-                        </div>
-                        <div class="accordion--content members--filter-group" data-filter-group="type">
-                            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-                            <label><input type="checkbox" value=".character">character</label>
-                            <label><input type="checkbox" value=".writer">writer</label>
-                        </div>
-                        <div class="accordion--trigger">
-                            <span>Alias</span>
-                        </div>
-                        <div class="accordion--content members--filter-group" data-filter-group="alias">
-                            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-                        </div>
-                        <div class="accordion--trigger">
-                            <span>Age</span>
-                        </div>
-                        <div class="accordion--content members--filter-group" data-filter-group="age">
-                            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-                            <label><input type="checkbox" value=".1825">18 - 25</label>
-                            <label><input type="checkbox" value=".2635">26 - 35</label>
-                            <label><input type="checkbox" value=".3645">36 - 45</label>
-                            <label><input type="checkbox" value=".4655">46 - 55</label>
-                            <label><input type="checkbox" value=".55">56+</label>
-                        </div>
-                        <div class="accordion--trigger">
-                            <span>Relationship</span>
-                        </div>
-                        <div class="accordion--content members--filter-group" data-filter-group="relationship">
-                            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-                            <label><input type="checkbox" value=".single">single</label>
-                            <label><input type="checkbox" value=".dating">dating</label>
-                            <label><input type="checkbox" value=".engaged">engaged</label>
-                            <label><input type="checkbox" value=".married">married</label>
-                            <label><input type="checkbox" value=".itscomplicated">complicated</label>
-                            <label><input type="checkbox" value=".separated">separated</label>
-                            <label><input type="checkbox" value=".divorced">divorced</label>
-                            <label><input type="checkbox" value=".widowed">widowed</label>
-                        </div>
-                        <div class="accordion--trigger">
-                            <span>Location</span>
-                        </div>
-                        <div class="accordion--content members--filter-group" data-filter-group="location">
-                            <label class="all is-checked"><input type="checkbox" class="all" value="" checked="">all</label>
-                            <label><input type="checkbox" value=".location">Location 1</label>
-                            <label><input type="checkbox" value=".location2">Location 2</label>
-                        </div>
+                        </div></div>
                     </div>
                 </div>
                 <div class="members--list"><div class="members--list-inner"><form action='index.php' method='get'><input type='hidden' name='act' value='Members' />
@@ -152,11 +151,17 @@
                                 gutter: 30
                             },
                             filter: defaultShow,
-                            sortBy: 'name',
+                            sortBy: 'nameAsc',
                             getSortData: {
                                 nameAsc: '.member--name',
                                 nameDesc: '.member--name',
-                                ageAsc: '.member--age parseInt',
+                                ageAsc: function($elem) {
+                                    if(parseInt($elem.querySelector('.member--age').innerText) !== -1) {
+                                        return parseInt($elem.querySelector('.member--age').innerText);
+                                    } else {
+                                        return 10000000;
+                                    }
+                                },
                                 ageDesc: '.member--age parseInt',
                                 postsAsc: '.member--posts parseInt',
                                 postsDesc: '.member--posts parseInt',
@@ -192,7 +197,7 @@
 
                                 if(document.querySelector(`[data-filter-group="${key}"]`) && values.length > 0) {
                                     document.querySelector(`[data-filter-group="${key}"] .all`).classList.remove('is-checked');
-                                    values.forEach(value => {
+                                    values.filter(item => item !== '').forEach(value => {
                                         document.querySelector(`[data-filter-group="${key}"] [value="${value}"]`)
                                         .closest('label')
                                         .classList.add('is-checked');

@@ -58,7 +58,7 @@
                 <div class="maintitle">
                     <span class="topic-title-space">&nbsp;</span>
                     <span class="topic-title">Topic Title Goes Here</span>
-                    <span class="topic-desc">Topic Description Goes Here[description tag]</span>
+                    <span class="topic-desc">[desc tag]no tags</span>
                 </div>
                 <!--{IBF.POLL}-->
                 <div class="postlinksbar" align="right">
@@ -71,19 +71,11 @@
                 </div>
                 
                 <!--Post Content-->
-                <a name='entry1' class="anchorLink"></a>
-                <section class="post g-7 type-Character p-1" data-full-name="Character Name" data-author="Alias">
-                        <a href="javascript:void(0)" class="post--permalink" data-clipboard-text="permalink"><div class="macro--small" title="Get Link"><i class="fa-regular fa-link"></i></div></a>
-                        <span class="macro--small"><i class="fa-regular fa-pen"></i></span>
-                        <span class="macro--small"><i class="fa-regular fa-quote-left"></i></span>
-                        <span class="macro--small"><i class="fa-regular fa-trash"></i></span>
-                        <span class="macro--small"><i class="fa-regular fa-flag-pennant"></i></span>
-                        <label class="staffOnly input-wrap">
-                            <input type="checkbox" />
-                            <div class="fancy-input checkbox"><i class="fa-solid fa-check"></i></div>
-                        </label>
-                    <div class="post--content"><div class='postcolor'>Post content</div></div>
-                </section>
+                @@include('../source/templates/blocks/post.html', {
+                    "gid": "7",
+                    "type": "Character",
+                    "parent": "1"
+                })
 
                 <!--Remaining Defaults-->
                 <div class="activeuserstrip">1 User(s) are reading this topic (0 Guests and 0 Anonymous Users)</div>
@@ -117,7 +109,7 @@
             </table>
             
             <br>
-            <div id="qr_open" style="display:none;position:relative;" align="left">
+            <div id="qr_open" style="position:relative;" align="left">
                 <form name="REPLIER" action="?" method="post">
                     <input type="hidden" name="act" value="Post">
                     <input type="hidden" name="CODE" value="03">
@@ -149,7 +141,7 @@
                 </form>
             </div>
                 
-            <div id="topic_open" style="display:none;z-index:2;">
+            <div id="topic_open" style="z-index:2;">
                 <div class="tableborder">
                     <div class="maintitle">&nbsp;
                         <a href="javascript:$('#topic_open').toggle();void(0);">Close Topic Options</a>

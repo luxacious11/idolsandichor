@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        @@include('../source/templates/head.html', {
+            "prefix": "../dist"
+        })  
+    </head>
+    <body id="Pages" class="g-4">
+        @@include('../source/templates/header.html', {
+            "prefix": ".."
+        })
+        @@include('../source/templates/nav.html', {
+            "prefix": ".."
+        })
+
+        <!--Main Body-->
+        <main>
+            <a name="top"></a>
+
+            <div id="loading">
+                <div class="loading-bubble">
+                    <i class="fa-thin fa-sharp fa-sun fa-spin"></i>
+                    <p>Loading</p>
+                </div>
+            </div>
+
+            <!--Webpage-->
+            <section class="webpage staffOnly">
+                <div class="webpage--menu">
+                    <button class="macro--button" onclick="toggleListMenu(this)">
+                        <i class="fa-solid fa-bars open-button"></i>
+                        <i class="fa-solid fa-xmark close-button"></i>
+                    </button>
+                    <tag-labels class="accordion scroll">
+                        <tag-label class="tab-category accordion--trigger" data-category="forms">
+                            <span>Forms</span>
+                        </tag-label>
+                        <div class="tab-category accordion--content" data-category="forms"><div class="accordion--inner">
+                            <a href="#announce">Announce</a>
+                            <a href="#add-plot">Add Plot</a>
+                            <a href="#add-group">Add Group</a>
+                            <a href="#add-location">Add Location</a>
+                            <a href="#add-creature">Add Creature</a>
+                            <a href="#add-canon">Add Canon</a>
+                        </div></div>
+                    </tag-labels>
+                </div>
+                <tag-tabset class="webpage--content">
+                    <tag-tab class="tab-category" data-category="forms">
+                        <tag-tabset>
+                            <tag-tab data-key="#announce">
+                                <div class="webpage--content-inner">
+                                    @@include('../source/templates/forms/announce.html')
+                                </div>
+                            </tag-tab>
+                            <tag-tab data-key="#add-plot">
+                                <div class="webpage--content-inner">
+                                    @@include('../source/templates/forms/add-plot.html')
+                                </div>
+                            </tag-tab>
+                            <tag-tab data-key="#add-group">
+                                <div class="webpage--content-inner">
+                                    @@include('../source/templates/forms/add-group.html')
+                                </div>
+                            </tag-tab>
+                            <tag-tab data-key="#add-location">
+                                <div class="webpage--content-inner">
+                                    @@include('../source/templates/forms/add-location.html')
+                                </div>
+                            </tag-tab>
+                            <tag-tab data-key="#add-creature">
+                                <div class="webpage--content-inner">
+                                    @@include('../source/templates/forms/add-creature.html')
+                                </div>
+                            </tag-tab>
+                            <tag-tab data-key="#add-canon">
+                                <div class="webpage--content-inner">
+                                    @@include('../source/templates/forms/add-canon.html')
+                                </div>
+                            </tag-tab>
+                        </tag-tabset>
+                    </tag-tab>
+                </tag-tabset>
+            </section>
+
+            <script src="../dist/js/formatting.js"></script>
+            <script src="../dist/js/staffForms.js"></script>
+            <script>
+                let staticClaims;
+                fetch(fetchURL(claimsJson))
+                .then((response) => response.json())
+                .then((characterData) => {
+                    staticClaims = [...characterData];
+                    let pending = characterData.filter(item => item.Status !== approvedText);
+                    setList('.clip-pending', pending, 'pending');
+
+                }).then(() => {
+                    initWebpages();
+                });
+            </script>
+
+            <!-- Copyright Information -->
+            <div class="tableborder" align="center">
+                <div class="row4" style="font-size: 7.5pt; padding-top: 1px; padding-bottom: 1px; line-height: 8pt;">
+                    <div class="copyright" align="center">
+                        Powered by 
+                        <a href="https://www.invisionboard.com" target="_blank">Invision Power Board</a>
+                        (<a href="http://jcink.com" target="_blank">Jcink.com </a>
+                        <a href="https://jcink.com" target="_blank">Forum Hosting</a>
+                        ) © 2020 &nbsp;
+                        <a href="https://www.invisionpower.com" target="_blank">IPS, Inc.</a>
+                        <br>
+                        Page creation time: 0.0054 <!-- http://luxtradition.b1.jcink.com -->  · 
+                        <a href="index.php?act=Mobile">Mobile Version</a> · 
+                        <a href="index.php?act=privacy">Privacy Policy</a>
+                    </div>
+                </div>
+            </div> 
+        </main>
+        
+        @@include('../source/templates/scripts.html', {
+            "prefix": "../dist"
+        })   
+    </body>
+</html>

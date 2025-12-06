@@ -1,0 +1,32 @@
+<form id="form-group" data-type="grid" data-columns="2">
+    <label>
+        <b>Group Name</b>
+        <span><input type="text" id="group" placeholder="Group Name" required /></span>
+    </label>
+    <label>
+        <b>Group ID</b>
+        <span><input type="text" id="id" placeholder="Group ID" required /></span>
+    </label>
+    <label>
+        <b>Type</b>
+        <span><select id="type" required>
+            <option value="free">Free</option>
+            <option value="premium">Premium</option>
+        </select></span>
+    </label>
+    <label>
+        <b>RGB</b>
+        <span><input type="text" id="rgb" placeholder="R, G, B" required /></span>
+    </label>
+    <label class="fullWidth">
+        <b>About</b>
+        <span><textarea id="about" placeholder="Aesthetic description" required></textarea></span>
+    </label>
+    <label class="fullWidth">
+        <b>Images</b>
+        <span><input type="text" id="image1" placeholder="Image 1 URL" required /></span>
+        <span><input type="text" id="image2" placeholder="Image 2 URL" required /></span>
+        <span><input type="text" id="image3" placeholder="Image 3 URL" required /></span>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>

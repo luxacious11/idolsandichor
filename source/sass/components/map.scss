@@ -1,0 +1,166 @@
+/*******************************
+    Map SVG
+********************************/
+.map {
+    margin: 0 auto;
+    max-width: 500px;
+    
+    &--road-border {
+        stroke-dasharray: 4.2 4.2;
+    }
+    
+    &--road-border,
+    &--road-link-border,
+    &--aeroway,
+    &--roman,
+    &--rail,
+    &--road-main-border,
+    &--road-main-link-border,
+    &--road-main2,
+    &--downtown,
+    &--norse,
+    &--egypt,
+    &--greek,
+    &--road-border3,
+    &--roads,
+    &--remnant {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+    
+    &--road-border,
+    &--road-link-border,
+    &--aeroway,
+    &--rail,
+    &--road-main-border,
+    &--road-main-link-border,
+    &--road-main2,
+    &--road-border3,
+    &--roads {
+        fill: none;
+        stroke: var(--map-roads);
+    }
+    
+    &--road-border,
+    &--road-main-border {
+        stroke-width: 4.2px;
+    }
+    
+    &--road-link-border {
+        stroke-dasharray: 4 4;
+    }
+    
+    &--road-link-border,
+    &--road-main-link-border {
+        stroke-width: 4px;
+    }
+    
+    &--road-main2 {
+        stroke-width: 3px;
+    }
+    
+    &--rail {
+        stroke-dasharray: 3 4;
+        stroke-width: .5px;
+    }
+    
+    &--road-border3 {
+        stroke-width: 1.5px;
+    }
+    
+    &--roads {
+        stroke-width: 2px;
+    }
+    
+    &--roman,
+    &--downtown,
+    &--norse,
+    &--egypt,
+    &--greek,
+    &--remnant {
+        stroke-width: 5px;
+        stroke: var(--map-stroke);
+    }
+    
+    &--bg-fill {
+        fill: var(--map-bg);
+    }
+    
+    &--water {
+        fill: var(--map-water);
+    }
+    
+    &--downtown {
+        &:hover,
+        &:has(+ text:hover) {
+            fill: var(--map-downtown);
+        }
+    }
+    
+    &--norse {
+        &:hover,
+        &:has(+ text:hover) {
+            fill: var(--map-norse);
+        }
+    }
+    
+    &--egypt {
+        &:hover,
+        &:has(+ text:hover) {
+            fill: var(--map-egypt);
+        }
+    }
+    
+    &--roman {
+        &:hover,
+        &:has(+ text:hover) {
+            fill: var(--map-roman);
+        }
+    }
+    
+    &--greek {
+        &:hover,
+        &:has(+ text:hover) {
+            fill: var(--map-greek);
+        }
+    }
+    
+    &--remnant {
+        &:hover,
+        &:has(+ text:hover) {
+            fill: var(--map-remnant);
+        }
+    }
+    &--roman,
+    &--downtown,
+    &--norse,
+    &--egypt,
+    &--greek,
+    &--remnant {
+        fill: var(--map-unselected);
+        transition: var(--transition-standard);
+    }
+}
+path,
+polygon {
+    & + text {
+        opacity: 0;
+        transition: var(--transition-standard);
+        font-size: 40px;
+        font-family: var(--font-sans-narrow);
+        font-weight: 700;
+        text-transform: uppercase;
+        fill: var(--map-text);
+        filter: drop-shadow(0px 0px 5px rgb(0, 0, 0));
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    &:hover {
+        & + text {
+            opacity: 1;
+        }
+    }
+}

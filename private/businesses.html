@@ -32,12 +32,15 @@
                         <i class="fa-solid fa-xmark close-button"></i>
                     </button>
                     <tag-labels class="accordion scroll">
-                        <div class="menu-filters">
-                            <strong>Filter by Business Name</strong>
-                            <input type="text" oninput="filterBusinesses(this)" placeholder="Business Name" style="margin-bottom: 10px;">
-                            <strong>Filter by Employee Name</strong>
-                            <input type="text" oninput="filterEmployees(this)" placeholder="Employee Name">
-                        </div>
+                        <div class="accordion--trigger">Filters</div>
+                        <div class="accordion--content menu-filters"><div class="accordion--inner">
+                            <div class="menu-filters--content">
+                                <strong class="h7">Filter by Business Name</strong>
+                                <input type="text" oninput="filterBusinesses(this)" placeholder="Business Name" style="margin-bottom: 10px;">
+                                <strong class="h7">Filter by Employee Name</strong>
+                                <input type="text" oninput="filterEmployees(this)" placeholder="Employee Name">
+                            </div>
+                        </div></div>
                     </tag-labels>
                 </div>
                 <tag-tabset class="webpage--content"></tag-tabset>
@@ -47,12 +50,12 @@
             <script>
                 let staticClaims = [];
 
-                fetch(claims)
+                fetch(fetchURL(claimsJson))
                 .then((response) => response.json())
                 .then((claimsData) => {
                     staticClaims = [...claimsData];
 
-                    fetch(businesses)
+                    fetch(fetchURL(businessesJson))
                     .then((response) => response.json())
                     .then((businessData) => {
                         formatBusinesses(businessData, staticClaims);

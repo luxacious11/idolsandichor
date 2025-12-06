@@ -1,0 +1,26 @@
+<form id="form-canon" data-type="grid" data-columns="2">
+    <label>
+        <b>Canon Name</b>
+        <span><input type="text" id="canon" placeholder="Canon Name" required /></span>
+    </label>
+    <label>
+        <b>Ancestry</b>
+        <span><select id="ancestry" required>
+            <option value="">(select)</option>
+            <option value="deity">Deity</option>
+            <option value="hero">Hero</option>
+            <option value="creature">Creature</option>
+            <option value="mortal">Mortal</option>
+        </select></span>
+    </label>
+    <label class="fullWidth" data-type="grid" data-columns="2">
+        <b class="fullWidth">Details</b>
+        <span><input type="text" id="detail1" placeholder="Pantheon / Parent / Class / Denomination" /></span>
+        <span><input type="text" id="detail2" placeholder="Domain / Gifts / Species / Element / Patron Deity" /></span>
+    </label>
+    <label class="fullWidth">
+        <b>About</b>
+        <span><textarea id="about" placeholder="Summary" required></textarea></span>
+    </label>
+    <button class="fullWidth" type="submit" id="submit">Submit</button>
+</form>

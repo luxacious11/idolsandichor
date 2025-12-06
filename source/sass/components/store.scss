@@ -17,14 +17,54 @@
 
             & > tbody {
                 display: block;
+                padding: var(--space-md);
+
+                @include mq-up(xxs) {
+                    padding: var(--space-lg);
+                }
 
                 & > tr {
-                    display: flex;
-                    gap: var(--space-lg);
+                    background: var(--bg-secondary);
+                    @include pattern;
+                    max-width: 1200px;
+                    margin: 0 auto;
+
+                    @include mq-down(md) {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    @include mq-up(md) {
+                        display: grid;
+                        grid-template-columns: var(--size-page-menu-width) auto;
+                        grid-template-rows: calc(max(calc(100vh - var(--size-menu-main) - var(--size-menu-breadcrumbs) - (2 * var(--space-lg))), 500px));
+                        min-height: 500px;
+                        max-height: calc(100vh - var(--size-menu-main) - var(--size-menu-breadcrumbs) - (2 * var(--space-lg)));
+                    }
                     
                     & > td {
                         &#ucpmenu {
-                            flex: 0 0 150px;
+                            background: var(--bg-accent-low);
+                            border: var(--border-accent-mid);
+                            padding: var(--space-lg);
+
+                            @include mq-down(md) {
+                                position: sticky;
+                                top: calc(var(--size-menu-breadcrumbs) + var(--size-menu-main));
+                                z-index: 1;
+                                background: var(--bg-secondary);
+                                backdrop-filter: blur(2px);
+                                padding: var(--space-md);
+
+                                &::before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    background: var(--bg-accent-low);
+                                }
+                            }
 
                             .sticky {
                                 display: flex;
@@ -38,6 +78,28 @@
                                 flex-direction: column;
                                 gap: var(--space-sm);
                             }
+                            .accordion--trigger {
+                                @include header(6);
+
+                                &::before {
+                                    background: none;
+                                }
+                            }
+                            .accordion--inner {
+                                display: flex;
+                                flex-direction: column;
+
+                                a {
+                                    @include info(var(--text-primary), larger, 400, $spacing: 0.05em);
+                                    transition: var(--transition-standard);
+
+                                    &:hover,
+                                    &.is-active {
+                                        color: var(--text-secondary);
+                                        font-weight: 700;
+                                    }
+                                }
+                            }
                         }
                         &:nth-child(2) {
                             display: none;
@@ -45,9 +107,20 @@
                         &#ucpcontent {
                             flex-grow: 1;
                             padding: var(--space-md);
+                            border: var(--border-primary);
+                            height: 100%;
+                            overflow: auto;
 
-                            @include mq-up(xs) {
+                            @include mq-up(xxs) {
                                 padding: var(--space-lg);
+                            }
+
+                            @include mq-down(md) {
+                                border-top: 0;
+                            }
+
+                            @include mq-up(md) {
+                                border-left: 0;
                             }
 
                             input[type="text"],
@@ -60,6 +133,30 @@
 
                             .maintitle {
                                 display: none;
+                            }
+
+                            & > table {
+                                display: block;
+                                border: var(--border-primary);
+                                background: var(--bg-tertiary);
+                                height: 100%;
+                                padding: var(--space-md);
+                                overflow-x: hidden;
+                                overflow-y: auto;
+                                max-height: 100%;
+                                scrollbar-width: thin;
+                                scrollbar-color: var(--bg-accent-mid) transparent;
+                                text-align: justify;
+                                font-size: calc(var(--text-size-md) + 1px);
+                                line-height: 200%;
+
+                                @include mq-up(xxs) {
+                                    padding: var(--space-lg);
+                                }
+
+                                & > tbody {
+                                    @include scroll;
+                                }
                             }
                     
                             form {
@@ -108,6 +205,8 @@
                                             }
                         
                                             &:last-child {
+                                                grid-column: 1 / -1;
+
                                                 .pformstrip:only-child {
                                                     margin-bottom: 0;
                                                     padding: 0;
@@ -121,6 +220,78 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+//Shop Items Shared
+#store.store-shop #ucpcontent > table > tbody > tr:not(:first-child):not(:last-child),
+#store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)),
+#store.store-do_staff_inventory #ucpcontent > table > tbody > tr:not(:last-child) {
+    display: grid;
+    gap: var(--space-xs) var(--space-md);
+    background: var(--bg-secondary);
+    border: var(--border-primary);
+    padding: var(--space-md);
+
+    & > td {
+        padding: 0;
+        text-align: left;
+
+        &:first-child {
+            height: var(--size-store-image);
+            align-self: center;
+        }
+        &:nth-child(2) {
+            line-height: var(--size-store-image);
+            max-width: max-content;
+            @include header(7);
+        }              
+        &:nth-child(3) {
+            grid-column: 1 / -1;
+            border-bottom: var(--border-primary);
+            padding-bottom: var(--space-sm);
+            margin-bottom: calc(var(--space-sm) - var(--space-xs));
+            text-align: justify;
+        }    
+    }
+}
+#store.store-shop #ucpcontent > table,
+#store.store-inventory #ucpcontent > table,
+#store.store-do_staff_inventory #ucpcontent > table {
+    display: block;
+
+    & > tbody {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: var(--space-md);
+    
+        @include mq-up(xxs) {
+            gap: var(--space-lg);
+        }
+    
+        @include mq-up(sm) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        & > tr {
+            display: flex;
+            flex-wrap: wrap;
+    
+            @include mq-up(sm) {
+                flex: 0 0 calc(50% - calc(var(--space-md) / 2));
+            }
+    
+            @include mq-up(md) {
+                flex: 0 0 calc((100% / 3) - calc(var(--space-md) * 2 / 3));
+            }
+    
+            img {
+                width: var(--size-store-image);
+                height: var(--size-store-image);
+                object-fit: contain;
+                object-position: center;
             }
         }
     }
@@ -149,6 +320,7 @@
                             line-height: 160%;
                             max-width: max-content;
                             margin-bottom: var(--space-sm);
+                            @include header(6);
 
                             & + br {
                                 display: none;
@@ -170,48 +342,21 @@
 #store.store-shop {
     #ucpcontent {
         & > table {
-            display: block;
-
             & > tbody {
-                display: grid;
-                grid-template-columns: repeat(1, 1fr);
-                gap: var(--space-md);
-
-                @include mq-up(sm) {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-
-                @include mq-up(md) {
-                    grid-template-columns: repeat(3, 1fr);
-                }
-
                 & > tr {
-                    display: flex;
-                    flex-wrap: wrap;
-
-                    @include mq-up(sm) {
-                        flex: 0 0 calc(50% - calc(var(--space-md) / 2));
-                    }
-
-                    @include mq-up(md) {
-                        flex: 0 0 calc((100% / 3) - calc(var(--space-md) * 2 / 3));
-                    }
-
-                    img {
-                        width: var(--size-store-image);
-                        height: var(--size-store-image);
-                        object-fit: contain;
-                        object-position: center;
-                    }
                     &:first-child {
                         display: none;
                     }
                     &:last-child {
                         grid-column: 1 / -1;
-                        display: flex;
-                        justify-content: space-between;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
                         align-items: center;
-    
+                        text-align: center;
+                        border-top: var(--border-primary);
+                        @include info;
+                        line-height: 160%;
+            
                         a {
                             display: block;
                             max-width: max-content;
@@ -219,59 +364,51 @@
                             padding: var(--space-sm);
                             z-index: 1;
                         }
-
+            
                         & > td {
                             display: block;
-                            text-align: left;
-
+                            padding: 0;
+            
+                            &:first-child {
+                                text-align: left;
+            
+                                a {
+                                    margin: 0;
+                                }
+                            }
+            
                             &:nth-child(2) {
                                 text-align: center;
+                                grid-row: 2 / 3;
+                                grid-column: 1 / -1;
+                                border-top: var(--border-primary);
+                                padding-top: var(--space-sm);
                             }
-
+            
                             &:last-child {
                                 text-align: right;
                             }
                         }
                     }
                     &:not(:first-child):not(:last-child) {
-                        padding: var(--space-md);
-                        display: grid;
                         grid-template-columns: var(--size-store-image) 1fr 1fr var(--size-store-image);
                         grid-template-rows: repeat(auto-fit, minmax(0, max-content));
-                        gap: var(--space-md);
 
                         & > td {
-                            padding: 0;
-                            text-align: left;
-
-                            &:first-child {
-                                height: var(--size-store-image);
-                                align-self: center;
-                            }
-    
                             &:nth-child(2) {
                                 grid-column: span 3;
-                                line-height: 160%;
-                                max-width: max-content;
-                                padding: var(--space-xs) 0 var(--space-xs) var(--space-md);
                             }
-    
-                            &:nth-child(3) {
-                                grid-column: 1 / -1;
-                                padding: var(--space-sm) 0 var(--space-md);
-                            }
-    
                             &:nth-child(4),
                             &:nth-child(5) {
                                 grid-column: span 2;
+                                @include info;
+                                line-height: 200%;
                             }
-    
                             &:nth-child(4) {
                                 &::before {
                                     content: '$';
                                 }
                             }
-    
                             &:nth-child(5) {
                                 text-align: right;
 
@@ -279,35 +416,32 @@
                                     content: ' In Stock';
                                 }
                             }
-    
+                    
                             &:nth-child(6):last-child {
                                 grid-column: 1 / -1;
                                 padding: var(--space-md) 0 0;
-    
+                    
                                 a {
-                                    display: block;
-                                    max-width: max-content;
-                                    margin: 0 0 0 auto;
-                                    padding: var(--space-sm);
-                                    z-index: 1;
+                                    @include btn(button);
+                                    width: 100%;
+                                    text-align: center;
+                                    display: inline-block;
                                 }
                             }
-    
                             &:nth-child(6):not(:last-child),
                             &:nth-child(7):last-child {
                                 grid-column: span 2;
                                 padding: var(--space-md) 0 0;
                                 font-size: 0;
-    
+                                line-height: 0;
+                    
                                 a {
-                                    max-width: max-content;
-                                    margin: 0 0 0 auto;
-                                    padding: var(--space-sm);
-                                    z-index: 1;
-                                    font-size: var(--text-size-md);
+                                    @include btn(button);
+                                    width: 100%;
+                                    text-align: center;
+                                    display: inline-block;
                                 }
                             }
-    
                             &:nth-child(7):last-child {
                                 a {
                                     &::before {
@@ -326,53 +460,24 @@
 #store.store-inventory {
     #ucpcontent {
         & > table {
-            display: block;
-
             & > tbody {
-                display: grid;
-                grid-template-columns: repeat(1, 1fr);
-                gap: var(--space-md);
-
-                @include mq-up(sm) {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-
-                @include mq-up(md) {
-                    grid-template-columns: repeat(3, 1fr);
-                }
-
                 & > tr {
-                    display: flex;
-                    flex-wrap: wrap;
-
-                    @include mq-up(sm) {
-                        flex: 0 0 calc(50% - calc(var(--space-md) / 2));
-                    }
-
-                    @include mq-up(md) {
-                        flex: 0 0 calc((100% / 3) - calc(var(--space-md) * 2 / 3));
-                    }
-
-                    img {
-                        width: var(--size-store-image);
-                        height: 24px;
-                        object-fit: contain;
-                        object-position: center;
-                    }
                     &:first-child {
                         grid-column: 1 / -1;
-                        display: grid;
+                        display: flex;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        @include info;
+                        gap: var(--space-xs);
 
                         & > td {
-                            width: 100%;
                             padding: 0;
+                            line-height: 160%;
 
                             &:first-child {
-                                line-height: 160%;
                                 max-width: max-content;
                                 display: block;
                                 max-width: max-content;
-                                padding: var(--space-xs) var(--space-sm);
                             }
                         }
                     }
@@ -381,65 +486,41 @@
                         display: none;
                     }
                     &:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) {
-                        padding: var(--space-md);
-                        display: grid;
                         grid-template-columns: var(--size-store-image) calc(100% - var(--size-store-image) - var(--space-md));
-                        grid-template-rows: max-content max-content max-content max-content auto;
-                        gap: var(--space-md);
+                        grid-template-rows: max-content 1fr max-content max-content;
+
+                        &:has(td:only-child) {
+                            display: none;
+                        }
 
                         td {
                             padding: 0;
                             width: 100%;
 
-                            &:first-child {
-                                order: 1;
-                            }
-    
-                            &:nth-child(2) {
-                                order: 2;
-                                line-height: 160%;
-                                max-width: max-content;
-                                padding: var(--space-xs) 0 var(--space-xs) var(--space-md);
-                            }
-
                             &:not(:first-child):not(:nth-child(2)) {
                                 grid-column: 1 / -1;
                             }
     
-                            &:nth-child(3) {
-                                text-align: justify;
-                                order: 4;
-                                padding: var(--space-sm) 0 0;
-
-                                &:empty {
-                                    display: none;
-                                }
-                            }
-    
                             &:nth-child(4) {
-                                flex: 0 0 100%;
-                                order: 3;
                                 text-align: left;
-                                margin-bottom: calc(-1 * var(--space-xs));
+                                @include info;
+                                line-height: 200%;
     
                                 &::after {
                                     content: ' Owned';
                                 }
                             }
     
-                            &:last-child {
-                                display: flex;
-                                align-items: end;
-                                flex: 0 0 100%;
-                                order: 5;
-                                padding: var(--space-md) 0 0;
-    
+                            &:nth-child(5) {
+                                padding: calc(var(--space-md) - var(--space-xs)) 0 0;
+                                font-size: 0;
+                                line-height: 0;
+                    
                                 a {
-                                    display: block;
-                                    max-width: max-content;
-                                    margin: 0 0 0 auto;
-                                    padding: var(--space-sm);
-                                    z-index: 1;
+                                    @include btn(button);
+                                    width: 100%;
+                                    text-align: center;
+                                    display: inline-block;
                                 }
     
                                 br {
@@ -456,6 +537,7 @@
 //Store Forms
 #store.store-donate_money,
 #store.store-donate_item,
+#store.store-useitem,
 #store.store-fine,
 #store.store-edit_points,
 #store.store-do_edit_points,
@@ -463,16 +545,17 @@
     #ucpcontent {
         & > table {
             & > tbody {
+                display: grid;
+                gap: var(--space-lg);
+
                 & > tr {
                     &:not(:last-child) {
                         display: grid;
-    
-                        @include mq-up(sm) {
-                            grid-template-columns: 250px calc(100% - 265px);
-                        }
+                        gap: var(--space-xs);
     
                         & > td {
                             width: 100%;
+                            padding: 0;
                         }
                         .pformleft:first-child {
                             b,
@@ -481,7 +564,7 @@
                                 display: block;
                                 line-height: 160%;
                                 max-width: max-content;
-                                padding: var(--space-xs) var(--space-sm);
+                                @include header(7);
     
                                 & ~ br {
                                     display: none;
@@ -498,79 +581,48 @@
         }
     }
 }
+//Store Use Item
+#store.store-useitem {
+    main > table:first-of-type > tbody > tr > td#ucpcontent > table > tbody {
+        & > tr {
+            &:first-child {
+                display: none;
+            }
+            &:last-child {
+                td {
+                    display: block;
+                    width: 100%;
+                    padding: 0;
+
+                    input {
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+    }
+}
 //Store Edit Inventory Item List
 #store.store-do_staff_inventory {
     #ucpcontent {
         & > table {
-            display: block;
-
             & > tbody {
-                display: flex;
-                flex-wrap: wrap;
-                gap: var(--space-xs);
-
-                @include mq-up(xxs) {
-                    gap: var(--space-md);
-                }
-
                 & > tr {
                     display: flex;
                     flex-wrap: wrap;
-                    height: max-content;
-                    flex: 0 0 100%;
-
-                    @include mq-up(sm) {
-                        flex: 0 0 calc(50% - ( var(--space-md) / 2));
-                    }
-
-                    @include mq-up(md) {
-                        flex: 0 0 calc((100% / 3) - ( var(--space-lg) * 2 / 3));
-                    }
-
-                    img {
-                        width: var(--size-store-image);
-                        height: var(--size-store-image);
-                        object-fit: contain;
-                        object-position: center;
-                    }
 
                     & > td {
                         padding: 0;
-                        height: max-content;
                         text-align: left;
-
-                        &:first-child {
-                            flex: 0 0 calc(var(--space-lg) + var(--size-store-image));
-                            padding: var(--space-sm) 0 0 var(--space-sm);
-
-                            @include mq-up(xxs) {
-                                padding: var(--space-md) 0 0 var(--space-md);
-                            }
-                        }
-
-                        &:nth-child(2) {
-                            flex: 0 0 calc(100% - (var(--space-lg) + var(--size-store-image) + 10px));
-                        }
-
-                        &:nth-child(3) {
-                            flex: 0 0 calc(100% - var(--space-sm));
-                            text-align: justify;
-
-                            @include mq-up(xxs) {
-                                flex: 0 0 calc(100% - var(--space-md));
-                            }
-
-                            &:empty {
-                                display: none;
-                            }
-                        }
+                        width: 100%;
 
                         &:nth-child(4) {
                             display: none;
                         }
 
                         &:nth-child(5) {
-                            flex: 0 0 100%;
+                            grid-column: 1 / -1;
+                            @include info;
 
                             .input-wrap {
                                 &::after {
@@ -583,13 +635,13 @@
                     &:nth-last-child(2):not(:nth-child(2)) {
                         display: none;
                     }
+                    &:not(:last-child) {
+                        grid-template-columns: var(--size-store-image) calc(100% - var(--size-store-image) - var(--space-md));
+                        grid-template-rows: max-content 1fr max-content;
+                    }
                     &:last-child {
-                        flex: 0 0 100%;
+                        grid-column: 1 / -1;
                         border: none;
-                        
-                        td {
-                            flex: 0 0 100%;
-                        }
                     }
                 }
             }
