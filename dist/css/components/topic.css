@@ -144,6 +144,7 @@
 
 .topics--section {
   display: grid;
+  grid-template-columns: 100%;
   gap: var(--space-lg); }
 
 .topics--info {
@@ -200,6 +201,7 @@
 
 .topic {
   display: grid;
+  grid-template-columns: 100%;
   grid-template-rows: max-content max-content max-content;
   gap: var(--space-xs) var(--space-xl);
   background: var(--bg-tertiary);
@@ -222,7 +224,11 @@
   .topic > label {
     position: absolute;
     top: var(--space-sm);
-    left: var(--space-sm); }
+    right: var(--space-sm); }
+    @media (min-width: 601px) {
+      .topic > label {
+        left: var(--space-sm);
+        right: auto; } }
   .topic--avatar {
     aspect-ratio: 1 / 1;
     line-height: 0;
@@ -317,10 +323,44 @@
   .topic--writers {
     display: flex;
     flex-direction: column; }
+    @media (min-width: 601px) {
+      .topic--writers {
+        grid-column: span 2;
+        margin-top: var(--space-lg);
+        display: grid;
+        grid-template-columns: 50% 50%; } }
+    @media (min-width: 1025px) {
+      .topic--writers {
+        grid-column: auto;
+        margin-top: 0;
+        display: flex; } }
   .topic--writer:first-child {
     padding-bottom: var(--space-md);
     margin-bottom: var(--space-md);
     border-bottom: var(--border-primary); }
+    @media (min-width: 601px) {
+      .topic--writer:first-child {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: 0;
+        padding-right: var(--space-md);
+        border-right: var(--border-primary); } }
+    @media (min-width: 1025px) {
+      .topic--writer:first-child {
+        padding-right: 0;
+        margin-right: 0;
+        border-right: 0;
+        padding-bottom: var(--space-md);
+        margin-bottom: var(--space-md);
+        border-bottom: var(--border-primary); } }
+  @media (min-width: 601px) {
+    .topic--writer:not(:first-child) {
+      text-align: right;
+      padding-left: var(--space-md); } }
+  @media (min-width: 1025px) {
+    .topic--writer:not(:first-child) {
+      text-align: left;
+      padding-left: 0; } }
   .topic--writer > div {
     line-height: 200%; }
     .topic--writer > div:first-child {

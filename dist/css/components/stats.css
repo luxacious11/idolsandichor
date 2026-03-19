@@ -6,6 +6,7 @@
 ********************************/
 .stats {
   display: grid;
+  grid-template-columns: 100%;
   border: var(--border-primary);
   background: var(--bg-secondary); }
   .stats::before {
@@ -62,14 +63,14 @@
       display: block; }
       .stats--recent table tbody {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
         gap: var(--space-lg); }
         @media (min-width: 601px) {
           .stats--recent table tbody {
             grid-template-columns: 1fr 1fr; } }
         @media (min-width: 1025px) {
           .stats--recent table tbody {
-            grid-template-columns: 1fr; } }
+            grid-template-columns: 100%; } }
         .stats--recent table tbody tr {
           display: flex;
           flex-direction: column; }
@@ -110,7 +111,7 @@
   .stats--right {
     padding: var(--space-md);
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     grid-template-rows: max-content max-content max-content;
     gap: var(--space-md); }
     @media (min-width: 481px) {

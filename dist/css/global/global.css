@@ -193,6 +193,7 @@ tag-labels {
     margin-bottom: 0; }
   tag-labels .tab-category.accordion--content.is-active {
     display: grid;
+    grid-template-columns: 100%;
     gap: var(--space-sm); }
 
 .accordion--trigger {
@@ -221,6 +222,7 @@ tag-labels {
     z-index: 3; }
 
 .alert-select {
+  grid-template-columns: 100%;
   display: none;
   position: absolute;
   top: calc(100% + 11px + var(--space-sm));
@@ -246,10 +248,12 @@ tag-labels {
     display: grid; }
   .alert-select .alert-section .scroll {
     max-height: var(--size-alert-max-height); }
-  .alert-select .alert-section .input-wrap:not(:last-child) {
-    margin-bottom: var(--space-xs); }
-  .alert-select .alert-section .input-wrap .fancy-input::before {
-    font-family: 'Font Awesome 7 Pro'; }
+  .alert-select .alert-section .input-wrap {
+    align-items: center; }
+    .alert-select .alert-section .input-wrap:not(:last-child) {
+      margin-bottom: var(--space-xs); }
+    .alert-select .alert-section .input-wrap .fancy-input::before {
+      font-family: 'Font Awesome 7 Pro'; }
   .alert-select .alert-section label {
     cursor: pointer; }
   .alert-select .alert-section > b {
@@ -429,6 +433,7 @@ tag-code {
 
 .items {
   display: grid;
+  grid-template-columns: 100%;
   gap: var(--space-lg); }
   .items--item {
     display: flex;
@@ -484,14 +489,16 @@ tag-code {
 
 .relationships {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
   gap: var(--space-sm); }
   @media (min-width: 769px) {
     .relationships {
       grid-template-columns: 1fr 1fr; } }
   @media (min-width: 1025px) {
     .relationships {
-      grid-template-columns: 1fr; } }
+      grid-template-columns: 100%; } }
+  .relationships > br {
+    display: none; }
 
 tag-relheader {
   grid-column: 1 / -1;
@@ -586,6 +593,7 @@ tag-rel {
 
 .accordion--content:has(.accordion--inner) {
   display: grid;
+  grid-template-columns: 100%;
   grid-template-rows: 0fr;
   transition: var(--transition-standard); }
   .accordion--content:has(.accordion--inner).is-active {

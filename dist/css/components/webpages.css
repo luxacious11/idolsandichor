@@ -164,6 +164,7 @@
   .webpage form > .field-wrap,
   .webpage form > label {
     display: grid;
+    grid-template-columns: 100%;
     grid-template-rows: max-content; }
     .webpage form > .field-wrap > label:not([data-gap]),
     .webpage form > .field-wrap:not([data-gap]),
@@ -325,7 +326,8 @@
     padding-bottom: var(--space-md);
     border-bottom: var(--border-accent-mid); }
     .webpage .menu-filters--content {
-      display: grid; }
+      display: grid;
+      grid-template-columns: 100%; }
       .webpage .menu-filters--content strong {
         margin: 0; }
     .webpage .menu-filters input {
@@ -360,11 +362,13 @@
 
 .species--grid {
   display: grid;
+  grid-template-columns: 100%;
   gap: var(--space-lg);
   margin-top: var(--space-lg); }
 
 .species--sliders {
   display: grid;
+  grid-template-columns: 100%;
   gap: var(--space-md);
   grid-template-columns: 100%;
   margin-top: var(--space-md);
@@ -493,6 +497,7 @@
 
 .employer--description {
   display: grid;
+  grid-template-columns: 100%;
   gap: var(--space-lg); }
   @media (min-width: 601px) {
     .employer--description {
@@ -579,6 +584,7 @@
 .clip-free-groups,
 .clip-premium-groups {
   display: grid;
+  grid-template-columns: 100%;
   gap: var(--space-xl);
   margin-top: var(--space-xl); }
 
@@ -588,6 +594,7 @@
 .group,
 .location {
   display: grid;
+  grid-template-columns: 100%;
   gap: var(--space-xs) var(--space-xl); }
   .group--image,
   .location--image {
@@ -696,31 +703,44 @@
     margin-bottom: var(--space-sm); }
   .group--images {
     display: grid;
+    grid-template-columns: 100%;
     justify-content: center;
     grid-template-rows: repeat(4, 55px); }
+    @media (max-width: 768px) {
+      .group--images {
+        grid-template-columns: repeat(3, 85px);
+        grid-template-rows: 100%;
+        gap: var(--space-sm); }
+        .group--images img {
+          left: auto !important;
+          right: auto !important; } }
     .group--images img {
       clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-      width: 100px; }
+      width: 100px;
+      aspect-ratio: 1 / 1; }
   .group--description {
     text-transform: lowercase;
     background: var(--bg-accent-low);
     border: var(--border-accent-mid);
     padding: var(--space-md);
     text-align: justify; }
-  .group:nth-child(odd) {
-    grid-template-columns: 150px 1fr; }
-    .group:nth-child(odd) .group--images img:nth-of-type(odd) {
-      left: -27.5px; }
-    .group:nth-child(odd) .group--images img:nth-of-type(even) {
-      right: -27.5px; }
-  .group:nth-child(even) {
-    grid-template-columns: 1fr 150px; }
+  @media (min-width: 769px) {
+    .group:nth-child(odd) {
+      grid-template-columns: 150px 1fr; } }
+  .group:nth-child(odd) .group--images img:nth-of-type(odd) {
+    left: 27.5px; }
+  .group:nth-child(odd) .group--images img:nth-of-type(even) {
+    right: -82.5px; }
+  @media (min-width: 769px) {
+    .group:nth-child(even) {
+      grid-template-columns: 1fr 150px; } }
+  @media (min-width: 769px) {
     .group:nth-child(even) .group--images {
-      order: 2; }
-      .group:nth-child(even) .group--images img:nth-of-type(even) {
-        left: -27.5px; }
-      .group:nth-child(even) .group--images img:nth-of-type(odd) {
-        right: -27.5px; }
+      order: 2; } }
+  .group:nth-child(even) .group--images img:nth-of-type(even) {
+    left: -27.5px; }
+  .group:nth-child(even) .group--images img:nth-of-type(odd) {
+    right: -27.5px; }
 
 :root {
   --sqrt: 1.41421356237;
@@ -799,3 +819,25 @@
             width: calc((100 / 704) * 100%);
         }
             */ }
+
+.color-test {
+  padding: var(--space-lg);
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap; }
+  .color-test .palette {
+    padding: 0 var(--space-sm);
+    background: var(--bg-accent-high);
+    color: var(--text-on-accent);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    font-size: var(--text-size-xs);
+    font-family: var(--font-sans-narrow); }
+  .color-test .text {
+    color: var(--text-accent);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    font-size: var(--text-size-xs);
+    font-family: var(--font-sans-narrow); }

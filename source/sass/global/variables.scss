@@ -111,6 +111,7 @@ body {
         --bg-secondary: rgb(206, 200, 193, 0.9);
         --bg-secondary-mid: rgba(206, 200, 193, 0.5);
         --bg-tertiary: rgba(220, 215, 209, 0.9);
+        --bg-tertiary-mid: rgba(220, 215, 209, 0.4);
         --bg-overlay: rgba(214, 209, 201, 0.7);
 
         --blend-texture-primary: soft-light;
@@ -160,7 +161,7 @@ body {
         --bg-accent-mid: var(--accent-50);
         --bg-accent-low: var(--accent-30);
         
-        --text-accent: var(--accent-70);
+        --text-accent: rgba(var(--rgb), var(--text-opacity, 0.7));
         --text-accent-strong: var(--accent);
         --text-on-accent: rgb(225, 225, 225);
         
@@ -178,6 +179,8 @@ body {
             --text-accent: var(--accent);
         }
     }
+
+    /* Filter generator: https://codepen.io/sosuke/pen/Pjoqqp */
 
     //Banned/Validating
     &.g-1,
@@ -208,7 +211,11 @@ body {
     &.g-6,
     .g-6,
     &.mgroup-6,
-    .mgroup-6 {
+    .mgroup-6,
+    &.g-19,
+    .g-19,
+    &.mgroup-19,
+    .mgroup-19 {
         --rgb: 220, 105, 102;
         --rgb-filter: invert(57%) sepia(7%) saturate(4856%) hue-rotate(315deg) brightness(96%) contrast(78%);
     }
@@ -270,6 +277,38 @@ body {
     .mgroup-17 {
         --rgb: 214, 116, 58;
         --rgb-filter: invert(48%) sepia(100%) saturate(419%) hue-rotate(336deg) brightness(91%) contrast(83%);
+    }
+    //Andromeda
+    &.g-20,
+    .g-20,
+    &.mgroup-20,
+    .mgroup-20 {
+        --rgb: 116, 119, 126;
+        --rgb-filter: invert(47%) sepia(7%) saturate(338%) hue-rotate(184deg) brightness(96%) contrast(85%);
+    }
+    //Circinus
+    &.g-21,
+    .g-21,
+    &.mgroup-21,
+    .mgroup-21 {
+        --rgb: 182, 133, 90;
+        --rgb-filter: invert(59%) sepia(16%) saturate(1101%) hue-rotate(346deg) brightness(92%) contrast(86%);
+    }
+    //Lepus
+    &.g-22,
+    .g-22,
+    &.mgroup-22,
+    .mgroup-22 {
+        --rgb: 44, 122, 96;
+        --rgb-filter: invert(38%) sepia(70%) saturate(324%) hue-rotate(109deg) brightness(92%) contrast(95%);
+    }
+    //Serpens
+    &.g-24,
+    .g-24,
+    &.mgroup-24,
+    .mgroup-24 {
+        --rgb: 118, 131, 115;
+        --rgb-filter: invert(51%) sepia(10%) saturate(444%) hue-rotate(63deg) brightness(95%) contrast(85%);
     }
 
     /***** Premium *****/
@@ -338,5 +377,22 @@ body {
     .mgroup-18 {
         --rgb: 44, 100, 186;
         --rgb-filter: invert(32%) sepia(96%) saturate(803%) hue-rotate(188deg) brightness(88%) contrast(91%);
+    }
+    //Orion
+    &.g-23,
+    .g-23,
+    &.mgroup-23,
+    .mgroup-23 {
+        --rgb: 167, 69, 87;
+        --rgb-filter: invert(35%) sepia(60%) saturate(602%) hue-rotate(299deg) brightness(86%) contrast(88%);
+    }
+    //Vela
+    &.g-25,
+    .g-25,
+    &.mgroup-25,
+    .mgroup-25 {
+        --rgb: 61, 73, 171;
+        --text-opacity: 1;
+        --rgb-filter: invert(22%) sepia(85%) saturate(1380%) hue-rotate(217deg) brightness(95%) contrast(90%);
     }
 }

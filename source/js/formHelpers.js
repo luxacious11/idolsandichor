@@ -101,11 +101,11 @@ function checkClaims(form, data, type, staffDiscord = null, publicDiscord = null
                 staticDeityReserves = [...reserveData.filter(item => item.Type === 'deity')];
             }).then(() => {
                 let createdDeities = staticClaims.filter(item => item.Character === data.Reserve.split(' of the ')[0]);
-
                 if(createdDeities.length > 0) {
                     handleWarning(form, claimExists);
                 } else {
                     let existing = staticDeityReserves.filter(item => item.Reserve === data.Reserve);
+                    console.log(existing);
                     if(existing.length > 0) {
                         checkReserves(existing, form, data, staffDiscord, publicDiscord);
                     } else {
@@ -141,17 +141,18 @@ function checkClaims(form, data, type, staffDiscord = null, publicDiscord = null
     }
 }
 function checkReserves(existing, form, data, staffDiscord = null, publicDiscord = null, preexisting = null, limit = null) {
-    let oldReserves = [];
+    let oldReserves = [], existingCount = existing.length;
     existing.forEach((reserve, i) => {
         let difference = checkActiveReserve(reserve.Timestamp);
+        console.log('run check');
         if(difference < (defaultReserve + parseInt(reserve.Extension))) {
             handleWarning(form, activeResExists);
         } else {
             oldReserves.push(reserve);
-            existing.splice(i, 1);
+            existingCount--;
         }
     });
-    if((preexisting && (existing.length + preexisting) > limit) || (!preexisting && existing.length > 0)) {
+    if((preexisting && (existingCount + preexisting) > limit) || (!preexisting && existingCount > 0)) {
         handleWarning(form, instancesCapped);
     } else {
         oldReserves.forEach(reserve => {

@@ -1,0 +1,31 @@
+<form id="form-add-event" data-type="grid" data-columns="2">
+    <label>
+        <b>Event Name</b>
+        <span><input type="text" id="event" placeholder="Event Name" required></span>
+    </label>
+    <label>
+        <b>Signups Close Date</b>
+        <span><input type="date" id="close" required></span>
+    </label>
+    <label>
+        <b>Start Date</b>
+        <span><input type="date" id="start" required></span>
+    </label>
+    <label>
+        <b>End Date (optional)</b>
+        <span><input type="date" id="end"></span>
+    </label>
+    <label class="fullWidth">
+        <b>Overview</b>
+        <span><textarea id="overview" placeholder="Overview" required></textarea></span>
+    </label>
+    <label class="fullWidth adjustable">
+        <b>Roles</b>
+        <div class="rows"></div>
+        <div class="multi-buttons" data-row-type="eventroles">
+            <button type="button" onclick="addRow(this)">+ Add Role</button>
+            <button type="button" onclick="removeRow(this)">- Remove Role</button>
+        </div>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
+</form>

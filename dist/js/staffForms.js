@@ -135,7 +135,8 @@ if(document.querySelector('#form-group')) {
             about = form.querySelector('#about'),
             image1 = form.querySelector('#image1'),
             image2 = form.querySelector('#image2'),
-            image3 = form.querySelector('#image3');
+            image3 = form.querySelector('#image3'),
+            visibility = form.querySelector('#visibility');
 
         let imageArray = [getValue(image1), getValue(image2), getValue(image3)];
 
@@ -148,6 +149,7 @@ if(document.querySelector('#form-group')) {
             Description: getValue(about),
             Images: JSON.stringify(imageArray),
             Color: getValue(rgb),
+            Hidden: getSelectValue(visibility),
         }
 
         let staffDiscord = {
@@ -318,6 +320,57 @@ if(creatureForm) {
 
         setFormStatus(form);
 
+        sendAjax(form, data, staffDiscord);
+    });
+}
+
+/***** Add Event *****/
+if(document.querySelector('#form-add-event')) {
+    document.querySelector('#form-add-event').addEventListener('submit', e => {
+        e.preventDefault();
+
+        let form = e.currentTarget,
+            event = form.querySelector('#event'),
+            start = form.querySelector('#start'),
+            end = form.querySelector('#end'),
+            close = form.querySelector('#close'),
+            overview = form.querySelector('#overview'),
+            roleWraps = form.querySelectorAll('.eventrole-wrap'),
+            roles = [];
+
+        roleWraps.forEach((roleWrap, i) => {
+            let title = getStandardValue(roleWrap.querySelector('.eventrole-title input'));
+            let priority = i + 1;
+            let overview = getValue(roleWrap.querySelector('.eventrole-overview input'));
+            let details = getStandardValue(roleWrap.querySelector('.eventrole-details input'));
+
+            roles.push({
+                title: title,
+                priority: priority,
+                overview: overview,
+                details: details && details !== '' ? details : '',
+            });
+        });
+
+        let data = {
+            DeployID: deployID.info,
+            SubmissionType: 'add-event',
+            Event: getStandardValue(event),
+            Start: getValue(start),
+            Close: getValue(close),
+            End: getValue(end),
+            Overview: getValue(overview),
+            Roles: JSON.stringify(roles),
+        }
+
+        let staffDiscord = {
+            title: `New Event Added`,
+            text: `No extra actions required.`,
+            hook: staffLogs,
+        }
+
+        setFormStatus(form);
+        
         sendAjax(form, data, staffDiscord);
     });
 }

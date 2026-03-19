@@ -278,10 +278,11 @@
       display: none; }
     .posts .tableborder .posts--socials {
       display: grid;
+      grid-template-columns: 100%;
       margin-bottom: var(--space-lg); }
       @media (min-width: 769px) {
         .posts .tableborder .posts--socials:has(.tindr) {
-          grid-template-columns: max-content 1fr; } }
+          grid-template-columns: max-content minmax(0, 1fr); } }
       @media (min-width: 769px) {
         .posts .tableborder .posts--socials:has(.insta) {
           grid-template-columns: 1fr 1.5fr; } }
@@ -393,6 +394,7 @@
     border: var(--border-accent-mid);
     border-radius: 15px;
     display: grid;
+    grid-template-columns: 100%;
     margin-bottom: var(--space-md); }
     .posts--socials-wrap .insta .social--topper,
     .posts--socials-wrap .insta .post--content,
@@ -431,6 +433,7 @@
 
 .post:not(.tindr):not(.insta):not(.comm) {
   display: grid;
+  grid-template-columns: 100%;
   gap: var(--space-md) var(--space-lg);
   margin-bottom: var(--space-lg);
   padding-bottom: var(--space-lg);
@@ -667,8 +670,9 @@
 
 .social--controls {
   display: flex;
-  gap: var(--space-xs);
-  justify-content: end; }
+  gap: 0 var(--space-xs);
+  justify-content: end;
+  flex-wrap: wrap; }
   .social--controls .macro--small,
   .social--controls .fancy-input {
     border-radius: 50%;
@@ -680,6 +684,16 @@
   .social--controls .macro--small,
   .social--controls .input-wrap :checked + .fancy-input {
     color: var(--text-primary) !important; }
+  .social--controls .post--info {
+    flex: 0 0 100%;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    font-size: var(--text-size-xs);
+    font-family: var(--font-sans);
+    font-style: italic;
+    text-align: right; }
 
 .social--info {
   display: flex;
@@ -689,6 +703,7 @@
 
 .comm {
   display: grid;
+  grid-template-columns: 100%;
   gap: 0 var(--space-md); }
   .comm--top {
     padding: var(--space-sm) calc((2 * var(--space-md)) + 17px) var(--space-sm) var(--space-md);
@@ -813,6 +828,8 @@
     order: 1; }
   .comm:nth-of-type(2n + 1) .social--controls {
     justify-content: start; }
+    .comm:nth-of-type(2n + 1) .social--controls .post--info {
+      text-align: left; }
 
 .insta:not(.tindr--profile):not(.insta--profile) .profileOnly {
   display: none; }
@@ -984,7 +1001,8 @@
 .insta {
   border: var(--border-accent-mid);
   border-radius: 15px;
-  display: grid; }
+  display: grid;
+  grid-template-columns: 100%; }
   .insta .social--topper {
     border-bottom: var(--border-accent-mid);
     gap: var(--space-sm);

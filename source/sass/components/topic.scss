@@ -135,6 +135,7 @@
     }
     &--section {
         display: grid;
+        grid-template-columns: 100%;
         gap: var(--space-lg);
     }
     &--info {
@@ -177,6 +178,7 @@
 
 .topic {
     display: grid;
+    grid-template-columns: 100%;
     grid-template-rows: max-content max-content max-content;
     gap: var(--space-xs) var(--space-xl);
     background: var(--bg-tertiary);
@@ -206,7 +208,12 @@
     & > label {
         position: absolute;
         top: var(--space-sm);
-        left: var(--space-sm);
+        right: var(--space-sm);
+
+        @include mq-up(xs) {
+            left: var(--space-sm);
+            right: auto;
+        }
     }
 
     &--avatar {
@@ -283,12 +290,52 @@
     &--writers { 
         display: flex;
         flex-direction: column;
+
+        @include mq-up(xs) {
+            grid-column: span 2;
+            margin-top: var(--space-lg);
+            display: grid;
+            grid-template-columns: 50% 50%;
+        }
+
+        @include mq-up(md) {
+            grid-column: auto;
+            margin-top: 0;
+            display: flex;
+        }
     }
     &--writer {
         &:first-child {
             padding-bottom: var(--space-md);
             margin-bottom: var(--space-md);
             border-bottom: var(--border-primary);
+
+            @include mq-up(xs) {
+                padding-bottom: 0;
+                margin-bottom: 0;
+                border-bottom: 0;
+                padding-right: var(--space-md);
+                border-right: var(--border-primary);
+            }
+
+            @include mq-up(md) {
+                padding-right: 0;
+                margin-right: 0;
+                border-right: 0;
+                padding-bottom: var(--space-md);
+                margin-bottom: var(--space-md);
+                border-bottom: var(--border-primary);
+            }
+        }
+        &:not(:first-child) {
+            @include mq-up(xs) {
+                text-align: right;
+                padding-left: var(--space-md);
+            }
+            @include mq-up(md) {
+                text-align: left;
+                padding-left: 0;
+            }
         }
         & > div {
             line-height: 200%;

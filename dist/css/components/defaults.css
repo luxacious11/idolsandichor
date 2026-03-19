@@ -95,6 +95,7 @@ fieldset {
         background: var(--text-accent); }
   fieldset.search {
     display: grid;
+    grid-template-columns: 100%;
     text-align: left;
     font-size: 0;
     gap: var(--space-xs);
@@ -137,23 +138,31 @@ fieldset {
 .input-wrap {
   display: flex;
   gap: var(--space-sm);
-  align-items: center; }
+  line-height: 160%; }
   .input-wrap input {
     display: none; }
     .input-wrap input:checked ~ .fancy-input {
       color: var(--text-primary); }
       .input-wrap input:checked ~ .fancy-input i {
         color: var(--text-primary); }
+  .input-wrap:has(input:invalid) > *:not(.fancy-input) {
+    color: var(--text-secondary) !important;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px; }
   .input-wrap .fancy-input {
     border: var(--border-accent-mid);
     display: flex;
     align-items: center;
     justify-content: center;
     color: transparent;
+    flex: 0 0 20px;
     width: 20px;
     height: 20px;
     font-size: 12px;
-    cursor: pointer; }
+    cursor: pointer;
+    margin-top: 1px; }
     .input-wrap .fancy-input.radio {
       border-radius: 50%; }
     .input-wrap .fancy-input i {
@@ -234,12 +243,14 @@ fieldset {
       display: block; }
       #idx main > form:first-child > .tableborder > table tbody {
         display: grid;
+        grid-template-columns: 100%;
         gap: var(--space-lg); }
         @media (min-width: 601px) {
           #idx main > form:first-child > .tableborder > table tbody {
             grid-template-columns: repeat(2, 1fr); } }
         #idx main > form:first-child > .tableborder > table tbody tr {
           display: grid;
+          grid-template-columns: 100%;
           gap: var(--space-xs); }
           #idx main > form:first-child > .tableborder > table tbody tr td:first-child {
             display: flex;
@@ -271,7 +282,7 @@ fieldset {
       padding: 0 var(--space-lg); } }
   #Online main > .tableborder:nth-of-type(2) {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     grid-template-rows: max-content 400px;
     background: var(--bg-secondary);
     margin: 0 auto;
@@ -320,7 +331,7 @@ fieldset {
         width: 100%; }
         #Online main > .tableborder:nth-of-type(2) > .maintitle + table > tbody {
           display: grid;
-          grid-template-columns: 1fr;
+          grid-template-columns: 100%;
           gap: var(--space-md);
           overflow-x: hidden;
           overflow-y: auto;
@@ -476,6 +487,7 @@ fieldset {
   flex: 0 0 100%;
   margin-top: var(--space-md);
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-md);
   justify-content: center; }
   #ST #qr_open .qr_buttons input {
@@ -546,6 +558,7 @@ fieldset {
     background: var(--bg-secondary); }
   #Post #posting-form > tbody {
     display: grid;
+    grid-template-columns: 100%;
     width: 100%; }
     @media (min-width: 1025px) {
       #Post #posting-form > tbody {
@@ -875,6 +888,7 @@ fieldset {
 
 #Post .customButtonSection {
   display: grid;
+  grid-template-columns: 100%;
   grid-template-rows: max-content auto;
   background: var(--bg-secondary);
   height: max-content;
@@ -1047,6 +1061,7 @@ fieldset {
             #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child,
             #Reg main > form .tablepad > table > tbody > tr:first-child > td:last-child > div > table > tbody > tr > td {
               display: grid;
+              grid-template-columns: 100%;
               gap: var(--space-lg); }
               @media (min-width: 769px) {
                 #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child,
@@ -1071,6 +1086,7 @@ fieldset {
               grid-column: 1 / -1; }
               #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset:nth-of-type(2) table > tbody > tr, #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset:nth-of-type(3) table > tbody > tr {
                 display: grid;
+                grid-template-columns: 100%;
                 gap: var(--space-xs); }
                 @media (max-width: 768px) {
                   #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset:nth-of-type(2) table > tbody > tr:first-child > td:last-child, #Reg main > form .tablepad > table > tbody > tr:first-child > td:first-child fieldset:nth-of-type(3) table > tbody > tr:first-child > td:last-child {
@@ -1224,7 +1240,7 @@ fieldset {
   #Search.code-show main > #search-topics .tablebasic > tbody,
   #Search.code-getactive .tablebasic > tbody {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     gap: var(--space-md);
     height: 100%;
     grid-template-rows: max-content;
@@ -1509,7 +1525,7 @@ fieldset {
   #search-topics > .tableborder,
   #active-topics > .tableborder {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     grid-template-rows: max-content 400px max-content;
     background: var(--bg-secondary);
     margin: 0 auto;

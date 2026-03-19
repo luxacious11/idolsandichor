@@ -36,6 +36,12 @@ const colors = {
     'norma': [84, 149, 188],
     'pictor': [214, 116, 58],
     'pyxis': [44, 100, 186],
+    'andromeda': [116, 119, 126],
+    'circinus': [182, 133, 90],
+    'lepus': [44, 122, 96],
+    'serpens': [118, 131, 115],
+    'orion': [167, 69, 87],
+    'vela': [49, 59, 141],
 }
 
 const unusable = ['premium group', 'extended reserve'];
@@ -593,6 +599,7 @@ const creaturesJson = `Creatures`;
 const canonsJson = `Canons`;
 const combinedReservesJson = `CombinedReserves`;
 const plotReservesJson = `PlotReserves`;
+const eventsJson = `Events`;
 
 
 const sheetID = {
@@ -611,6 +618,7 @@ const staffLogs = `1437626199403921611/Z3BLs4q2PiV0fpLwjwLpxt9RV2VP-OO16l6LeSEtV
 const sortLogs = `1437614910984028294/k5xEYtWoZjXmPie3OWrTSuxhGjM-1r5Aj00UalDjDspTfmAwwfPJNyt4y6mEbsU5EhBP`;
 const staffSortLogs = `1437625604563406868/GxB6aPPbevJtXWx1huJwSowNKKcZcCG-7Qz8BCu1UCFC_d1dxEZUrzLAwo_sO_R7mr9m`;
 const announceLogs = `1437615164768784394/KBbzKVSQTbVcNwkEuN0staJhIi3hsTkSlmSDk247MmNIEI9VqNMQXZ1h3NRyExUOEp9j`;
+const eventSignupLogs = `1447032037956653207/9S1-lD9SXVDC7YAEblMtcYcOUO9Q18-Q2zsdCe_DDnZ9ToL0FQ4_6KC19RsFHByLC_N_`;
 
 const defaultReserve = 14;
 const sheetConnectionError = `<blockquote class="fullWidth">There was an error with the sheet connection - we're so sorry! Please go back to the form and try again.</blockquote>

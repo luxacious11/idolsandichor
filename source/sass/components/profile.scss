@@ -284,7 +284,7 @@
 
         @include mq-up(md) {
             grid-template-rows: 100%;
-            grid-template-columns: max-content 1fr;
+            grid-template-columns: max-content minmax(0, 1fr);
         }
 
         &-title {
@@ -312,6 +312,7 @@
 
             &.side-title-only {
                 display: grid;
+                grid-template-columns: 100%;
                 grid-template-rows: max-content auto;
                 gap: var(--space-lg);
             }
@@ -371,6 +372,7 @@
 
             @include mq-up(md) {
                 grid-template-rows: 100%;
+                grid-template-columns: 100%;
                 border-left: 0;
             }
 
@@ -450,6 +452,7 @@
 
             &:has(.profile--tab-section) {
                 display: grid;
+                grid-template-columns: 100%;
                 max-height: 100%;
             }
 
@@ -463,14 +466,14 @@
             }
 
             .items {
-                grid-template-columns: 1fr;
+                grid-template-columns: 100%;
 
                 @include mq-up(xs) {
                     grid-template-columns: 1fr 1fr;
                 }
 
                 @include mq-up(md) {
-                    grid-template-columns: 1fr;
+                    grid-template-columns: 100%;
                 }
             }
         }
@@ -512,6 +515,7 @@
     }
     &--scales {
         display: grid;
+        grid-template-columns: 100%;
         gap: var(--space-md);
         height: max-content;
 
@@ -524,6 +528,9 @@
         background: var(--bg-secondary);
 
         span {
+            position: absolute;
+            top: 0;
+            left: 0;
             background: var(--bg-accent);
             display: block;
             height: 100%;
@@ -539,6 +546,8 @@
                 line-height: 160%;
             }
 
+
+            &[data-new-level="none" i],
             &.None,
             &.none {
                 filter: grayscale(1);
@@ -569,6 +578,27 @@
             }
             &.Very.High .profile--scale span,
             &.very.high .profile--scale span {
+                width: 100%;
+            }
+
+            &[data-new-level] span:first-of-type {
+                opacity: 0.5;
+            }
+
+            &[data-new-level="none" i] .profile--scale span:last-of-type,
+            &[data-new-level="very low" i] .profile--scale span:last-of-type {
+                width: var(--space-xs);
+            }
+            &[data-new-level="low" i] .profile--scale span:last-of-type {
+                width: 25%;
+            }
+            &[data-new-level="average" i] .profile--scale span:last-of-type {
+                width: 50%;
+            }
+            &[data-new-level="high" i] .profile--scale span:last-of-type {
+                width: 75%;
+            }
+            &[data-new-level="very high" i] .profile--scale span:last-of-type {
                 width: 100%;
             }
         }

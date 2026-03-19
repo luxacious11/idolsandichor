@@ -6,6 +6,7 @@
 ********************************/
 .stats {
     display: grid;
+    grid-template-columns: 100%;
     border: var(--border-primary);
     background: var(--bg-secondary);
     @include pattern;
@@ -48,7 +49,7 @@
 
             tbody {
                 display: grid;
-                grid-template-columns: 1fr;
+                grid-template-columns: 100%;
                 gap: var(--space-lg);
                     
                 @include mq-up(xs) {
@@ -56,7 +57,7 @@
                 }
 
                 @include mq-up(md) {
-                    grid-template-columns: 1fr;
+                    grid-template-columns: 100%;
                 }
 
                 tr {
@@ -98,7 +99,7 @@
     &--right {
         padding: var(--space-md);
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
         grid-template-rows: max-content max-content max-content;
         gap: var(--space-md);
 

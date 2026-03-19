@@ -169,6 +169,7 @@ tag-labels {
 
         &.is-active {
             display: grid;
+            grid-template-columns: 100%;
             gap: var(--space-sm);
         }
     }
@@ -208,6 +209,7 @@ tag-labels {
     }
 }
 .alert-select {
+    grid-template-columns: 100%;
     display: none;
     position: absolute;
     top: calc(100% + 11px + var(--space-sm));
@@ -236,6 +238,8 @@ tag-labels {
         }
 
         .input-wrap {
+            align-items: center;
+
             &:not(:last-child) {
                 margin-bottom: var(--space-xs);
             }
@@ -365,6 +369,7 @@ tag-code {
 
 .items {
     display: grid;
+    grid-template-columns: 100%;
     gap: var(--space-lg);
 
     &--item {
@@ -438,7 +443,7 @@ tag-code {
 
 .relationships {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     gap: var(--space-sm);
 
     @include mq-up(sm) {
@@ -446,7 +451,11 @@ tag-code {
     }
 
     @include mq-up(md) {
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
+    }
+
+    & > br {
+        display: none;
     }
 }
 tag-relheader {
@@ -543,6 +552,7 @@ tag-rel {
 
         &:has(.accordion--inner) {
             display: grid;
+            grid-template-columns: 100%;
             grid-template-rows: 0fr;
             transition: var(--transition-standard);
 

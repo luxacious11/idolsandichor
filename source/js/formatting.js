@@ -599,20 +599,26 @@ function formatHeroes(data) {
             return 0;
         }
     });
-    data.forEach((item, i) => {
+    let born = data.filter(item => !item.Folklore.parent.includes('gifted'));
+    let gifted = data.filter(item => item.Folklore.parent.includes('gifted'));
+    let combined = [...born, ...gifted];
+    combined.forEach((item, i) => {
         let lines = [item.Folklore.gifts, `Played by <a href="?showuser=${item.ParentID}">${item.Member}</a>`];
+        let title = item.Folklore.parent.includes('gifted')
+                ? capitalize(item.Folklore.parent, [' ', '-'])
+                : `Children of ${capitalize(item.Folklore.parent, [' ', '-'])}`;
 
         //first
         if(i === 0) {
-            html += formatHeader(`Children of ${capitalize(item.Folklore.parent, [' ', '-'])}`, 3);
+            html += formatHeader(title, 3);
             html += `<div class="claims--grid" data-type="grid" data-gap="smsquare">`;
             html += formatClaim(item.Character, lines, item.GroupID, `?showuser=${item.AccountID}`);
         }
 
         //different starting letter
-        else if (data[i - 1].Folklore.parent !== item.Folklore.parent) {
+        else if (combined[i - 1].Folklore.parent !== item.Folklore.parent) {
             html += `</div>`;
-            html += formatHeader(`Children of ${capitalize(item.Folklore.parent, [' ', '-'])}`, 3);
+            html += formatHeader(title, 3);
             html += `<div class="claims--grid" data-type="grid" data-gap="smsquare">`;
             html += formatClaim(item.Character, lines, item.GroupID, `?showuser=${item.AccountID}`);
         }
@@ -623,7 +629,7 @@ function formatHeroes(data) {
         }
 
         //last
-        if(i === data.length - 1) {
+        if(i === combined.length - 1) {
             html += `</div>`;
         }
     });
@@ -1635,11 +1641,7 @@ function formatQuarterLocation(data) {
 /***** Format Groups *****/
 function formatAllGroups(data) {
     data.sort((a, b) => {
-        if(a.Type === 'free' && b.Type !== 'free') {
-            return -1;
-        } else if(a.Type !== 'free' && b.Type === 'free') {
-            return 1;
-        } else if(a.Group < b.Group) {
+        if(a.Group < b.Group) {
             return -1;
         } else if(a.Group > b.Group) {
             return 1;
@@ -1647,9 +1649,12 @@ function formatAllGroups(data) {
             return 0;
         }
     });
-
-    let free = ``, premium = ``;
+    
+    let free = ``, premium = ``, palette = `<div class="g-4 palette">Writer</div>`, text = `<div class="g-4 text">Writer</div>`;
     data.forEach(item => {
+        palette += `<div class="g-${item.GroupID} palette">${item.Group}</div>`;
+        text += `<div class="g-${item.GroupID} text">${item.Group}</div>`;
+
         if(item.Type === 'free') {
             free += formatSingleGroup(item);
         } else {
@@ -1658,10 +1663,13 @@ function formatAllGroups(data) {
     });
     document.querySelector('.clip-free-groups').innerHTML = free;
     document.querySelector('.clip-premium-groups').innerHTML = premium;
+    if(document.querySelector('.clip-colors')) {
+        document.querySelector('.clip-colors').innerHTML = `<div class="color-test swatches">${palette}</div><div class="color-test written">${text}</div>`;
+    }
 }
 function formatSingleGroup(data) {
     const colorArray = data.Color.split(', ').map(item => parseInt(item));
-    return `<div class="group g-${data.GroupID}">
+    return `<div class="group g-${data.GroupID} ${data.Hidden === 'yes' ? 'staffOnly' : ''}">
         <div class="group--images">${JSON.parse(data.Images).map(item => `<img src="${item}" loading="lazy" />`).join('')}</div>
         <div class="group--main">
             <div class="group--title">${data.Group}</div>

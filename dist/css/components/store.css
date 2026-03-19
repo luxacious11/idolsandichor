@@ -201,6 +201,7 @@
 #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)),
 #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:not(:last-child) {
   display: grid;
+  grid-template-columns: 100%;
   gap: var(--space-xs) var(--space-md);
   background: var(--bg-secondary);
   border: var(--border-primary);
@@ -516,6 +517,7 @@
 #store.store-do_edit_points #ucpcontent > table > tbody,
 #store.store-edit_inventory #ucpcontent > table > tbody {
   display: grid;
+  grid-template-columns: 100%;
   gap: var(--space-lg); }
   #store.store-donate_money #ucpcontent > table > tbody > tr:not(:last-child),
   #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child),
@@ -525,6 +527,7 @@
   #store.store-do_edit_points #ucpcontent > table > tbody > tr:not(:last-child),
   #store.store-edit_inventory #ucpcontent > table > tbody > tr:not(:last-child) {
     display: grid;
+    grid-template-columns: 100%;
     gap: var(--space-xs); }
     #store.store-donate_money #ucpcontent > table > tbody > tr:not(:last-child) > td,
     #store.store-donate_item #ucpcontent > table > tbody > tr:not(:last-child) > td,

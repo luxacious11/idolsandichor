@@ -343,6 +343,7 @@
                             <a href="#add-location">Add Location</a>
                             <a href="#add-creature">Add Creature</a>
                             <a href="#add-canon">Add Canon</a>
+                            <a href="#add-event">Add Event</a>
                         </div></div>
                     </tag-labels>
                 </div>
@@ -355,10 +356,6 @@
     <label>
         <b>Character</b>
         <span><select id="id" class="clip-pending" required></select></span>
-    </label>
-    <label>
-        <b>About</b>
-        <span><textarea id="about" placeholder="Short, sweet, and to-the-point" required></textarea></span>
     </label>
     <button type="submit" id="submit">Submit</button>
 </form>
@@ -426,6 +423,13 @@
         <span><input type="text" id="image1" placeholder="Image 1 URL" required /></span>
         <span><input type="text" id="image2" placeholder="Image 2 URL" required /></span>
         <span><input type="text" id="image3" placeholder="Image 3 URL" required /></span>
+    </label>
+    <label class="fullWidth">
+        <b>Visibility</b>
+        <span><select id="visibility" required>
+            <option value="yes">Hidden</option>
+            <option value="no">Visible</option>
+        </select></span>
     </label>
     <button type="submit" id="submit" class="fullWidth">Submit</button>
 </form>
@@ -596,6 +600,41 @@
         <span><textarea id="about" placeholder="Summary" required></textarea></span>
     </label>
     <button class="fullWidth" type="submit" id="submit">Submit</button>
+</form>
+                                </div>
+                            </tag-tab>
+                            <tag-tab data-key="#add-event">
+                                <div class="webpage--content-inner">
+                                    <form id="form-add-event" data-type="grid" data-columns="2">
+    <label>
+        <b>Event Name</b>
+        <span><input type="text" id="event" placeholder="Event Name" required></span>
+    </label>
+    <label>
+        <b>Signups Close Date</b>
+        <span><input type="date" id="close" required></span>
+    </label>
+    <label>
+        <b>Start Date</b>
+        <span><input type="date" id="start" required></span>
+    </label>
+    <label>
+        <b>End Date (optional)</b>
+        <span><input type="date" id="end"></span>
+    </label>
+    <label class="fullWidth">
+        <b>Overview</b>
+        <span><textarea id="overview" placeholder="Overview" required></textarea></span>
+    </label>
+    <label class="fullWidth adjustable">
+        <b>Roles</b>
+        <div class="rows"></div>
+        <div class="multi-buttons" data-row-type="eventroles">
+            <button type="button" onclick="addRow(this)">+ Add Role</button>
+            <button type="button" onclick="removeRow(this)">- Remove Role</button>
+        </div>
+    </label>
+    <button type="submit" id="submit" class="fullWidth">Submit</button>
 </form>
                                 </div>
                             </tag-tab>

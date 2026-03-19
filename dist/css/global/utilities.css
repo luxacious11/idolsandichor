@@ -30,6 +30,7 @@
 
 .columns {
   display: grid;
+  grid-template-columns: 100%;
   gap: var(--space-lg); }
   @media (min-width: 601px) {
     .columns.two {

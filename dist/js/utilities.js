@@ -2143,6 +2143,7 @@ function getCleanStandardValue(field) {
 function setFormStatus(form, isSubmitting = true, isSubmitted = false) {
     if(isSubmitted) {
         form.innerHTML = successMessage;
+        form.querySelector('button[type="submit"]').removeAttribute('disabled');
     } else {
         if(isSubmitting) {
             form.querySelector('button[type="submit"]').innerText = `Submitting...`;
@@ -2359,6 +2360,8 @@ function addRow(e) {
         e.closest('.adjustable').querySelector('.rows').insertAdjacentHTML('beforeend', formatTextFields('weakness'));
     } else if(e.closest('.multi-buttons').dataset.rowType === 'subspecies') {
         e.closest('.adjustable').querySelector('.rows').insertAdjacentHTML('beforeend', formatSubspeciesFields());
+    } else if(e.closest('.multi-buttons').dataset.rowType === 'eventroles') {
+        e.closest('.adjustable').querySelector('.rows').insertAdjacentHTML('beforeend', formatEventRolesFields());
     }
 }
 function removeRow(e) {
@@ -2532,6 +2535,19 @@ function formatSubspeciesFields() {
         </label>
         <label class="subspecies-summary">
             <span><textarea placeholder="HTML allowed; use br or wrap paragraphs in p tags"></textarea></span>
+        </label>
+    </div>`;
+}
+function formatEventRolesFields() {
+    return `<div class="eventrole-wrap row" data-type="grid" data-gap="md" data-columns="2">
+        <label class="eventrole-title">
+            <span><input type="text" placeholder="Title" /></span>
+        </label>
+        <label class="eventrole-details">
+            <span><input type="text" placeholder="Details; OPTIONAL" /></span>
+        </label>
+        <label class="eventrole-overview fullWidth">
+            <span><input type="text" placeholder="Overview" /></span>
         </label>
     </div>`;
 }

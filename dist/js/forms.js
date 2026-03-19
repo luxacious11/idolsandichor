@@ -9,6 +9,7 @@ if(reserveForm) {
         simpleFieldToggle(reserveType, '.ifPlot', 'subplot');
         simpleFieldToggle(reserveType, '.ifReserveDeity', 'deity');
         simpleFieldToggle(reserveType, '.ifReincarnation', 'reincarnation');
+        
         if(getSelectValue(reserveType) === 'canon' && staticCanons.length === 0) {
             fetch(fetchURL(canonsJson))
             .then((response) => response.json())

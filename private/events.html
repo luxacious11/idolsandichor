@@ -31,71 +31,51 @@
                         <i class="fa-solid fa-bars open-button"></i>
                         <i class="fa-solid fa-xmark close-button"></i>
                     </button>
-                    <tag-labels class="accordion scroll">
-                        <tag-label class="tab-category accordion--trigger" data-category="eventone">
-                            <span>Ever In Your Favor</span>
-                        </tag-label>
-                        <div class="tab-category accordion--content" data-category="eventone"><div class="accordion--inner">
-                            <span class="h7" style="margin: 0;">Begins Month DD, YYYY</span>
-                            <a href="#e1-intro">Introduction</a>
-                            <a href="#e1-signup">Signup</a>
-                            <a href="#e1-cast">Cast List</a>
-                        </div></div>
-                    </tag-labels>
+                    <tag-labels class="accordion scroll"></tag-labels>
                 </div>
                 <tag-tabset class="webpage--content">
-                    <tag-tab class="tab-category" data-category="eventone">
-                        <tag-tabset>
-                            <tag-tab data-key="#e1-intro">
-                                <div class="webpage--content-inner">
-<div class="h2 serif">Ever In Your Favor</div>
-<div class="h8">Come one, come all - the bicentennial celebration of the Divine Challenges is coming to Elysium!</div>
-<p>Held once a year in locations around the globe, the Divine Challenges were originally implemented as a way for the gods to fight amongst themselves without risking the entire mortal realm in the process. They were suggested by the ruling class in the 1820s when a particularly nasty spat between two Greek deities led to the demolition of an otherwise prosperous city in the south of Spain. Sure, they put it back the way they found it- but hundreds of lives were lost in the process, and it was only one of hundreds of incidences in the span of a decade. Mortals had had enough.</p>
-<p>So came the Divine Challenges: an annual event, not dissimilar to the Olympics but infinitely more deadly. Mortals willingly offer themselves to their patron god or goddess as a champion, and the god or goddess in question chooses from those offerings. Sometimes, the deity does this through interviews and trials of skill. Sometimes, it's more random than that. Regardless, all mortals who survive are showered with prizes and never want for material goods, food, or necessities again. No prize is more spectacular than the grand prize for the winner - the change to be granted gifts by their patron deity and become a demigod in their own right. Needless to say, the competition is stiff.</p>
-<p>Every year, a different pantheon has their chance to host the challenges and gods and goddesses of that pantheon are the only ones permitted to participate that particular year. Except, of course, on special occasions - like the bicentennial challenge announced for Elysium. This year is not a competition among deities of a specific pantheon, but instead a free-for-all. Gods and goddesses of any pantheon may choose to enter a champion, providing them with limits boons throughout the competition to try and give them an advantage. To the winner? The rare offer of not hero status- but true deification.</p>
-<p>With champions chosen, the day of the challenges is drawing ever closer and tensions are high- but when magic starts to go awry in the ring, and boons don't work as they should, what will happen to the champions?</p>
-<p>And what <i>are</i> those shadowy figures reported outside the champion quarters in the dead of night: interference from other gods, or something more sinister?</p>
-                                </div>
-                            </tag-tab>
-                            <tag-tab data-key="#e1-signup">
-                                <div class="webpage--content-inner">
-                                    @@include('../source/templates/events/e1.html')
-                                </div>
-                            </tag-tab>
-                            <tag-tab data-key="#e1-cast">
-                                <div class="webpage--content-inner">
-                                    pull from sheet
-                                </div>
-                            </tag-tab>
-                        </tag-tabset>
-                    </tag-tab>
+                    
                 </tag-tabset>
             </section>
 
             <script src="../dist/js/events.js"></script>
             <script>
                             
-                let staticMembers = [], staticClaims = [], staticBusinesses = [];
-                fetch(fetchURL(membersJson))
+                let staticEvents = [], staticMembers = [], staticClaims = [];
+                fetch(fetchURL(eventsJson, 'info'))
                 .then((response) => response.json())
-                .then((memberData) => {
-                    staticMembers = [...memberData];
-                    setList('.clip-members', staticMembers, 'members');
+                .then((eventsData) => {
+                    staticEvents = [...eventsData.map(item => ({
+                        ...item,
+                        Roles: JSON.parse(item.Roles),
+                    }))];
 
-                    fetch(fetchURL(claimsJson))
+                    fetch(fetchURL(membersJson))
                     .then((response) => response.json())
-                    .then((claimsData) => {
-                        staticClaims = [...claimsData];
-                        setList('.clip-characters', staticClaims, 'characters');
+                    .then((memberData) => {
+                        staticMembers = [...memberData];
 
-                        fetch(fetchURL(businessesJson))
+                        fetch(fetchURL(claimsJson))
                         .then((response) => response.json())
-                        .then((businessData) => {
-                            staticBusinesses = [...businessData];
-                            setList('.clip-businesses', staticBusinesses, 'businesses');
+                        .then((claimsData) => {
+                            claimsData.sort((a, b) => {
+                                if(a.Character < b.Character) {
+                                    return -1;
+                                } else if(a.Character > b.Character) {
+                                    return 1;
+                                } else {
+                                    return 0;
+                                }
+                            });
+                            staticClaims = [...claimsData.filter(item => item.Status === approvedText)];
+                            formatEvents(staticEvents, staticClaims, staticMembers);
+
                         }).then(() => {
                             initWebpages();
-                        });;
+                            initCharacterClips(staticClaims);
+                            initOptFields();
+                            initSignups(staticClaims);
+                        });
 
                     });
 

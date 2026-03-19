@@ -31,6 +31,7 @@ tag-wrap {
 
     &[data-timeline] {
         display: grid;
+        grid-template-columns: 100%;
         padding-right: var(--space-md);
 
         @include mq-up(xxs) {
@@ -86,6 +87,7 @@ tag-wrap {
         }
         &:has(> tag-sidebar) {
             display: grid;
+            grid-template-columns: 100%;
             max-width: 475px;
 
             &[data-width="full" i] {
@@ -110,6 +112,7 @@ tag-wrap {
         }
         &:has(> tag-image) {
             display: grid;
+            grid-template-columns: 100%;
 
             tag-image {
                 width: 100%;
@@ -371,6 +374,7 @@ tag-header {
 }
 tag-sidebar {
     display: grid;
+    grid-template-columns: 100%;
     align-items: center;
     border: var(--border-accent-mid);
     background: var(--bg-accent-low);
@@ -603,6 +607,7 @@ tag-accent {
 }
 tag-images {
     display: grid;
+    grid-template-columns: 100%;
     gap: var(--space-sm);
     margin: var(--space-md);
     line-height: 0;

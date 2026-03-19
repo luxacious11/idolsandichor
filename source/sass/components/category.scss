@@ -25,6 +25,7 @@
 
    &--list {
       display: grid;
+      grid-template-columns: 100%;
       gap: var(--space-lg);
       padding: var(--space-lg);
       border: var(--border-primary);
@@ -89,6 +90,7 @@
    }
    &:not(.redirect) {
       display: grid;
+      grid-template-columns: 100%;
       gap: var(--space-xs) var(--space-xl);
       background: var(--bg-tertiary);
       border: var(--border-primary);

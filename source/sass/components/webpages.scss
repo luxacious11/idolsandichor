@@ -153,6 +153,7 @@
         & > .field-wrap,
         & > label {
             display: grid;
+            grid-template-columns: 100%;
             grid-template-rows: max-content;
 
             &:not([data-gap]) {
@@ -232,6 +233,7 @@
 
         &--content {
             display: grid;
+            grid-template-columns: 100%;
 
             strong {
                 margin: 0;
@@ -275,11 +277,13 @@
     }
     &--grid {
         display: grid;
+        grid-template-columns: 100%;
         gap: var(--space-lg);
         margin-top: var(--space-lg);
     }
     &--sliders {
         display: grid;
+        grid-template-columns: 100%;
         gap: var(--space-md);
         grid-template-columns: 100%;
         margin-top: var(--space-md);
@@ -437,6 +441,7 @@
 .employer {
     &--description {
         display: grid;
+        grid-template-columns: 100%;
         gap: var(--space-lg);
 
         @include mq-up(xs) {
@@ -531,6 +536,7 @@
 .clip-free-groups,
 .clip-premium-groups {
     display: grid;
+    grid-template-columns: 100%;
     gap: var(--space-xl);
     margin-top: var(--space-xl);
 }
@@ -540,6 +546,7 @@
 .group,
 .location {
     display: grid;
+    grid-template-columns: 100%;
     gap: var(--space-xs) var(--space-xl);
 
     &--image {
@@ -608,12 +615,25 @@
     }
     &--images {
         display: grid;
+        grid-template-columns: 100%;
         justify-content: center;
         grid-template-rows: repeat(4, 55px);
+
+        @include mq-down(sm) {
+            grid-template-columns: repeat(3, 85px);
+            grid-template-rows: 100%;
+            gap: var(--space-sm);
+
+            img {
+                left: auto !important;
+                right: auto !important;
+            }
+        }
 
         img {
             @include diamondCrop;
             width: 100px;
+            aspect-ratio: 1 / 1;
         }
     }
     &--description {
@@ -624,24 +644,30 @@
         text-align: justify;
     }
     &:nth-child(odd) {
-        grid-template-columns: 150px 1fr;
+        @include mq-up(sm) {
+            grid-template-columns: 150px 1fr;
+        }
 
         .group--images {
             img {
                 &:nth-of-type(odd) {
-                    left: -27.5px;
+                    left: 27.5px;
                 }
                 &:nth-of-type(even) {
-                    right: -27.5px;
+                    right: -82.5px;
                 }
             }
         }
     }
     &:nth-child(even) {
-        grid-template-columns: 1fr 150px;
+        @include mq-up(sm) {
+            grid-template-columns: 1fr 150px;
+        }
 
         .group--images {
-            order: 2;
+            @include mq-up(sm) {
+                order: 2;
+            }
 
             img {
                 &:nth-of-type(even) {
@@ -747,5 +773,22 @@
             width: calc((100 / 704) * 100%);
         }
             */
+    }
+}
+
+.color-test {
+    padding: var(--space-lg);
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+
+    .palette {
+        padding: 0 var(--space-sm);
+        background: var(--bg-accent-high);
+        @include info(var(--text-on-accent), xs, 700);
+    }
+
+    .text {
+        @include info(var(--text-accent), xs, 700);
     }
 }

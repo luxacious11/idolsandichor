@@ -230,6 +230,7 @@
 #store.store-inventory #ucpcontent > table > tbody > tr:not(:first-child):not(:nth-child(2)):not(:nth-child(3)),
 #store.store-do_staff_inventory #ucpcontent > table > tbody > tr:not(:last-child) {
     display: grid;
+    grid-template-columns: 100%;
     gap: var(--space-xs) var(--space-md);
     background: var(--bg-secondary);
     border: var(--border-primary);
@@ -546,11 +547,13 @@
         & > table {
             & > tbody {
                 display: grid;
+                grid-template-columns: 100%;
                 gap: var(--space-lg);
 
                 & > tr {
                     &:not(:last-child) {
                         display: grid;
+                        grid-template-columns: 100%;
                         gap: var(--space-xs);
     
                         & > td {

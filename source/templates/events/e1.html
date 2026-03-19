@@ -1,4 +1,4 @@
-<form id="form-approve" data-type="grid">
+<form id="form-e1" data-type="grid" data-columns="2">
     <label>
         <b>Alias</b>
         <span><select id="member" class="clip-members" required></select></span>
@@ -7,18 +7,40 @@
         <b>Character</b>
         <span><select id="character" class="clip-characters" required></select></span>
     </label>
-    <label>
+    <div class="fullWidth field-wrap">
+        <label>
+            <b>Maximum Injury Level</b>
+            <i>Overall injury level will be randomized within a range, similar to damage in tabletop gaming - but you can pick the cap for your character. What this means is that you may request a maximum level of injury, and the guarantee is that you will be that level of injury <u>or lower.</u> Your character's exact injuries will depend on thread context and can be brought on by you or by staff intervention. You will know your character's anticipated level of injury post-randomization by looking at the cast list.</i>
+
+            <span><select id="injury" required>
+                <option value="0">No injuries allowed</option>
+                <option value="1">Minor injuries; require basic first aid</option>
+                <option value="2">Small injuries; requires an urgent care</option>
+                <option value="3">Large injuries; requires an emergency room</option>
+                <option value="4">Major Injuries; requires surgery</option>
+                <option value="5">Life-threatening injuries; may result in long-term effects, like maiming</option>
+            </select></span>
+        </label>
+        <div class="form-multiselect fullWidth">
+            <label class="input-wrap">
+                <input type="checkbox" name="kill-perms" value="1">
+                <div class="fancy-input checkbox"><i class="fa-light fa-sharp fa-xmark"></i></div>
+                <strong>You have permission to kill my character, if it seems likely or necessary based on context.</strong>
+            </label>
+        </div>
+    </div>
+    <label class="fullWidth">
         <b>Role</b>
         <span><select id="role" class="clip-roles" required></select></span>
     </label>
-    <label>
-        <b>Detail</b>
+    <label class="hidden fullWidth ifDetails">
+        <b></b>
         <span><input type="text" /></span>
     </label>
     <label class="fullWidth">
         <b>Specific Requests</b>
         <i>Visible to staff only; if there is any specific goal you have in mind for your character, or definite no-gos when it comes to staff intervention in the event, please let us know now.</i>
-        <u>NO CHARACTERS WILL BE KILLED WITHOUT EXPRESS PERMISSION REGARDLESS.</u>
+        <u>NO CHARACTERS WILL BE KILLED WITHOUT EXPRESS PERMISSION REGARDLESS. PLEASE DO NOT USE THIS FIELD TO REQUEST WE NOT KILL YOUR CHARACTER. WE ALREADY WON'T, UNLESS NOTED ABOVE.</u>
         <span><textarea id="requests" placeholder="Requests"></textarea></span>
     </label>
     <button type="submit" id="submit">Submit</button>
